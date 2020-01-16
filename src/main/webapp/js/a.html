@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button type="radio" name="reportTypeBtn" ref-div="zhutuDiv">柱状图</button>
+<button type="radio" name="reportTypeBtn" ref-div="bingtuDiv">饼状图</button>
+
+<div name="zhutuDiv"></div>
+<div name="bingtuDiv"></div>
+<script>
+    $("[name=reportTypeBtn]").click(function(t){
+        $("[name="+$(t).attr("ref-div")+"]").show().siblings().hide();
+    });
+
+</script>
+</body>
+</html>

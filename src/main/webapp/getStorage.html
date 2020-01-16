@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取h5本地存储localStorage相关信息</title>
+    <style type="text/css">
+        html {
+            color: #000;
+            background: #fff !important;
+            overflow-y: scroll;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%
+        }
+
+        html * {
+            outline: 0;
+            -webkit-text-size-adjust: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+        }
+
+        html, body {
+            font-family: sans-serif
+        }
+        body{
+            margin: 10px!important;
+            /*padding: 20px!important;*/
+            font-size: 17px!important;
+        }
+        .w80percent{
+            width: 80%;
+        }
+        .w100percent{
+            width: 100%;
+        }
+        .h_30px{
+            height: 30px;
+        }
+        .h_300px{
+            height: 300px;
+        }
+        .h_50_percent{
+            height: 50%;
+        }
+        .border_blue{
+            border: 1px solid #205081;
+        }
+        .border_no{
+            border: 0;
+        }
+        .div_container{
+            /*text-align: center;*/
+            width:90%;
+            overflow:hidden;
+            box-sizing:border-box;
+            margin: 10px;
+        }
+        button{
+            position: relative;
+            top: -13px;
+            margin-left: 10px;
+        }
+        .err{
+            color: red;
+        }
+        .hide{
+            display: none;
+        }
+        textarea{
+            margin: 10px 0;
+            font-family: sans-serif;
+        }
+        .check-card-main{position:fixed;left:0;right:0;bottom:0;z-index:1000;-webkit-user-select:none;user-select:none}.check-card-line{border-top:1px solid #e4e4e4;margin:0 .32rem}.custom-toast{color:#fff;background-color:rgba(0,0,0,.8);font-size:.4rem;padding:.186667rem .32rem;border-radius:.106667rem;display:table;position:fixed;text-align:left;margin:auto;left:0;right:0;bottom:50%;width:6rem}\n\n/*!*height: 60px;*!*/.check-card-relocation{position:relative;color:#323334;font-size:.346667rem;padding:.16rem .32rem .16rem .666667rem;margin-left:.32rem;margin-bottom:.213333rem;background-color:#fff;display:inline-block;text-align:center;border:1px solid #e0e0e0;border-radius:.826667rem;line-height:.426667rem;box-sizing:content-box}.check-card-relocation.doing{background-color:#ccc}.check-card-relocation-img{position:absolute;width:.4rem;height:.4rem;left:.16rem}.check-card-body{border-bottom:1px solid #e0e0e0;background-color:#fff;box-shadow:0 0 .133333rem #e0e0e0}.check-card-my-position{position:relative;padding:.266667rem .32rem 0}.check-card-my-position-title{font-size:.426667rem;color:#323334;letter-spacing:0;line-height:.48rem;text-align:left}.check-card-my-position-scope{font-size:.346667rem;color:#999;letter-spacing:0;line-height:.48rem;text-align:left}.check-card-my-position-scope-blue{color:#38adff!important}.check-card-body-title{padding:.32rem}.check-card-body-title-out{background-color:#3bc2b5}.check-card-body-title-normal,.check-card-body-title-out{display:inline-block;width:.933333rem;height:.426667rem;border-radius:.48rem;color:#fff;line-height:.426667rem;text-align:center;letter-spacing:0;font-size:.32rem;vertical-align:10%}.check-card-body-title-normal{background-color:#38adff}.check-card-body-title-content{margin-left:.186667rem;font-size:.346667rem;color:#999;letter-spacing:0;line-height:.48rem;text-align:left}.check-card-body-note{position:relative;padding:.266667rem .32rem}.check-card-body-note-content{font-size:.426667rem;color:#323334;text-align:left;line-height:1rem;right:1.653333rem;white-space:nowrap;margin-right:1.333333rem;overflow:hidden;text-overflow:ellipsis}.check-card-body-note-content-empty{color:#999!important}.check-card-body-note-content-label{color:#323334;margin-right:.506667rem}.check-card-body-note-img{position:absolute;width:1.04rem;height:1.04rem;right:.32rem;top:.2rem;border:1px solid #e0e0e0;background-repeat:no-repeat;background-position:50%;background-size:cover}.check-card-foot-wrap{padding:.32rem;background-color:#fff}.check-card-foot{height:1.173333rem;background-color:#38adff;border-radius:.106667rem;color:#fff;line-height:1.173333rem;text-align:center;font-size:.453333rem}.check-card-foot-out{background-color:#3bc2b5!important}.check-card-foot-out-disable{background-color:#999!important}.check-card-foot span{margin-left:.266667rem}
+        p.slide {
+            padding: 0px;
+            margin: 0px;
+            opacity: 0.8;
+            font-size: 16px;
+            color: #666666;
+            line-height: 24px;
+            text-align: center;
+        }
+    </style>
+    <style type="text/css">
+        body{margin:0!important}.ding-img-list .module-wrap img{max-width:100%;display:block;vertical-align:bottom}.module-wrap{width:100%;min-height:100%;font-family:'Helvetica Neue','Hiragino Sans GB','WenQuanYi Micro Hei','Microsoft Yahei',sans-serif;box-sizing:border-box}.module-wrap a{text-decoration:none}.module-wrap .dd-pageBtn{display:none;bottom:0;left:0;padding:12px;width:100%;background-color:#fff;z-index:100;border-top:#e3e3e3 solid 1px;box-sizing:border-box}.module-wrap .dd-pageBtn .dd-btn{display:block;text-align:center;height:44px;line-height:44px;border-radius:4px;font-family:".PingFangSC-Regular";font-size:17px;letter-spacing:-.83px}.dingding-floatfootbutton-new-h5 .module-wrap{width:100%;min-height:100%;font-family:'Helvetica Neue','Hiragino Sans GB','WenQuanYi Micro Hei','Microsoft Yahei',sans-serif;box-sizing:border-box}.dingding-floatfootbutton-new-h5 .module-wrap a{text-decoration:none}.dingding-floatfootbutton-new-h5 .module-wrap .dd-pageBtn{display:none;bottom:0;left:0;padding:12px;width:100%;background-color:#fff;z-index:100;border-top:#e3e3e3 solid 1px;box-sizing:border-box}.dingding-floatfootbutton-new-h5 .module-wrap .dd-pageBtn .dd-btn{display:block;text-align:center;height:44px;line-height:44px;border-radius:4px;font-family:".PingFangSC-Regular";font-size:17px;letter-spacing:-.83px}
+        .dd-btn.small{height: 24px!important;
+                        line-height: 24px!important;
+                        font-size: 14px!important;
+                        display: inline-block!important;
+                        padding: 0 5px;}
+    </style>
+    <script src="./index_files/jquery.min.js"></script>
+    <script src="./index_files/maps.js"></script>
+    <script id="amap_main_js" src="./index_files/main.js" type="text/javascript"></script>
+    <iframe src="./index_files/ls.html" id="_a_log_lsparams" data-spm-act-id="0.0.0.i1.3d0978b0CD9z65"
+            style="width: 0px; height: 0px; display: none;"></iframe>
+    <script src="./index_files/dd.js"></script>
+    <script src="./index_files/merge.js"></script>
+    <script src="./index_files/common.js"></script>
+    <script src="./index_files/index(3).js"></script>
+
+    <script type="text/javascript">
+        function $(t){
+            return document.getElementById(t);
+        }
+        function jsRun(){
+            try{
+                resultShow(eval($("jsInputTextarea").value));
+            }catch (e){
+                alert(e);
+                $("errDiv").innerText = e;
+                $("errDiv").style.display = "block";
+                setTimeout(function(){
+                    $("errDiv").style.display = "none";
+                },1500);
+            }
+        }
+
+        function resultShow(t){
+            $("jsResultShowTextarea").value =  ( typeof t == "object")?JSON.stringify(t):t;
+        }
+        function jsResultCopy(){
+            copyToClipboard($("jsResultShowTextarea").value);
+        }
+        /**
+         * 复制到剪切板
+         */
+        function copyToClipboard(txt) {
+            if (window.clipboardData) {
+                window.clipboardData.clearData();
+                clipboardData.setData("Text", txt);
+                alert("复制成功！");
+
+            } else if (navigator.userAgent.indexOf("Opera") != -1) {
+                window.location = txt;
+            } else if (window.netscape) {
+                try {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                } catch (e) {
+                    alert("被浏览器拒绝！\n请在浏览器地址栏输入'about:config'并回车\n然后将 'signed.applets.codebase_principal_support'设置为'true'");
+                }
+                var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+                if (!clip)
+                    return;
+                var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+                if (!trans)
+                    return;
+                trans.addDataFlavor("text/unicode");
+                var str = new Object();
+                var len = new Object();
+                var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+                var copytext = txt;
+                str.data = copytext;
+                trans.setTransferData("text/unicode", str, copytext.length * 2);
+                var clipid = Components.interfaces.nsIClipboard;
+                if (!clip)
+                    return false;
+                clip.setData(trans, null, clipid.kGlobalClipboard);
+                alert("复制成功！");
+            }
+        }
+        /**
+         * 获取localstorage中的所有内容
+         */
+        function readAllLocalStorage(){
+            var map = {};
+            for(var i=0 ;i<localStorage.length;i++){
+                var key = localStorage.key(i);
+                map[key] = localStorage.getItem(key);
+            }
+            return JSON.stringify(map);
+        }
+
+        function getLocalStorage(key){
+            return localStorage.getItem(key);
+        }
+
+        /**
+         * body初始化后加载内容
+         */
+        function bodyOnload(){
+            $("title").innerText = document.title;
+//            $("jsInputTextarea").value = "readAllLocalStorage()";
+//            jsRun()
+        }
+        var ddHelper = {
+                getInputValue:function (){
+                    return $("jsInputTextarea").value;
+                },
+                clearConsole:function () {
+                    $("jsResultShowTextarea").value = "";
+                },
+                console:function(t){
+                    resultShow(t);
+                },
+                alert:function(e){
+                    alert(e);
+                    $("errDiv").innerText = e;
+                    $("errDiv").style.display = "block";
+                    setTimeout(function(){
+                        $("errDiv").style.display = "none";
+                    },1500);
+                },
+                /**
+                 * 执行js方法
+                 */
+                runFn:function(){
+                    var t = ddHelper.getInputValue();
+                    try {
+                        eval(t+"({"+
+                                "onSuccess: function (t) {"+
+                                "   ddHelper.console(t);"+
+                                "}, onFail: function (e) {"+
+                                "   ddHelper.console(e);"+
+                                "}"+
+                                "})");
+                    }catch (e){
+                        ddHelper.alert(e);
+                    }
+
+                },
+                /**
+                 * 执行dd namespace js方法
+                 */
+                runNamespaceFn:function(){
+                    var t = ddHelper.getInputValue();
+                    try {
+                        eval("dd."+t+"({"+
+                                "onSuccess: function (t) {"+
+                                "   ddHelper.console(t);"+
+                                "}, onFail: function (e) {"+
+                                "   ddHelper.console(e);"+
+                                "}"+
+                                "})");
+                    }catch (e){
+                        ddHelper.alert(e);
+                    }
+
+                },
+                getUUID:function(){
+                    dd.device.base.getUUID({
+                        onSuccess: function (t) {
+                            ddHelper.console(t)
+                        }, onFail: function (e) {
+                            ddHelper.console(e)
+                        }
+                    })
+                },
+                getBizUser:function () {
+                    dd.biz.user.get({
+                           onSuccess: function (t) {
+                               ddHelper.console(t)
+                           }, onFail: function (e) {
+                               ddHelper.console(e)
+                           }
+                   });
+                }
+        }
+    </script>
+</head>
+<body onload="bodyOnload()">
+    <div  id="app">
+        <p id="title" class="slide"></p>
+        <div class="div_container">
+            <p class="slide">
+                输入js语句:
+            </p>
+            <!-- js 输入框 -->
+            <textarea class="w100percent border_no h_30px" id="jsInputTextarea"></textarea>
+            <div class="module-wrap">
+                <div class="dd-pageBtn" style="display: block;">
+                    <a  onclick="jsRun()" href="javascript:;" class="dd-btn dd-active-btn" style="background-color:#38adff; color:#ffffff">RUN</a>
+                </div>
+                <div class="dd-pageBtn" style="display: block;">
+                    <a  onclick="ddHelper.runFn()" href="javascript:;" class="dd-btn dd-active-btn small" style="background-color:#38adff; color:#ffffff">ddHelper.runFn</a>
+                    <a  onclick="ddHelper.runNamespaceFn()" href="javascript:;" class="dd-btn dd-active-btn small" style="background-color:#38adff; color:#ffffff">ddHelper.runNamespaceFn</a>
+                    <a  onclick="ddHelper.clearConsole()" href="javascript:;" class="dd-btn dd-active-btn small" style="background-color:#38adff; color:#ffffff">Clear</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="div_container">
+            <p class="slide">
+                运行结果:
+            </p>
+            <textarea class="w100percent border_no h_300px" id="jsResultShowTextarea"></textarea><!--<button onclick="jsResultCopy()">COPY</button>-->
+        </div>
+        <div id ="errDiv" class="err custom-toast hide">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    var ws ;
+    function connect() {
+        var url = "ws://127.0.0.1:9000/";
+        ws = new WebSocket(url);
+        try {
+
+            ws.onopen = function (msg) {
+                console.log("opened:");
+                console.log(msg);
+                alert("连接成功！");
+            };
+
+            ws.onmessage = function (msg) {
+                console.log("onmessage:");
+                console.log(msg);
+                if (typeof msg.data == "string") {
+                    displayContent(msg.data);
+                }
+                else {
+                    alert("非文本消息");
+                }
+            };
+
+            ws.onclose = function (msg) {
+                console.log("onclose:");
+                console.log(msg);
+                alert("socket closed!")
+            };
+        }
+        catch (ex) {
+            log(ex);
+        }
+    }
+
+    function send(msg) {
+        ws.send(msg);
+    }
+
+    window.onbeforeunload = function () {
+        try {
+            ws.close();
+            ws = null;
+        }
+        catch (ex) {
+        }
+    };
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+
+    function displayContent(msg) {
+        $("txtContent").value += "\r\n" +new Date().Format("yyyy/MM/dd hh:mm:ss")+ ":  " + msg;
+    }
+
+</script>
+</html>

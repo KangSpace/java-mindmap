@@ -1,0 +1,6 @@
+<mover>
+<mo>&#x2192;</mo>
+<mrow>
+<mi>x</mi><mo>+</mo>
+<mi>y</mi></mrow>
+</mover>

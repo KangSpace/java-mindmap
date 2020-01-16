@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>script错误和内部iframe加载测试</title>
+</head>
+<script type="text/javascript">
+    function getTime(){
+        return new Date().toString();
+    }
+    /**
+     *
+     * @param msg
+     * @param color "color:green"
+     */
+    function consoleLog(msg,color){
+        if(color){
+            console.log(getTime() + " %c" + msg,color);
+        }else{
+            console.log(getTime() + " " + msg);
+        }
+    }
+    function onImgLoaded(){
+        consoleLog("IMG LOAD SUCCESS!!!","color:green");
+    }
+    function onScriptLoadError(){
+        consoleLog("JAVASCRIPT LOAD ERROR!!!","color:red");
+    }
+    //chrome无效 TODO
+    function onScriptLoaded(type){
+        consoleLog(type+" JAVASCRIPT LOADED SUCCESS!!!","color:green");
+    }
+    //所有内容加载完成后(包括图片和script加载完成)调用
+    window.onload = function(){
+        consoleLog("window.onload LOADED SUCCESS!!!","color:green");
+    };
+</script>
+<body>
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+    <img src="http://a3.topitme.com/2/67/74/11489000958d174672o.jpg" onload="onImgLoaded()">
+
+</body>
+<!--  onloadstart="onScriptLoaded('loadstart')" onloadedmetadata="onScriptLoaded('loadedmetadata')" onloadeddata="onScriptLoaded('loadeddata')"  chrome无效 TODO-->
+<script type="text/javascript"  onerror="onScriptLoadError()" onload="onScriptLoaded('load')"
+        src="https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/jquery/jquery-1.10.2.min_65682a2.js"></script>
+<script  type="text/javascript">
+    function loadScript(){
+        var sUrl = "https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/jquery/jquery-1.10.2.min_65682a2.js";
+        var script = document.createElement("SCRIPT");
+        script.setAttribute('charset', 'UTF-8');
+        script.setAttribute('type', 'text/javascript');
+        script.setAttribute('src', sUrl);
+        script.onload = script.onreadystatechange = function(){
+            var readyState = script.readyState;
+            consoleLog("script loading ,state:" + readyState, "color:gray");
+            if ('undefined' == typeof readyState
+                    || readyState == "loaded"
+                    || readyState == "complete") {
+                try {
+
+                } finally {
+                    script.onload = script.onreadystatechange = null;
+                }
+            }
+        };
+        script.onerror = function(){
+            consoleLog("script load ERROR " , "color:red");
+        };
+        //chrome无效 TODO
+        script.onloadend = function(){
+            consoleLog("script loaded" , "color:green");
+        };
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+    var _iframe;
+    function loadIframe(){
+        var iUrl = "http://asd.asd.asd/99999999/";
+        var iframe = document.createElement("iframe");
+        _iframe = iframe;
+        iframe.setAttribute("src",iUrl);
+        //chrome无效 TODO
+        iframe.onerror = function () {
+            consoleLog("iframe load ERROR", "color:red");
+        };
+        iframe.onload = function () {
+            consoleLog("iframe loaded", "color:green");
+        };
+        if(iframe.attachEvent)
+            iframe.attachEvent("onload",iframe.onload);
+        document.getElementsByTagName('body')[0].appendChild(iframe);
+        iframe.contentWindow.document.URl.onerror = function () {
+            consoleLog("iframe window load ERROR", "color:red");
+        };
+        //chrome无效 TODO
+        iframe.contentWindow.document.onreadystatechange  = iframe.contentWindow.onreadystatechange =  iframe.onreadystatechange = function () {
+            var readyState = iframe.readyState;
+            consoleLog("iframe loading ,state:" + readyState, "color:gray");
+        };
+        //判断iframe是否加载成功,在iframe的onload事件中获取document的特定内容来判断是否加载成功
+    }
+    setTimeout(loadScript, 1500);
+    setTimeout(loadIframe, 1500);
+</script>
+</html>

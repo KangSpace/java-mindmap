@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试试卷</title>
+    <style type="text/css">
+        /*
+ * LaTeX Math in pure HTML and CSS -- No images whatsoever
+ * v0.xa
+ * by Jay and Han
+ * Lesser GPL Licensed: http: //www.gnu.org/licenses/lgpl.html
+ *
+ * This file is automatically included by mathquill.js
+ *
+ */
+        @font-face {
+            font-family: Symbola;
+            src: url(font/Symbola.eot);
+            src: local("Symbola Regular"), local("Symbola"), url(font/Symbola.ttf) format("truetype"), url(font/Symbola.otf) format("opentype"), url(font/Symbola.svg#Symbola) format("svg");
+        }
+        .mathquill-editable {
+            display: -moz-inline-box;
+            display: inline-block;
+            white-space: pre-wrap;
+        }
+        .mathquill-editable .cursor {
+            border-left: 1px solid black;
+            margin-right: -1px;
+            position: relative;
+            z-index: 1;
+            padding: 0;
+            display: -moz-inline-box;
+            display: inline-block;
+        }
+        .mathquill-editable .cursor.blink {
+            visibility: hidden;
+        }
+        .mathquill-editable,
+        .mathquill-embedded-latex .mathquill-editable {
+            border: 1px solid gray;
+            padding: 2px;
+        }
+        .mathquill-embedded-latex .mathquill-editable {
+            margin: 1px;
+        }
+        .mathquill-editable.hasCursor,
+        .mathquill-editable .hasCursor {
+            -webkit-box-shadow: #68b4df 0 0 3px 2px;
+            -moz-box-shadow: #68b4df 0 0 3px 2px;
+            box-shadow: #68b4df 0 0 3px 2px;
+        }
+        .mathquill-editable .latex-command-input {
+            color: inherit;
+            font-family: "Courier New", monospace;
+            border: 1px solid gray;
+            padding-right: 1px;
+            margin-right: 1px;
+            margin-left: 2px;
+        }
+        .mathquill-editable .latex-command-input.empty {
+            background: transparent;
+        }
+        .mathquill-editable .latex-command-input.hasCursor {
+            border-color: ActiveBorder;
+        }
+        .mathquill-editable.empty:after,
+        .mathquill-textbox:after,
+        .mathquill-rendered-math .empty:after {
+            visibility: hidden;
+            content: 'c';
+        }
+        .mathquill-editable .cursor:only-child:after,
+        .mathquill-editable .textarea + .cursor:last-child:after {
+            visibility: hidden;
+            content: 'c';
+        }
+        .mathquill-textbox {
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        .mathquill-rendered-math {
+            font-variant: normal;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 115%;
+            line-height: 1;
+            display: -moz-inline-box;
+            display: inline-block;
+        }
+        .mathquill-rendered-math .non-leaf,
+        .mathquill-rendered-math .scaled {
+            display: -moz-inline-box;
+            display: inline-block;
+        }
+        .mathquill-rendered-math var,
+        .mathquill-rendered-math .text,
+        .mathquill-rendered-math .nonSymbola {
+            font-family: "Times New Roman", Symbola, serif;
+            line-height: .9;
+        }
+        .mathquill-rendered-math * {
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0;
+            padding: 0;
+            border-color: black;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            /*padding-top: 2px;*/
+            font-size: 15px;
+        }
+        .mathquill-rendered-math .empty {
+            background: white;
+        }
+        .mathquill-rendered-math.empty {
+            background: transparent;
+        }
+        .mathquill-rendered-math .text {
+            font-size: 87%;
+        }
+        .mathquill-rendered-math .font {
+            font: 1em "Times New Roman", Symbola, serif;
+        }
+        .mathquill-rendered-math .font * {
+            font-family: inherit;
+            font-style: inherit;
+        }
+        .mathquill-rendered-math b,
+        .mathquill-rendered-math b.font {
+            font-weight: bolder;
+        }
+        .mathquill-rendered-math var,
+        .mathquill-rendered-math i,
+        .mathquill-rendered-math i.font {
+            font-syle: italic;
+        }
+        .mathquill-rendered-math var.florin {
+            margin: 0 -0.1em;
+        }
+        .mathquill-rendered-math big {
+            font-size: 125%;
+        }
+        .mathquill-rendered-math .roman {
+            font-style: normal;
+        }
+        .mathquill-rendered-math .sans-serif {
+            font-family: sans-serif, Symbola, serif;
+        }
+        .mathquill-rendered-math .monospace {
+            font-family: monospace, Symbola, serif;
+        }
+        .mathquill-rendered-math .overline {
+            border-top: 1px solid black;
+            margin-top: 1px;
+            display: inline-block;
+            width: 100%;
+            /*position: relative;
+            left: -1px;*/
+        }
+        .mathquill-rendered-math .underline {
+            border-bottom: 1px solid black;
+            margin-bottom: 1px;
+        }
+        .mathquill-rendered-math .binary-operator {
+            /*padding: 0 0.2em;*/
+            display: -moz-inline-box;
+            display: inline-block;
+        }
+        .mathquill-rendered-math .unary-operator {
+            padding-left: 0.2em;
+        }
+        .mathquill-rendered-math sup,
+        .mathquill-rendered-math sub {
+            position: relative;
+            font-size: 90%;
+        }
+        .mathquill-rendered-math sup .binary-operator,
+        .mathquill-rendered-math sub .binary-operator {
+            padding: 0 .1em;
+        }
+        .mathquill-rendered-math sup .unary-operator,
+        .mathquill-rendered-math sub .unary-operator {
+            padding-left: .1em;
+        }
+        .mathquill-rendered-math sup.limit,
+        .mathquill-rendered-math sub.limit,
+        .mathquill-rendered-math sup.nthroot,
+        .mathquill-rendered-math sub.nthroot {
+            font-size: 80%;
+        }
+        .mathquill-rendered-math sup .fraction,
+        .mathquill-rendered-math sub .fraction {
+            font-size: 70%;
+            vertical-align: -0.4em;
+        }
+        .mathquill-rendered-math sup .numerator,
+        .mathquill-rendered-math sub .numerator {
+            padding-bottom: 0;
+        }
+        .mathquill-rendered-math sup .denominator,
+        .mathquill-rendered-math sub .denominator {
+            padding-top: 0;
+        }
+        .mathquill-rendered-math sup {
+            vertical-align: .5em;
+        }
+        .mathquill-rendered-math sup.limit,
+        .mathquill-rendered-math sup.nthroot {
+            vertical-align: 0.8em;
+        }
+        .mathquill-rendered-math sup.nthroot {
+            margin-right: -0.6em;
+            margin-left: .2em;
+            min-width: .5em;
+        }
+        .mathquill-rendered-math sub {
+            vertical-align: -0.4em;
+        }
+        .mathquill-rendered-math sub.limit {
+            vertical-align: -0.6em;
+        }
+        .mathquill-rendered-math .paren {
+            padding: 0 .1em;
+            vertical-align: bottom;
+            -webkit-transform-origin: bottom center;
+            -moz-transform-origin: bottom center;
+            -ms-transform-origin: bottom center;
+            -o-transform-origin: bottom center;
+            transform-origin: bottom center;
+        }
+        .mathquill-rendered-math .array {
+            vertical-align: middle;
+            text-align: center;
+        }
+        .mathquill-rendered-math .array > span {
+            display: block;
+        }
+        .mathquill-rendered-math .non-italicized-function {
+            font-family: Symbola, "Times New Roman", serif;
+            line-height: .9;
+            font-style: normal;
+            padding-right: .2em;
+        }
+        .mathquill-rendered-math .fraction {
+            font-size: 90%;
+            text-align: center;
+            vertical-align: -0.5em;
+            padding: 0 .2em;
+        }
+        .overline{
+            min-width:20px!important;
+        }
+        .mathquill-rendered-math .fraction,
+        .mathquill-rendered-math x:-moz-any-link {
+            display: -moz-groupbox;
+        }
+        .mathquill-rendered-math .fraction,
+        .mathquill-rendered-math x:-moz-any-link,
+        .mathquill-rendered-math x:default {
+            display: inline-block;
+        }
+        .mathquill-rendered-math .numerator,
+        .mathquill-rendered-math .denominator {
+            display: block;
+        }
+        .mathquill-rendered-math .numerator {
+            padding: 0 0.1em;
+            margin-bottom: -0.1em;
+        }
+        .mathquill-rendered-math .denominator {
+            border-top: 1px solid;
+            float: right;
+            width: 100%;
+            /*padding: .1em .1em 0 .1em;*/
+            margin-right: -0.1em;
+            margin-left: -0.1em;
+            white-space: nowrap;
+        }
+        .mathquill-rendered-math .sqrt-prefix {
+            padding-top: 0;
+            position: relative;
+            top: .1em;
+            vertical-align: top;
+            -webkit-transform-origin: top;
+            -moz-transform-origin: top;
+            -ms-transform-origin: top;
+            -o-transform-origin: top;
+            transform-origin: top;
+        }
+        .mathquill-rendered-math .sqrt-stem {
+            border-top: 1px solid;
+            margin-top: 1px;
+            padding-left: .15em;
+            padding-right: .2em;
+            margin-right: .1em;
+        }
+        .mathquill-rendered-math .vector-prefix {
+            display: block;
+            text-align: center;
+            line-height: .25em;
+            margin-bottom: -0.1em;
+            font-size: 0.75em;
+        }
+        .mathquill-rendered-math .vector-stem {
+            display: block;
+        }
+        .mathquill-rendered-math,
+        .mathquill-rendered-math .mathquill-editable {
+            cursor: text;
+            font-family: "Times New Roman";
+            text-align: center;
+        }
+        .mathquill-rendered-math .selection,
+        .mathquill-editable .selection,
+        .mathquill-rendered-math .selection .non-leaf,
+        .mathquill-editable .selection .non-leaf,
+        .mathquill-rendered-math .selection .scaled,
+        .mathquill-editable .selection .scaled {
+            background: #B4D5FE !important;
+            background: Highlight !important;
+            color: HighlightText;
+            border-color: HighlightText;
+        }
+        .mathquill-rendered-math .selection .matrixed,
+        .mathquill-editable .selection .matrixed {
+            background: #39F !important;
+        }
+        .mathquill-rendered-math .selection .matrixed-container,
+        .mathquill-editable .selection .matrixed-container {
+            filter: progid:DXImageTransform.Microsoft.Chroma(color='#3399FF') !important;
+        }
+        .mathquill-rendered-math .selection.blur,
+        .mathquill-editable .selection.blur,
+        .mathquill-rendered-math .selection.blur .non-leaf,
+        .mathquill-editable .selection.blur .non-leaf,
+        .mathquill-rendered-math .selection.blur .scaled,
+        .mathquill-editable .selection.blur .scaled,
+        .mathquill-rendered-math .selection.blur .matrixed,
+        .mathquill-editable .selection.blur .matrixed {
+            background: #D4D4D4 !important;
+            color: black;
+            border-color: black;
+        }
+        .mathquill-rendered-math .selection.blur .matrixed-container,
+        .mathquill-editable .selection.blur .matrixed-container {
+            filter: progid:DXImageTransform.Microsoft.Chroma(color='#D4D4D4') !important;
+        }
+        .mathquill-editable .textarea,
+        .mathquill-rendered-math .textarea {
+            position: relative;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            user-select: text;
+        }
+        .mathquill-editable .textarea textarea,
+        .mathquill-rendered-math .textarea textarea,
+        .mathquill-editable .selectable,
+        .mathquill-rendered-math .selectable {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            user-select: text;
+            position: absolute;
+            clip: rect(1em 1em 1em 1em);
+        }
+        .mathquill-rendered-math .matrixed {
+            background: white;
+            display: -moz-inline-box;
+            display: inline-block;
+        }
+        .mathquill-rendered-math .matrixed-container {
+            filter: progid:DXImageTransform.Microsoft.Chroma(color='white');
+            margin-top: -0.1em;
+        }
+        .edui-btn-toolbar:last-child{
+            background-position: -80px -20px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023719"><font color="red">无效</font></span>&nbsp;&nbsp;<a
+        href="../question/viewQuestionDetail.jsp?questionID=100023719&amp;testPaperId=100229072" target="_blank"><font
+        color="blue">查看</font></a>&nbsp;&nbsp;5.已知M={(x，y)|y=<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 53px; height: 32px;"
+        mathquill-block-id="75"><span class="selectable">$\sqrt{9-x^2}$</span><span class="non-leaf"
+                                                                                    mathquill-command-id="76"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 1.36667);">√</span><span class="non-leaf sqrt-stem"
+                                                                                       mathquill-block-id="78"><span
+        mathquill-command-id="77">9</span><span mathquill-command-id="79" class="binary-operator">−</span><var
+        mathquill-command-id="81">x</var><sup class="non-leaf" mathquill-command-id="83" mathquill-block-id="85"><span
+        mathquill-command-id="84">2</span></sup></span></span></span>，y<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 16px; height: 26px;"
+        mathquill-block-id="88"><span class="selectable">$\ne$</span><span class="binary-operator"
+                                                                           mathquill-command-id="89">≠</span></span>0<span
+        style="white-space: normal;">}</span>，N={(x，y)|y=x+b}，若M<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 19px; height: 26px;"
+        mathquill-block-id="91"><span class="selectable">$\cap$</span><span class="binary-operator"
+                                                                            mathquill-command-id="92">∩</span></span>N<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 16px; height: 26px;"
+        mathquill-block-id="94"><span class="selectable">$\ne$</span><span class="binary-operator"
+                                                                           mathquill-command-id="95">≠</span></span><span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 22px; height: 26px;"
+        mathquill-block-id="97"><span class="selectable">$\varnothing$</span><span class="binary-operator"
+                                                                                   mathquill-command-id="98">∅</span></span>，则b<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 20px; height: 26px;"
+        mathquill-block-id="100"><span class="selectable">$\in$</span><span class="binary-operator"
+                                                                            mathquill-command-id="101">∈</span></span>(　　)<br>&nbsp;&nbsp;（3.0分）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：［-3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="103"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="104"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="106"><span
+        mathquill-command-id="105">2</span></span></span></span>,3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="108"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="109"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="111"><span
+        mathquill-command-id="110">2</span></span></span></span>］<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：(-3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="113"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="114"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="116"><span
+        mathquill-command-id="115">2</span></span></span></span>,3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="118"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="119"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="121"><span
+        mathquill-command-id="120">2</span></span></span></span>)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：(-3,3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="123"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="124"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="126"><span
+        mathquill-command-id="125">2</span></span></span></span>］<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：［-3,3<span
+        class="mathquill-embedded-latex mathquill-rendered-math hasCursor" style="width: 30px; height: 26px;"
+        mathquill-block-id="128"><span class="selectable">$\sqrt{2}$</span><span class="non-leaf"
+                                                                                 mathquill-command-id="129"><span
+        class="scaled sqrt-prefix" style="transform: scale(1, 0.9);">√</span><span class="non-leaf sqrt-stem"
+                                                                                   mathquill-block-id="131"><span
+        mathquill-command-id="130">2</span></span></span></span>］<br></span></p>
+
+
+
+
+
+<div class="center">
+    <p class="font14 text_c fontB">2015-2016学年第一学期北京市广渠门中学高二数学期中试卷(理科)</p>
+    <p class="m_l_20 p_tb_10">
+    <center>
+        年级：高中二年级&nbsp;&nbsp;&nbsp;&nbsp;
+        学科：数学&nbsp;&nbsp;&nbsp;&nbsp;
+        考试类型：期中考试&nbsp;&nbsp;&nbsp;&nbsp;
+        年份：2015-2016&nbsp;&nbsp;&nbsp;&nbsp;
+        地区：北京广渠门中学</br>
+        </br>
+        总分：120分&nbsp;&nbsp;&nbsp;&nbsp;
+        答题时间：120分钟&nbsp;&nbsp;&nbsp;&nbsp;
+    </center>
+    </p>
+
+    <p> <strong>一、选择题</strong></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023705">100023705</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023705&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;1.直线l<sub>1</sub>：4x+3y-1=0与直线l<sub>2</sub>：8x+6y+3=0的距离为(　　)<br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：<span class="mathquill-embedded-latex edui-formula-active" style="width: 25px; height: 38px;">\frac{2}{5}</span><span id="_baidu_bookmark_start_0" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{1}{2}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：<span class="mathquill-embedded-latex edui-formula-active" style="width: 25px; height: 38px;">\frac{1}{4}</span><span id="_baidu_bookmark_start_2" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{1}{5}</span><br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023710">100023710</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023710&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;2.在空间直角坐标系中，点B是点A(1，2，3)在坐标平面xOy上的射影，O为坐标原点，则OB的长为(　　)<br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：<span class="mathquill-embedded-latex" style="width: 38px; height: 26px;">\sqrt{10}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：<span class="mathquill-embedded-latex" style="width: 38px; height: 26px;">\sqrt{13}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：<span class="mathquill-embedded-latex edui-formula-active" style="width: 38px; height: 26px;">\sqrt{14}</span><span id="_baidu_bookmark_start_2" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：<span class="mathquill-embedded-latex edui-formula-active" style="width: 30px; height: 26px;">\sqrt{5}</span><span id="_baidu_bookmark_start_3" style="display: none; line-height: 0px;">‍</span><br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023712">100023712</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023712&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;3. 已知三棱锥A-BCD，E、F、G、H分别是AB、BC、CD、DA的中点，若AC=BD，则四边形EFGH为(　　)<br /> &nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A： 梯形 <br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B： 矩形<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C： 菱形 <br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D： 正方形 <br /> <br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023716">100023716</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023716&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;4.在圆x<sup>2</sup>+y<sup>2</sup>-2x-6y=0内，过点E(0，1)的最长弦和最短弦分别为AC和BD，则四边形ABCD的面积为(　　) <br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：5<span class="mathquill-embedded-latex edui-formula-active" style="width: 30px; height: 26px;">\sqrt{2}</span><span id="_baidu_bookmark_start_0" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：10<span class="mathquill-embedded-latex edui-formula-active" style="width: 30px; height: 26px;">\sqrt{2}</span><span id="_baidu_bookmark_start_1" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：15<span class="mathquill-embedded-latex edui-formula-active" style="width: 30px; height: 26px;">\sqrt{2}</span><span id="_baidu_bookmark_start_2" style="display: none; line-height: 0px;">‍</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：20<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span><br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023719">100023719</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023719&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;5.已知M={(x，y)|y=<span class="mathquill-embedded-latex" style="width: 53px; height: 32px;">\sqrt{9-x^2}</span>，y<span class="mathquill-embedded-latex" style="width: 16px; height: 26px;">\ne</span>0<span style="white-space: normal;">}</span>，N={(x，y)|y=x+b}，若M<span class="mathquill-embedded-latex" style="width: 19px; height: 26px;">\cap</span>N<span class="mathquill-embedded-latex" style="width: 16px; height: 26px;">\ne</span><span class="mathquill-embedded-latex" style="width: 22px; height: 26px;">\varnothing</span>，则b<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\in</span>(　　)<br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：［-3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>,3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>］<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：(-3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>,3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>)<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：(-3,3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>］<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：［-3,3<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>］<br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023725">100023725</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023725&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;6.圆心为(2，-1)的圆，在直线x-y-1=0上截得的弦长为2<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{2}</span>，那么，这个圆的方程为(　　) <br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A： (x-2)<sup>2</sup>+(y+1)<sup>2</sup>=4 <br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B： (x-2)<sup>2</sup>+(y+1)<sup>2</sup>=2<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C： (x+2)<sup>2</sup>+(y-1)<sup>2</sup>=4<br /> <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D： (x+2)<sup>2</sup>+(y-1)<sup>2</sup>=2 <br /> <br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023727">100023727</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023727&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;7.在三棱锥P-ABC中，PA<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\bot</span>底面ABC，BC<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\bot</span>AC，<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\angle</span>ABC=30<span class="mathquill-embedded-latex" style="width: 16px; height: 33px;">^{\circ}</span>，AC=1，PB=2<span class="mathquill-embedded-latex" style="width: 30px; height: 26px;">\sqrt{3}</span>，则PC与平面PAB所成余弦值是(　　) <br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：<span class="mathquill-embedded-latex" style="width: 47px; height: 40px;">\frac{\sqrt{33}}{6}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：<span class="mathquill-embedded-latex" style="width: 40px; height: 40px;">\frac{\sqrt{3}}{3}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：<span class="mathquill-embedded-latex" style="width: 40px; height: 40px;">\frac{\sqrt{3}}{6}</span><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：<span class="mathquill-embedded-latex" style="width: 40px; height: 40px;">\frac{\sqrt{6}}{3}</span><br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023728">100023728</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023728&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;8.经过点P(0，-1)作直线l，若直线l与连接A(1，-2)，B(2，1)的线段没有公共点，则直线l的斜率k与倾斜角<span class="mathquill-embedded-latex" style="width: 16px; height: 26px;">\alpha</span>的取值范围分别是(　　) <br />&nbsp;&nbsp;（3.0分）<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A：(-<span class="mathquill-embedded-latex" style="width: 18px; height: 26px;">\infty</span>，-1)<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\cup</span>(1，+<span class="mathquill-embedded-latex" style="width: 18px; height: 26px;">\infty</span>)，(<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{\pi}{4}</span>，<span class="mathquill-embedded-latex" style="width: 33px; height: 38px;">\frac{3\pi}{4}</span>) <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B：(-<span class="mathquill-embedded-latex" style="width: 18px; height: 26px;">\infty</span>，-1)<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\cup</span>(1，+<span class="mathquill-embedded-latex" style="width: 18px; height: 26px;">\infty</span>)，(<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{\pi}{4}</span>，<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{\pi}{2}</span>)<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\cup</span>(<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{\pi}{2}</span>，<span class="mathquill-embedded-latex" style="width: 33px; height: 38px; white-space: normal; background-color: rgb(255, 255, 255);">\frac{3\pi}{4}</span>) <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C：(-1，1)，[<span class="mathquill-embedded-latex" style="width: 25px; height: 38px; white-space: normal; background-color: rgb(255, 255, 255);">\frac{\pi}{4}</span> ，<span class="mathquill-embedded-latex" style="width: 33px; height: 38px; white-space: normal; background-color: rgb(255, 255, 255);">\frac{3\pi}{4}</span>]<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D：(-1，1)，[0，<span class="mathquill-embedded-latex" style="width: 25px; height: 38px; white-space: normal; background-color: rgb(255, 255, 255);">\frac{\pi}{4}</span>]<span class="mathquill-embedded-latex" style="width: 20px; height: 26px;">\cup</span>[<span class="mathquill-embedded-latex" style="width: 33px; height: 38px; white-space: normal; background-color: rgb(255, 255, 255);">\frac{3\pi}{4}</span>，0) <br /><br /></span></p>
+    <p> <strong>二、填空题</strong></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023733">100023733</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023733&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;9.过点(2，3)且在两坐标轴上的截距的绝对值相等的直线方程为<input type='text' readonly style='border:none;width:30px;border-bottom:black solid 1px'>． <br />&nbsp;&nbsp;（3.0分）<br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023734">100023734</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023734&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;10.已知点M(a，b)在直线3x+4y=15上，则a<sup>2</sup>+b<sup>2</sup>的最小值为<input type='text' readonly style='border:none;width:30px;border-bottom:black solid 1px'>．<br />&nbsp;&nbsp;（3.0分）<br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023735">100023735</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023735&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;11.当0&lt;k&lt;<span class="mathquill-embedded-latex" style="width: 25px; height: 38px;">\frac{1}{2}</span>时，两条直线kx-y=k-1、ky-x=2k的交点在<input type='text' readonly style='border:none;width:30px;border-bottom:black solid 1px'>象限．<br />&nbsp;&nbsp;（3.0分）<br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023752">100023752</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023752&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;12.过圆：x<sup>2</sup>+y<sup>2</sup>=r<sup>2</sup>外一点P(x<sub>0</sub>，y<sub>0</sub>)引此圆的两条切线，切点为A、B，则直线AB的方程为_________________．<br />&nbsp;&nbsp;（3.0分）<br /></span></p>
+    <p> &nbsp;<span class="questionSpan"><span class="enableString" name="100023760">100023760</span>&nbsp;&nbsp;<a href="../question/viewQuestionDetail.jsp?questionID=100023760&amp;testPaperId=100229072" target="_blank"><font color="blue">查看</font></a>&nbsp;&nbsp;13.圆x<sup>2</sup>+y<sup>2</sup>+2x+4y-3=0上到直线x+y+1=0的距离为 的共有<input type='text' readonly style='border:none;width:30px;border-bottom:black solid 1px'>个． <br />&nbsp;&nbsp;（3.0分）<br /></span></p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+    <p> &nbsp;</p>
+
+</div>
+</body>
+</html>
+</body>
+</html>
