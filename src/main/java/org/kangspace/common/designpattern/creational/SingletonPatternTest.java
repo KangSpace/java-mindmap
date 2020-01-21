@@ -1,4 +1,4 @@
-package org.kangspace.common.designpattern.behavioral;
+package org.kangspace.common.designpattern.creational;
 
 import java.util.function.Consumer;
 

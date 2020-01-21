@@ -1,4 +1,4 @@
-package org.kangspace.common.designpattern.behavioral;
+package org.kangspace.common.designpattern.creational;
 
 /**
  * 原型模式:

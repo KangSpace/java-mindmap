@@ -1,4 +1,4 @@
-package org.kangspace.common.atomclass;
+package org.kangspace.common.atomicclass;
 
 import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author kangxuefeng@etiantian.com
  */
-public class AtomClassTest implements Serializable {
+public class AtomicClassTest implements Serializable {
     static AtomicInteger i = new AtomicInteger();
     public static void funs(){
         System.out.println("src i:"+i.get());
