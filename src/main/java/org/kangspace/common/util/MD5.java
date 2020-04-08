@@ -38,7 +38,7 @@ import java.io.*;
  * written by Colin Plumb in 1993, no copyright is claimed.
  * This code is in the public domain; do with it what you wish.
  *
- * Equivalent code is available from RSA Data Security, Inc.
+ * Equivalent code is available from RSA SortUtil Security, Inc.
  * This code has been tested against that, and is equivalent,
  * except that you don't need to include two pages of legalese
  * with every copy.

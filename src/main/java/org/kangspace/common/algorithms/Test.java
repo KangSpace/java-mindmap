@@ -72,6 +72,14 @@ public class Test {
         System.out.println("Format".hashCode());
         System.out.println("AccessKeyId".hashCode());
         System.out.println("a".hashCode());
+
+        byte[] b = new byte[1024];
+        Byte[] b1 = new Byte[1024];
+        byte[][] b2 = new byte[1][1];
+        byte b22[][] = new byte[2][2];
+        byte[] b3 = { (byte)1,(byte)2,3 };
+        byte[] b32 = new byte[]{ (byte)1,(byte)2,3 };
+
     }
 
     public static void fileCopy() throws IOException {
