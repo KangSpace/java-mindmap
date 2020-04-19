@@ -14,7 +14,7 @@ package org.kangspace.common.designpattern.behavioral;
  *      3. Caretaker 管理者: 负责保存好备忘录
  *          不能对备忘录的内容进行操作或检查
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class MementoTest {
     /**

@@ -26,7 +26,7 @@ import java.util.List;
  *
  *
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ObserverPatternTest {
     /**

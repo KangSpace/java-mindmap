@@ -3,7 +3,7 @@ package org.kangspace.common.functionalinterface;
 /**
  * 2019/12/9 18:44
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 @FunctionalInterface
 public interface Consumer<T> {

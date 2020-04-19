@@ -6,7 +6,7 @@ package org.kangspace.common.lock;
  * 2. notify/notifyAll() 执行后会唤醒处于等待状态线程获取线程锁、只是notify()只会随机唤醒其中之一获取线程锁，notifyAll() 会唤醒所有处于等待状态的线程抢夺线程锁。
  * 2020/1/10 17:21
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ObjectWaitTest {
     static void main(){

@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.Hashtable;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 自定义Annotation测试
  * @date 2017/6/23 17:24
  */
@@ -62,7 +62,7 @@ public class TestAnnotation {
     /**
      * 获取对象的注解及值
      * @param myClass1
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/26 9:58
      * @return
      */
@@ -84,7 +84,7 @@ public class TestAnnotation {
      * 获取注解中方法的名称和值
      * @param annotations
      * @param tabStr
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/26 12:02
      * @return
      */
@@ -108,7 +108,7 @@ public class TestAnnotation {
     /**
      * 获取对象的所有信息
      * @param object
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 17:42
      * @return
      */
@@ -122,7 +122,7 @@ public class TestAnnotation {
     /**
      * 获取对象的所有成员变量及其值
      * @param objects
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 17:36
      * @return
      */
@@ -140,7 +140,7 @@ public class TestAnnotation {
     /**
      * 获取对象的所有方法
      * @param objects
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 17:36
      * @return
      */

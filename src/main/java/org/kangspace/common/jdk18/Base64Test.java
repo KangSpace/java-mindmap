@@ -5,7 +5,7 @@ import java.util.Base64;
 /**
  * 2019/12/12 11:27
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Base64Test {
     public static void main(String[] args) {

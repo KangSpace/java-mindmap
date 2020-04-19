@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * 2019/5/28 18:28
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class DBUtil {
     private String url;
@@ -60,7 +60,7 @@ public class DBUtil {
     /**
      * 获取ett20数据库链接
      * @param isRead 0: read , 1:wirte
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 14:16
      * @return
      */
@@ -78,7 +78,7 @@ public class DBUtil {
 
     /**
      * 获取ett20数据库链接
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 14:16
      * @return
      */
@@ -88,7 +88,7 @@ public class DBUtil {
 
     /**
      * 获取ett20数据库链接
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 14:16
      * @return
      */
@@ -99,7 +99,7 @@ public class DBUtil {
     /**
      * 关闭数据库连接
      * @param oracleConn
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 14:48
      * @return
      */
@@ -119,7 +119,7 @@ public class DBUtil {
      * 该方法中关闭数据连接<br>
      * @param isRead 是否只读
      * @param wrapper
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 15:00
      * @return
      */
@@ -148,7 +148,7 @@ public class DBUtil {
      * run<br>
      * 该方法中关闭数据连接<br>
      * @param wrapper
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 15:00
      * @return
      */
@@ -157,7 +157,7 @@ public class DBUtil {
     }
     /**
      * SQL执行内部包裹类
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 14:57
      * @return
      */
@@ -180,7 +180,7 @@ public class DBUtil {
 
     /**
      * 异常类
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/4/10 15:10
      */
     public class UtilException extends RuntimeException{

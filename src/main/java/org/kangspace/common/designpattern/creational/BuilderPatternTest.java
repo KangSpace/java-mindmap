@@ -5,7 +5,7 @@ package org.kangspace.common.designpattern.creational;
  * 将一个复杂对象的构建与展示分离，使得同样的构建过程产生不同的表示
  * 2020/1/6 18:05
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class BuilderPatternTest {
     static void main(){

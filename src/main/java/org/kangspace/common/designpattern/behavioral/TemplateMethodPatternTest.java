@@ -20,7 +20,7 @@ package org.kangspace.common.designpattern.behavioral;
  *       2. ConcreteClass 是抽象类的子类，用于实现在父类中声明的抽象基本操作以完成子类特定算法的步骤，也可以覆盖在父类中已经实现的具体基本操作。
  * 样例:
  *      Servlet: Servlet(Server Applet)是Java Servlet的简称，用Java编写的服务器端程序，主要功能在于交互式地浏览和修改数据，生成动态Web内容。在每一个 Servlet 都必须要实现 Servlet 接口，GenericServlet 是个通用的、不特定于任何协议的Servlet，它实现了 Servlet 接口，而 HttpServlet 继承于 GenericServlet，实现了 Servlet 接口，为 Servlet 接口提供了处理HTTP协议的通用实现，所以我们定义的 Servlet 只需要继承 HttpServlet 即可。
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class TemplateMethodPatternTest {
     /**

@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 /**
  * 2019/12/6 18:25
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ClassGenerics<T> {
     public static void main(String[] args) {

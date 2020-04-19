@@ -15,7 +15,7 @@ package org.kangspace.common.designpattern.structural;
  * 目的: 利用现有对象或接口，并增强该对象或接口
  * 装饰者与被装饰者必须拥有同一个超类或接口)
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class DecoratorPatternTest {
 

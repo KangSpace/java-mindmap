@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 /**
  * 2019/12/10 11:24
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Car {
     public static Car create(final Supplier<Car> supplier) {

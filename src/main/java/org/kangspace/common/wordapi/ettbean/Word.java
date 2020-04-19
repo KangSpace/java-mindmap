@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 2019/5/28 16:45
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Word {
     private Long id;
@@ -44,7 +44,7 @@ public class Word {
      * @param startId 起始id
      * @param limit   数据条数
      * @return
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2019/5/28 16:54
      */
     public static List<Word> query(OracleConn orc, int startId, int limit) throws SQLException {
@@ -69,7 +69,7 @@ public class Word {
      * @param startId 起始id
      * @param limit   数据条数
      * @return
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2019/5/28 16:54
      */
     public static List<Word> queryNoHandle(OracleConn orc, int startId, int limit) throws SQLException {

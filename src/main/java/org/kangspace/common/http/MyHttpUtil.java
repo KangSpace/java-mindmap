@@ -4,7 +4,7 @@ import java.net.HttpURLConnection;
 import java.util.*;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc http帮助类
  * @date 2017/2/13 17:41
  */
@@ -14,7 +14,7 @@ public class MyHttpUtil {
      * 获取一个http或https client
      * 自动识别http或https
      * @param
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 17:42
      * @return
      */
@@ -27,7 +27,7 @@ public class MyHttpUtil {
     /**
      * 添加requestHeader
      * @param requestHeader
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/9 13:47
      * @return
      */

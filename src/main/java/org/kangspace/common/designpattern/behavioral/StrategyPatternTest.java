@@ -24,7 +24,7 @@ package org.kangspace.common.designpattern.behavioral;
  *       2. 记录日志: 将日志按不同的渠道记录，记录到文件,记录到db
  *
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class StrategyPatternTest {
     /**

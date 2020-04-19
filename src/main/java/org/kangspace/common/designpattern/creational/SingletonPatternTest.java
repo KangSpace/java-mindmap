@@ -11,7 +11,7 @@ import java.util.function.Consumer;
  * 3. 静态内部类:(延迟加载模式)
  * 2020/1/17 10:21
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class SingletonPatternTest {
     /**

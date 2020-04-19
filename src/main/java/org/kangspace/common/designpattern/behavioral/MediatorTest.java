@@ -14,7 +14,7 @@ package org.kangspace.common.designpattern.behavioral;
  *      3. Colleagueclass 同事类: 每个同事类都知道它的中介对象。
  *              每一个同事对象在需要与其他对象通信时，与它的中介者通信
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class MediatorTest {
     /**

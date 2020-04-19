@@ -3,7 +3,7 @@ package org.kangspace.common.util;
 /**
  * 2019/7/30 15:28
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class PointUtil {
 

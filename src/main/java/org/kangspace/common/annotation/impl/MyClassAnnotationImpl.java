@@ -8,7 +8,7 @@ import java.lang.annotation.Annotation;
 /**
  * 2019/11/28 16:43
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class MyClassAnnotationImpl implements MyClassAnnotation {
     @Override

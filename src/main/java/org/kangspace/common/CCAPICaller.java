@@ -3,7 +3,7 @@ package org.kangspace.common;
 /**
  * 2019/7/22 17:44
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CCAPICaller {
 

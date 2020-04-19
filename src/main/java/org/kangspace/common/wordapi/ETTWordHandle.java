@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 /**
  * 2019/5/28 16:19
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ETTWordHandle{
     private String url;
@@ -93,7 +93,7 @@ public class ETTWordHandle{
      * 从数据库中获取单词列表
      * @param rowNum 起始行号
      * @param limit 每次查询条数
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2019/5/28 16:22
      * @return
      */
@@ -110,7 +110,7 @@ public class ETTWordHandle{
      * 从数据库中获取未同步的单词列表
      * @param rowNum 起始行号
      * @param limit 每次查询条数
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2019/5/28 16:22
      * @return
      */

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 扫描项目中的所有类
  * @date 2017/6/27 17:46
  */
@@ -18,7 +18,7 @@ public class TestScanAllClass {
 
     /**
      * 扫描项目下的所有类
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/27 17:48
      * @return
      */
@@ -41,7 +41,7 @@ public class TestScanAllClass {
     /**
      * 扫描包下的类
      * @param packageName
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 11:07
      * @return
      */

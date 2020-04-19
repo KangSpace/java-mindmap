@@ -5,7 +5,7 @@ import java.util.Optional;
 /**
  * 2019/12/11 18:14
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class OptionalTest {
     public static void main(String[] args) {

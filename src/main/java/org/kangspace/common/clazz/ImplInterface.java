@@ -3,7 +3,7 @@ package org.kangspace.common.clazz;
 /**
  * 2019/11/29 9:41
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ImplInterface implements Interface {
     @Override

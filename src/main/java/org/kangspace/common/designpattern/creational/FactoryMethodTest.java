@@ -8,7 +8,7 @@ package org.kangspace.common.designpattern.creational;
  * 3. 静态工厂方法
  * 2020/1/6 18:05
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class FactoryMethodTest {
 

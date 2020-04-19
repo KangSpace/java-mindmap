@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 2018/10/27 10:02
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Test {
     public static String findTargetIndex() {

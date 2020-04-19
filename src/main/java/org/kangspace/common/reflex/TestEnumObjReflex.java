@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 /**
  * 2019/12/19 10:45
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class TestEnumObjReflex {
     public static void main(String[] args) {

@@ -148,7 +148,7 @@ public class ImageZipUtil extends Object{
 	* 压缩图片
     * @param inputFile
 	* @param outputFile
-    * @Author kangxuefeng@etiantian.com
+    * @Author kango2gler@gmail.com
     * @Date 2017/3/24 13:15
     * @return
     */
@@ -159,7 +159,7 @@ public class ImageZipUtil extends Object{
 	/**
 	 * 生成文件夹,若文件夹不存在,则生成
 	 * @param file 文件或文件夹
-	 * @Author kangxuefeng@etiantian.com
+	 * @Author kango2gler@gmail.com
 	 * @Date 2017/3/24 13:10
 	 * @return
 	 */

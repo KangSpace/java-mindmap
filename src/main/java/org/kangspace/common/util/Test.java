@@ -1,7 +1,7 @@
 package org.kangspace.common.util;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc
  * @date 2017/6/30 16:30
  */

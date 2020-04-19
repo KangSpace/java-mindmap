@@ -3,7 +3,7 @@ package org.kangspace.common.clazz;
 /**
  * 2019/11/29 9:39
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 @FunctionalInterface
 public interface Interface {

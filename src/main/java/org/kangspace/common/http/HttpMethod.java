@@ -1,7 +1,7 @@
 package org.kangspace.common.http;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc HttpMethod
  * @date 2017/2/13 18:09
  */

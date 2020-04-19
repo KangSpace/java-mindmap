@@ -11,7 +11,7 @@ import java.util.Arrays;
  * 优化: 折半插入: 扫描已排序序列时，使用折半法查找插入位置。
  * 稳定排序
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class InsertingSort extends Sort{
 
@@ -19,7 +19,7 @@ public class InsertingSort extends Sort{
      * 插入排序,升序
      * 若需要降序, 将 &gt; key 改为 &lt; key
      * @param arr
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2018/6/8 17:09
      * @return
      */
@@ -57,8 +57,10 @@ public class InsertingSort extends Sort{
             }
             for (int j = i; j > high+1; j--) {
                 arr[j] = arr[j - 1];
+                SortUtil.printStep(arr,j,j-1);
             }
             arr[high + 1] = nextVal;
+            System.out.println();
         }
     }
 

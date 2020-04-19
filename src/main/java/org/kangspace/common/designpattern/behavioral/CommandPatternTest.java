@@ -15,7 +15,7 @@ package org.kangspace.common.designpattern.behavioral;
  *      请求者: 封装对命令接口的调用，提供给客户端
  *      客户端: 负责创建命令，并指定其接收者，并使用请求者执行操作
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CommandPatternTest {
 

@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 2019/12/18 11:20
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class AtomicClassTest implements Serializable {
     static AtomicInteger i = new AtomicInteger();

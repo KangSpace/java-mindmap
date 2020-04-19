@@ -3,7 +3,7 @@ package org.kangspace.common.equals;
 /**
  * 2020/1/6 18:05
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class EqualsTest {
     private int i;

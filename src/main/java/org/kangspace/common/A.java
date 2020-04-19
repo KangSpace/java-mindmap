@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc
  * @date 2017/5/5 18:01
  */
@@ -29,7 +29,7 @@ public final class A {
 
     /**
      * Test Obj
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/5/6 11:17
      * @return
      */

@@ -20,7 +20,7 @@ import java.util.Arrays;
  *    对于一个存在n个方法的接口，只会用到某几个方法，通过构造抽象类实现(实现方法体为空)该接口的所有方法，
  *    然后继承该抽象类实现所需的方法。
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class AdapterPatternTest {
     /**

@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 2019/12/9 18:47
  * 匿名类/局部类调用所在类的成员变量和局部变量时,需要将传入的变量转换为final,防止成员变量和局部变量在匿名类中被修改。
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class LambdaTest {
     public LambdaTest() {

@@ -9,7 +9,7 @@ import java.util.Map;
  * WordApi接口
  * 2019/5/28 16:01
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class WordAPIInterface {
     public static final String WORDS_API_URL = "https://wordsapiv1.p.mashape.com/words/";

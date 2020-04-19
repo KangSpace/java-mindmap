@@ -7,7 +7,7 @@ import java.lang.reflect.*;
 /**
  * 2019/11/29 12:05
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Test {
     public static void main(String[] args) {

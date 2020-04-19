@@ -15,7 +15,7 @@ import java.util.List;
  *         void handle(String request, IResponsibility responsibility);
  *      2. 写法2: 责任对象中设置下一个处理者责任对象
  *         IResponsibility next;
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CORPatternTest {
     //----------------------责任链模式写法1: 接口方法中传入责任链对象,有责任链对象调度各个责任对象处理------------------

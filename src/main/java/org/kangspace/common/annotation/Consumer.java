@@ -6,7 +6,7 @@ import static java.lang.System.out;
 /**
  * 2019/11/29 9:50
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 @FunctionalInterface
 public interface Consumer<T> {

@@ -12,7 +12,7 @@ import java.sql.SQLException;
 /**
  * 2019/5/28 16:46
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class TempWordsAPIData {
     private Long wordId;

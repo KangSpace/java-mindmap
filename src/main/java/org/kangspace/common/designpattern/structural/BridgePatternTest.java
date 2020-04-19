@@ -8,7 +8,7 @@ package org.kangspace.common.designpattern.structural;
  * 　　　　1、定义一个桥接口，使其与一方绑定，这一方的扩展全部使用实现桥接口的方式。
  * 　　　　2、定义一个抽象类，来表示另一方，在这个抽象类内部要引入桥接口，而这一方的扩展全部使用继承该抽象类
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class BridgePatternTest {
     interface Qiao{

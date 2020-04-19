@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * 2019/12/19 10:36
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public enum  EnumObj implements Serializable {
     A(1);

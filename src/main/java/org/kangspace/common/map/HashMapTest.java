@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * 2019/12/24 10:21
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class HashMapTest {
     static void main(){

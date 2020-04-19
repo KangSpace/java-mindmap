@@ -7,7 +7,7 @@ import java.util.concurrent.CyclicBarrier;
  * 循环屏障
  * 2020/1/6 18:06
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CyclicBarrierTest {
 

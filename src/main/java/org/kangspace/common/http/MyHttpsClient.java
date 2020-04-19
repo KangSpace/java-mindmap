@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc https帮助类
  * @date 2017/2/13 17:35
  */
@@ -137,7 +137,7 @@ public class MyHttpsClient implements MyAbstractHttp{
     /**
      * 是否是json字符串
      * @param str
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/7/12 10:45
      * @return
      */

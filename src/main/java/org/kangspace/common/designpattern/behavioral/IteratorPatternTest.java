@@ -13,7 +13,7 @@ package org.kangspace.common.designpattern.behavioral;
  *                           对该聚合遍历时跟踪当前位置
  *      3. Aggregate 聚合定义创建相应聚合对象的接口
  *      4. ConcreteAggregate 具体聚合实现创建相应迭代器的接口，返回ConcreteIterator
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class IteratorPatternTest {
     /**

@@ -20,7 +20,7 @@ import java.util.List;
  *     保存除解释器外的其他全局对象
  *  5. Client
  *     构建表示该文法定义中的一个特定语句中的抽象语法树，该语法树有终结符表达式和非终结符表达式构建，调用解析操作。
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class InterpreterPatternTest {
     interface Expression{

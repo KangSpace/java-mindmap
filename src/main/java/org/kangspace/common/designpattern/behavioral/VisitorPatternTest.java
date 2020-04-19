@@ -36,7 +36,7 @@ import java.util.List;
  * <p>
  * 样例(应用场景):
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class VisitorPatternTest {
     /**

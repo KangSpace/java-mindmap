@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * 2019/5/28 10:28
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Temp {
     private Integer eqId;

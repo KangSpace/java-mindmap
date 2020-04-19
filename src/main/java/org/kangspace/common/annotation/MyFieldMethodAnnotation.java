@@ -4,7 +4,7 @@ import java.lang.annotation.*;
 
 /**
  * 自定义注解,成员变量方法注解
- * @Author kangxuefeng@etiantian.com
+ * @Author kango2gler@gmail.com
  * @Date 2017/6/23 16:53
  */
 @Retention(RetentionPolicy.RUNTIME)

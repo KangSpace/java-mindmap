@@ -9,7 +9,7 @@ import java.util.List;
  * 样例: 目录层级
  * 2020/1/6 18:05
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CompositePatternTest {
     /**

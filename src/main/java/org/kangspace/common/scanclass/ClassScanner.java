@@ -12,7 +12,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc class(文件)扫描类, 含jar中的类(文件)
  * @date 2017/6/28 10:03
  */
@@ -44,7 +44,7 @@ public class ClassScanner {
 
     /**
      * 扫描包下的所有文件
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 10:19
      * @return
      */
@@ -72,7 +72,7 @@ public class ClassScanner {
     /**
      * 查找路径下的所有文件,不含匿名内部类(${n}.class)
      * @param filePath
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 11:12
      * @return
      */
@@ -95,7 +95,7 @@ public class ClassScanner {
     /**
      * 获取jar中packageName下的所有类,不含匿名内部类(${n}.class)
      * @param
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/29 9:30
      * @return
      */
@@ -117,7 +117,7 @@ public class ClassScanner {
     /**
      * 通过classPath获取类名
      * @param classPath
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 17:50
      * @return
      */
@@ -132,7 +132,7 @@ public class ClassScanner {
     /**
      * 扫描存在Annotaion的Class
      * @param annotationClass
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 18:07
      * @return
      */
@@ -158,7 +158,7 @@ public class ClassScanner {
     /**
      * 检测文件是否为jre下的jar包文件
      * @param classInfo
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/29 9:48
      * @return
      */
@@ -175,7 +175,7 @@ public class ClassScanner {
      * 检查类是否有相关注解
      * @param clazz 目标类
      * @param annotationClass 目标注解
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/28 18:17
      * @return
      */

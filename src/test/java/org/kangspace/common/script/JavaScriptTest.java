@@ -11,7 +11,7 @@ import javax.script.ScriptException;
 import java.io.*;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc javascript 相关测试
  * @date 2017/5/5 14:53
  */
@@ -21,7 +21,7 @@ public class JavaScriptTest {
     private static String JAVASCRIPT_ = "javascript";
     /**
      * javascript测试
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/5/5 14:53
      * @return
      */

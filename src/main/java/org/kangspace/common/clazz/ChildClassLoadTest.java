@@ -4,7 +4,7 @@ package org.kangspace.common.clazz;
  * 子类加载测试
  * 2019/11/22 13:19
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ChildClassLoadTest {
     public static void main(String[] args) {

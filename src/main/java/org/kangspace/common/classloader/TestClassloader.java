@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc classloader测试
  * @date 2017/6/21 18:17
  */
@@ -19,7 +19,7 @@ public class TestClassloader {
     static ConsoleLogger logger = new ConsoleLogger();
     /**
      * @param
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 11:48
      * @return
      */
@@ -48,7 +48,7 @@ public class TestClassloader {
     }
     /**
      * 加载器测试
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 10:40
      * @return
      */
@@ -77,7 +77,7 @@ public class TestClassloader {
     }
     /**
      * jar包加载类测试
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 10:39
      */
     public void test2() throws ClassNotFoundException, NoSuchMethodException, MalformedURLException, InvocationTargetException, IllegalAccessException {
@@ -98,7 +98,7 @@ public class TestClassloader {
      * 热更新测试
      * 将文件夹下的class文件替换可重新获取到新的内容
      * 需要为解压的class文件,不能为jar,jar包在加载后无法替换
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 10:39
      * @return
      */
@@ -138,7 +138,7 @@ public class TestClassloader {
     }
     /**
      * jar包解压测试
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 14:37
      * @return
      */

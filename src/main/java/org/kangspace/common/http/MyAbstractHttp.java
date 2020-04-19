@@ -3,7 +3,7 @@ package org.kangspace.common.http;
 import java.util.Map;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc http接口类
  * @date 2017/2/13 17:45
  */
@@ -26,7 +26,7 @@ public interface MyAbstractHttp{
      * @param url 请求链接
      * @param jsonParam  提交的数据,POST时有效 JSON字符串
      * @param headerMap  请求头参数设置
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:16
      * @return
      */
@@ -35,7 +35,7 @@ public interface MyAbstractHttp{
      * POST 请求
      * @param url
      * @param jsonParam  提交的数据,POST时有效 JSON字符串
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:16
      * @return
      */
@@ -43,7 +43,7 @@ public interface MyAbstractHttp{
     /**
      * POST 请求 ,URL 来自于 MyAbstractHttp.getClient(URL)
      * @param jsonParam  提交的数据,POST时有效 JSON字符串
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:16
      * @return
      */
@@ -55,7 +55,7 @@ public interface MyAbstractHttp{
      * GET 请求
      * @param url
      * @param headerMap  请求头参数设置
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:12
      * @return
      */
@@ -63,14 +63,14 @@ public interface MyAbstractHttp{
     /**
      * GET 请求
      * @param url
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:12
      * @return
      */
     String get(String url);
     /**
      * GET 请求 ,URL 来自于 MyAbstractHttp.getClient(URL)
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 18:16
      * @return
      */

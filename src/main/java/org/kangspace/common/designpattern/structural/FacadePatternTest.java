@@ -9,7 +9,7 @@ package org.kangspace.common.designpattern.structural;
  *      3. 构建一个有层次的子系统时，引入门面可以为各子系统提供一个统一的入口，使得各系统提供仅通过门面来通信。
  *  样例:
  *      Controller 层访问Service层方法，可将各个Service注册到一个门面上，在Controller可以直接通过门面入口访问各个Service
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class FacadePatternTest {
 

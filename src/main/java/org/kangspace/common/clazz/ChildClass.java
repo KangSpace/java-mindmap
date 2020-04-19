@@ -13,7 +13,7 @@ package org.kangspace.common.clazz;
  *
  * 2019/11/22 13:19
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ChildClass extends ParentClass{
     final static String cs = "ChildClass final String cs";

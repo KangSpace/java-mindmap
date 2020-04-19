@@ -3,7 +3,7 @@ package org.kangspace.common.clone;
 /**
  * 2020/1/7 11:53
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CloneTest implements Cloneable{
     Integer i = 0;

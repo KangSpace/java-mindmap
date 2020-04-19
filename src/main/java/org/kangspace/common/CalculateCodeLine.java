@@ -7,7 +7,7 @@ import java.io.*;
  * 统计代码行数demo
  * 2018/7/28 16:54
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CalculateCodeLine {
     public static int normalLines = 0;  //有效程序行数

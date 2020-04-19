@@ -6,7 +6,7 @@ package org.kangspace.common.algorithms.datastructure.stack;
  * 2. 链表实现栈(单向链表,链尾为栈顶)
  * 2020/3/25 17:38
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class StackTest {
     /**

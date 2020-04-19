@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * 样例:
  *      JVM 字符串常量池
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class FlyWeightPatternTest {
     interface IFlyweight{

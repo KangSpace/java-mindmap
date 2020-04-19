@@ -13,7 +13,7 @@ import java.lang.reflect.Proxy;
  *     3.保护代理（ProtectionProxy）控制对原始对象的访问。
  *     4.智能指引（SmartReference）取代了简单的指针，它在访问对象时执行一些附加操作。
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ProxyPatternTest {
     /**

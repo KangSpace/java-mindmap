@@ -3,7 +3,7 @@ package org.kangspace.common.wordapi;
 /**
  * 2019/5/29 10:52
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Main {
     final static String URL = "jdbc:oracle:thin:@192.168.10.27:1521:ettdb";

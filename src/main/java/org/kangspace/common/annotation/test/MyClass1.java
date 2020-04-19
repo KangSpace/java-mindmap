@@ -5,7 +5,7 @@ import org.kangspace.common.annotation.MyClassAnnotation;
 import org.kangspace.common.annotation.MyFieldMethodAnnotation;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 我的类1
  * @date 2017/6/23 17:17
  */

@@ -14,7 +14,7 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 网络class加载器
  *       可指定加载类位置,指定加载类
  *       指定加载jar位置(使用sun.misc.Launcher$AppClassLoader加载)
@@ -48,7 +48,7 @@ public class NetworkClassLoader extends ClassLoader{
     }
     /**
      * 获取路径,协议+url
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 10:18
      */
     public String getPath(){
@@ -61,7 +61,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 实现自定义ClassLoader必须重写该方法,ClassLoader默认实现抛出一个 ClassNotFoundException。
      * </pre>
      * @param name 类名,如:com._20dot.common.A
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 11:32
      * @return
      */
@@ -79,7 +79,7 @@ public class NetworkClassLoader extends ClassLoader{
     /**
      * 加载类文件
      * @param name 文件名称,含路径
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 11:38
      * @return
      */
@@ -112,7 +112,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 实现查找资源必须实现该方法,ClassLoader默认返回null
      * </pre>
      * @param name
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 11:40
      * @return
      */
@@ -128,7 +128,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 实现查找资源必须实现该方法,ClassLoader默认返回空枚举
      * </pre>
      * @param
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 11:40
      * @return
      */
@@ -142,7 +142,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 加载jar包,本地文件
      * 使用sun.misc.Launcher$AppClassLoader加载
      * @param isContainsSubDir 是否包含子目录中的jar
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 16:26
      * @return
      */
@@ -165,7 +165,7 @@ public class NetworkClassLoader extends ClassLoader{
      * @param isContainsSubDir 是否包含子目录中的jar
      * @param file 文件或路径
      * @param files 将找到的文件保存到该集合中
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 9:59
      */
     static void findJars(Boolean isContainsSubDir, File file, List<File> files) {
@@ -191,7 +191,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 解压jar包
      * @param jarFile_
      * @param unJarPath
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/23 11:30
      * @return
      */
@@ -246,7 +246,7 @@ public class NetworkClassLoader extends ClassLoader{
      * 查找file下的所有jar
      * @param file 文件或路径
      * @param files 将找到的文件保存到该集合中
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/6/22 16:45
      */
     private static void findJars(File file, List<File> files) {

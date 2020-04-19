@@ -6,7 +6,7 @@ import java.io.File;
  * 重命名文件夹下所有文件名
  * 2018/6/12 13:36
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class RenameFloderFileName {
     public static void rename(String path){

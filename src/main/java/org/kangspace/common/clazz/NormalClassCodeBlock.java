@@ -3,7 +3,7 @@ package org.kangspace.common.clazz;
 /**
  * 2019/11/21 11:49
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class NormalClassCodeBlock {
     int i = 0;

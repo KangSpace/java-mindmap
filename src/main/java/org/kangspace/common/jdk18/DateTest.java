@@ -5,7 +5,7 @@ import java.time.*;
 /**
  * 2019/12/12 11:19
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class DateTest {
     public static void main(String[] args) {

@@ -3,7 +3,7 @@ package org.kangspace.common.thread;
 /**
  * 2019/12/17 17:50
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class ThreadTest {
     public static void main(String[] args) {

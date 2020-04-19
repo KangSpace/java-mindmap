@@ -1,7 +1,7 @@
 package org.kangspace.common.scanclass;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 协议
  * @date 2017/6/28 13:41
  */

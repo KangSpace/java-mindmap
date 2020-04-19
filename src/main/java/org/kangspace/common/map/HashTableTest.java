@@ -5,7 +5,7 @@ import java.util.Hashtable;
 /**
  * 2019/12/24 17:51
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class HashTableTest {
     static void main(){

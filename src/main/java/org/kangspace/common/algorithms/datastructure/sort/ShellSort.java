@@ -30,10 +30,12 @@ public class ShellSort extends Sort {
                 int j = i - gap;
                 while (j >= 0 && arr[j] > tmp) {
                     arr[j + gap] = arr[j];
+                    SortUtil.printStep(arr,j+gap,j);
                     j -= gap;
                 }
                 arr[j + gap] = tmp;
             }
+            System.out.println();
             //逐步减小增量,直到1
             gap = gap / 2;
         }

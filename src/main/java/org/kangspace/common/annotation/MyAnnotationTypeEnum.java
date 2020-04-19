@@ -1,7 +1,7 @@
 package org.kangspace.common.annotation;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc 注解相关枚举
  * @date 2017/6/23 16:55
  */

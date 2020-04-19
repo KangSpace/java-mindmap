@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc
  * @date 2017/4/28 10:22
  */
@@ -45,7 +45,7 @@ public class Test {
     /**
      * 正则测试,域名http替换为https
      *
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2017/9/11 14:40
      */
     @org.junit.Test

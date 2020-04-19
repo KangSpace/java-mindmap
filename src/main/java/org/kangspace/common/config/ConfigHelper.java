@@ -3,7 +3,7 @@ package org.kangspace.common.config;
 import java.util.ResourceBundle;
 
 /**
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @desc mongo.properties配置文件帮助类
  * @date 2017/2/10 17:32
  */
@@ -25,7 +25,7 @@ public class ConfigHelper {
 
     /**
      * 初始化
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/13 15:27
      * @return
      */
@@ -39,7 +39,7 @@ public class ConfigHelper {
     /**
      * 通过key获取微信配置文件信息
      * @param key
-     * @Author kangxuefeng@etiantian.com
+     * @Author kango2gler@gmail.com
      * @Date 2017/2/10 17:34
      * @return value
      */

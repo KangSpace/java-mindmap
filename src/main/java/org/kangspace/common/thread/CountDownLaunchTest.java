@@ -5,7 +5,7 @@ import java.util.concurrent.CountDownLatch;
 /**
  * 2020/1/6 18:06
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class CountDownLaunchTest {
     static void main(){

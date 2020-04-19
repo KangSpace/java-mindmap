@@ -3,7 +3,7 @@ package org.kangspace.common.jdk18;
 /**
  * 2020/1/7 18:03
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class RuntimeConstantPoolOOm {
     public static void main(String[] args) {

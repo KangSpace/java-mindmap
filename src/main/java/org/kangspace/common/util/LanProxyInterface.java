@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 /**
  * 2018/10/15 11:15
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class LanProxyInterface {
     private static  Logger logger = Logger.getLogger(LanProxyInterface.class.getName());
@@ -21,7 +21,7 @@ public class LanProxyInterface {
      * 登录
      * @param username
      * @param password
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2018/10/15 11:16
      * @return  token,将token设置到cookie中,Cookie: token=c736c6c171344ae1802b0da42d3f1983
 
@@ -39,7 +39,7 @@ public class LanProxyInterface {
     /**
      * 获取配置详情
      * @param token
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2018/10/15 11:17
      * @return 配置详情内容
      */
@@ -51,7 +51,7 @@ public class LanProxyInterface {
      * http请求
      * @param method
      * @param param
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2018/10/15 11:20
      * @return
      */
@@ -63,7 +63,7 @@ public class LanProxyInterface {
      * http请求
      * @param method
      * @param param
-     * @author kangxuefeng@etiantian.com
+     * @author kango2gler@gmail.com
      * @date 2018/10/15 11:20
      * @return
      */

@@ -6,7 +6,7 @@ import java.net.URLEncoder;
 /**
  * 2019/5/28 17:58
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class Test {
     final static String URL = "jdbc:oracle:thin:@192.168.10.27:1521:ettdb";

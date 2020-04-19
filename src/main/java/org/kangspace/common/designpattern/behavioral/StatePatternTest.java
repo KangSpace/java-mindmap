@@ -18,7 +18,7 @@ package org.kangspace.common.designpattern.behavioral;
  *              每一个子类实现一个与Context的一个状态相关的行为
  * 实例:
  *      订单状态变化使用状态模式
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class StatePatternTest {
     /**

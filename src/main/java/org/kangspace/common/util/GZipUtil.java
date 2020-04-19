@@ -11,7 +11,7 @@ import java.util.zip.GZIPOutputStream;
 /**
  * 2019/2/26 13:26
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class GZipUtil {
 
