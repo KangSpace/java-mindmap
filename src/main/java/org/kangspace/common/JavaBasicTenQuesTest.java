@@ -34,6 +34,8 @@ public class JavaBasicTenQuesTest {
         System.out.println(0.0 / 0.0);
         System.out.println(Double.isNaN(0.0 / 0.0));
         Float.isNaN(0.0F / 0.0F);
+        System.out.println(1.0/0);
+        System.out.println(0/0);
         System.out.println();
     }
     static void q5() {
