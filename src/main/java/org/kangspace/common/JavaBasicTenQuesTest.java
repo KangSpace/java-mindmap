@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 /**
  *
+ *
  */
 public class JavaBasicTenQuesTest {
     static void q1() {
@@ -74,31 +75,48 @@ public class JavaBasicTenQuesTest {
         g('1');
         g((byte)(1));
         g(1);
-        g(1F);
+        g(1.1f);
+        g(new Float(.1f));
         g(1D);
         g(Integer.valueOf(1));
+        g(1);
         System.out.println();
+        /*
+        基本数据类型转换优先级: byte,char,short,int->int
+        int之后依次为: long,float,double
+        找不到以上基础类型数据时,再找该基本数据类型对应的包装类型
+        - 不同的基础类型转换只能转换为基础数据类型，不能转换为包装类型
+        - 包装类型在没有对应包装类型的方法时，可以转换为更高级的基础数据类型，如:Integer 转为 long ,Float 转为 double
+        - 包装类型不能自动转换
+
+         */
 
     }
 
     static void g(double d) {
         System.out.println("double:"+d);
     }
-    static void g1(int i) {
-        System.out.println("int:"+i);
-    }
-    static void g2(float f) {
-        System.out.println("float:"+f);
-    }
-    static void g(Integer s) {
-        System.out.println("Integer:"+s);
-    }
-    static void g(Byte b) {
-        System.out.println("Byte:"+b);
-    }
+//    static void g1(int i) {
+//        System.out.println("int:"+i);
+//    }
+//    static void g2(float f) {
+//        System.out.println("float:"+f);
+//    }
+//    static void g(Integer s) {
+//        System.out.println("Integer:"+s);
+//    }
+//    static void g(Byte b) {
+//        System.out.println("Byte:"+b);
+//    }
     static void g(Double s) {
         System.out.println("Integer:"+s);
     }
+    static void g(Long l) {
+        System.out.println("Long:"+l);
+    }
+//    static void g(long l) {
+//        System.out.println("Long:"+l);
+//    }
     static void g(Character c) {
         System.out.println("Integer:"+c);
     }
