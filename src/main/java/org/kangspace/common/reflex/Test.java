@@ -49,6 +49,8 @@ public class Test {
             //该类是在哪个方法中定义的，比如方法中定义的匿名内部类
             Method eem = claz.getEnclosingMethod();
             Method em = claz.getDeclaredMethod("m1",String[].class);
+            em.setAccessible(true);
+
             System.out.println("em.getGenericParameterTypes():");
             Type[] mts = em.getGenericParameterTypes();
             for (Type c : mts) {

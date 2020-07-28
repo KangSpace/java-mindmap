@@ -15,11 +15,11 @@ public class CyclicBarrierTest {
         int i = 2;
         CyclicBarrier cyclicBarrier = new CyclicBarrier(i, () -> {
             System.out.println("CyclicBarrier 所有线程结束，执行回调线程"+System.currentTimeMillis());
-            try {
+           /* try {
                 Thread.sleep(2000L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
         });
         new Thread(()->{
             try {
@@ -36,13 +36,48 @@ public class CyclicBarrierTest {
             }
             System.out.println(Thread.currentThread().getName()+ "-CyclicBarrier 结束"+System.currentTimeMillis());
         }).start();
+
+        new Thread(()->{
+            try {
+                Thread.sleep(5000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+ "-CyclicBarrier 结束后继续执行1："+System.currentTimeMillis());
+        }).start();
+
         try {
             cyclicBarrier.await();
+            System.out.println(Thread.currentThread().getName()+ "-CyclicBarrier await Over："+System.currentTimeMillis());
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (BrokenBarrierException e) {
             e.printStackTrace();
         }
+
+        new Thread(()->{
+            try {
+                Thread.sleep(5000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            try {
+                cyclicBarrier.await();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName()+ "-CyclicBarrier 结束后继续执行2："+System.currentTimeMillis());
+        }).start();
+
         System.out.println("全部到达屏障...."+System.currentTimeMillis());
     }
     public static void main(String[] args) {

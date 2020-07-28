@@ -32,7 +32,7 @@ public class SemaphoreTest {
         }
     }
 
-    static void main(){
+    static void test1(){
         SemaphoreTest semaphoreDemo = new SemaphoreTest();
         //注意我创建的线程池类型，
         ExecutorService se = Executors.newCachedThreadPool();
@@ -43,6 +43,56 @@ public class SemaphoreTest {
         se.submit(semaphoreDemo.new TaskDemo("e"));
         se.submit(semaphoreDemo.new TaskDemo("f"));
         se.shutdown();
+    }
+    static void threadRunAsOrderTest(){
+        java.util.concurrent.Semaphore smp = new Semaphore(1,true);
+        new Thread(()->{
+            try {
+                smp.acquire();
+                System.out.println(Thread.currentThread().getName()+" RUN");
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                smp.release();
+            }
+        },"T1").start();
+        //run 方法内容同T1
+        new Thread(()->{
+            try {
+                smp.acquire();
+                System.out.println(Thread.currentThread().getName()+" RUN");
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                smp.release();
+            }
+        },"T2").start();
+        //run 方法内容同T1
+        Thread t3 = new Thread(()->{
+            try {
+                smp.acquire();
+                System.out.println(Thread.currentThread().getName()+" RUN");
+                Thread.sleep(1000L);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                smp.release();
+            }
+        },"T3");
+        t3.start();
+
+        try {
+            t3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("所有线程执行完成！");
+    }
+
+    static void main(){
+        threadRunAsOrderTest();
     }
     public static void main(String[] args) {
         main();

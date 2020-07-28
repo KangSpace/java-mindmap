@@ -9,7 +9,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class CountDownLaunchTest {
     static void main(){
-        int i = 1;
+        int i = 2;
         CountDownLatch countDownLaunch = new CountDownLatch(i);
         new Thread(()->{
             try {
@@ -19,7 +19,17 @@ public class CountDownLaunchTest {
             }
             countDownLaunch.countDown();
             System.out.println(Thread.currentThread().getName()+"-"+"CountDownLaunch");
-        }).start();
+        },"T1").start();
+
+        new Thread(()->{
+            try {
+                Thread.sleep(1000L*2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            countDownLaunch.countDown();
+            System.out.println(Thread.currentThread().getName()+"-"+"CountDownLaunch");
+        },"T2").start();
 
         try {
             countDownLaunch.await();
