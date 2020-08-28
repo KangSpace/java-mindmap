@@ -10,4 +10,4 @@
 see [Java_mindmap.xmind](mindmap/Java_mindmap.xmind)  
 
 * .pdf (PDF Format)  
-see [Java_mindmap.pdf](mindmap/Java_mindmap.pdf)
+see [Java_mindmap.pdf](mindmap/Java-mindmap.pdf)
