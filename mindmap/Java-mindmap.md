@@ -64,7 +64,7 @@ Pop: 弹出栈顶元素
 boolean isFinished = false;
 for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] &gt; arr[j + 1]) {
+                if (arr[j] > arr[j + 1]) {
                     temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
@@ -87,7 +87,7 @@ for (int i = 0; i < arr.length - 1; i++) {
         for (int i = 0; i < arr.length-1; i++) {
             int minIdx = i;
             for (int j = i+1; j < arr.length; j++) {
-                if (arr[minIdx] &gt; arr[j]) {
+                if (arr[minIdx] > arr[j]) {
                     minIdx = j;
                 }
             }
@@ -127,13 +127,13 @@ for (int i = 0; i < arr.length - 1; i++) {
             int high = i - 1;
             while (low <= high) {
                 int mid = (high + low) / 2;
-                if (arr[mid] &gt; nextVal) {
+                if (arr[mid] > nextVal) {
                     high = mid - 1;
                 }else{
                     low = mid +1 ;
                 }
             }
-            for (int j = i; j &gt; high+1; j--) {
+            for (int j = i; j > high+1; j--) {
                 arr[j] = arr[j - 1];
             }
             arr[high + 1] = nextVal;
@@ -150,12 +150,12 @@ for (int i = 0; i < arr.length - 1; i++) {
 	- public void sort(int[] arr) {
         //希尔增量,最坏时间复杂度O(n^2)
         int gap = arr.length / 2;
-        while (gap &gt; 0) {
+        while (gap > 0) {
             //内部为插入排序
             for (int i = gap; i < arr.length; i++) {
                 int tmp = arr[i];
                 int j = i - gap;
-                while (j >= 0 && arr[j] &gt; tmp) {
+                while (j >= 0 && arr[j] > tmp) {
                     arr[j + gap] = arr[j];
                     j -= gap;
                 }
@@ -373,11 +373,11 @@ for (int i = 0; i < arr.length - 1; i++) {
 			- 2. 若值大于当前节点，则将新节点放到右子树
 			- 3. 若值小余当前节点，则将新节点放到左子树
 			- 4. 当当前节点值为null时，则将新节点插入该位置
-			- private Node<T&gt; insertToNode(Node<T&gt; curr, T value) {
+			- private Node<T> insertToNode(Node<T> curr, T value) {
         if (curr == null) {
             return new Node<>(value);
         }
-        if (curr.compare(value) &gt; 0) {
+        if (curr.compare(value) > 0) {
             curr.left = insertToNode(curr.left, value);
         } else if (curr.compare(value) < 0) {
             curr.right = insertToNode(curr.right, value);
@@ -389,17 +389,17 @@ for (int i = 0; i < arr.length - 1; i++) {
 			- 1. 值等于根节点值时，返回根
 			- 2. 值大于当前节点值时，搜索节点右子树
 			- 3. 值小余当前节点值时，搜索节点左子树
-			-  public Node<T&gt; get(Node<T&gt; curr,T value) {
+			-  public Node<T> get(Node<T> curr,T value) {
         if (curr == null) {
             return null;
         }
         if (curr.compare(value) == 0) {
             return curr;
         }
-        return curr.compare(value) &gt; 0?get(curr.left, value):get(curr.right, value);
+        return curr.compare(value) > 0?get(curr.left, value):get(curr.right, value);
     }
 		- 删除数据
-			-  public Node<T&gt; remove(T value) {
+			-  public Node<T> remove(T value) {
         return root = remove(root, value);
     }
     /**
@@ -408,7 +408,7 @@ for (int i = 0; i < arr.length - 1; i++) {
      * @param value
      * @return
      */
-    private Node<T&gt; remove(Node<T&gt; curr,T value) {
+    private Node<T> remove(Node<T> curr,T value) {
         if (curr == null) {
             return null;
         }
@@ -446,12 +446,12 @@ for (int i = 0; i < arr.length - 1; i++) {
      * @param root
      * @return
      */
-    private T findSmallestValue(Node<T&gt; root) {
+    private T findSmallestValue(Node<T> root) {
         return root.left == null ? root.value : (T)findSmallestValue(root.left);
     }
 		- 4种遍历
 			- 前序遍历
-				-     public void prevOrderIterator(Node<T&gt; curr) {
+				-     public void prevOrderIterator(Node<T> curr) {
         if (curr == null) {
             return;
         }
@@ -460,7 +460,7 @@ for (int i = 0; i < arr.length - 1; i++) {
         prevOrderIterator(curr.right);
     }
 			- 中序遍历
-				- public void midOrderIterator(Node<T&gt; curr) {
+				- public void midOrderIterator(Node<T> curr) {
         if (curr == null) {
             return;
         }
@@ -469,7 +469,7 @@ for (int i = 0; i < arr.length - 1; i++) {
         midOrderIterator(curr.right);
     }
 			- 后序遍历
-				- public void postOrderIterator(Node<T&gt; curr) {
+				- public void postOrderIterator(Node<T> curr) {
         if (curr == null) {
             return;
         }
@@ -478,16 +478,16 @@ for (int i = 0; i < arr.length - 1; i++) {
         System.out.print(curr.getValue() + ",");
     }
 			- 层序遍历
-				-  public void levelOrderIterate(Node<T&gt; root) {
+				-  public void levelOrderIterate(Node<T> root) {
         if (root == null) {
             return;
         }
         //add(队列满,抛异常)/offer(队列满,返回false)/put(队列满,阻塞)
         //remove(移除数据,队列空,抛异常)/poll(取数据,队列空,返回false)/take(取数据,队列空,阻塞)
         //element(从队列头查询元素,队列空，抛异常)/peek(队列为空,返回null)
-        Queue<Node<T>&gt; queue = new LinkedList();
+        Queue<Node<T>> queue = new LinkedList();
         ((LinkedList<Node<T>>) queue).add(root);
-        Node<T&gt; front;
+        Node<T> front;
         while (!queue.isEmpty()) {
             front = queue.remove();
             if (front.left != null) {
@@ -500,7 +500,7 @@ for (int i = 0; i < arr.length - 1; i++) {
         }
     }
 		- 获取根深度
-			- public int length(Node<T&gt; root) {
+			- public int length(Node<T> root) {
         return root == null ?0: 1 +Math.max(length(root.left),length(root.right));
     }
 		- 二叉树的打印
@@ -511,7 +511,7 @@ for (int i = 0; i < arr.length - 1; i++) {
     public void printHorizontalTree2() {
         System.out.println(inOrderPrint(tree.getRoot(),new StringBuffer(),"",""));
     }
-    public String inOrderPrint(BinaryTree<T>.Node<T&gt; root,StringBuffer sb,String pointer,String parentPadding) {
+    public String inOrderPrint(BinaryTree<T>.Node<T> root,StringBuffer sb,String pointer,String parentPadding) {
         if (root == null) {
             return "";
         }
@@ -772,7 +772,7 @@ public class ProxyFactory implements MethodInterceptor{
     }
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-    
+       
     }
 }
 			- 静态代理和JDK代理有一个共同的缺点，就是目标对象必须实现一个或多个接口，加入没有，则可以使用Cglib代理。
@@ -1081,7 +1081,7 @@ State模式将每个分支条件封装成一个独立的类中，使得可以根
 						  类实例存放在堆区
 						- 加载阶段和链接阶段是交叉的
 						  类加载的过程中每个步骤的开始顺序都有严格限制,但每个步骤的结束顺序没有限制。也就是说,类加载过程中,必须按照如下顺序开始:
-						  加载 -&gt; 链接 -&gt; 初始化
+						  加载 -> 链接 -> 初始化
 						  但结束顺序无所谓,因此由于每个步骤处理时间的长短不一就会导致有些步骤会出现交叉
 				- Application Class Loader
 				  负责加载用户路径（classpath）上的类库。
@@ -1201,7 +1201,7 @@ Class类常量池
 						- JVM 每次只会使用Eden 和其中的一块Survivor 区域来为对象服务，所以无论什么时候，总是有一块Survivor 区域是空闲着的
 						- 新生代实际可用的内存空间为9/10 ( 即90% )的新生代空间
 				- jdk<=1.6时，字符串常量池保存在方法区即永久代中
-jdk&gt;=1.7时，字符串常量池保存在堆区(字符串常量池是逻辑内部表概念，新生代,老年代是物理分层概念， 实际创建对象还是在新生代，老年代中)
+jdk>=1.7时，字符串常量池保存在堆区(字符串常量池是逻辑内部表概念，新生代,老年代是物理分层概念， 实际创建对象还是在新生代，老年代中)
 			- 栈区(Java虚拟机栈 Stack Space)
 				- 线程私有，而且生命周期与线程相同，每个Java方法在执行的时候都会创建一个栈帧
 （Stack Frame）
@@ -1307,10 +1307,10 @@ Pool中
 			- 值传递问题
 			- 字符串常量池(String Pool)
 C++维护的 StringTable
-&lt;=jdk1.6 大小为:1009
-&gt;=1.7 大小默认为:60013
+<=jdk1.6 大小为:1009
+\>=1.7 大小默认为:60013
 可配置: -XX:StringTableSize=66666
-(<=1.6时字符串常量池在方法区即永久代,&gt;=1.7时字符串常量池在堆区)
+(<=1.6时字符串常量池在方法区即永久代,>=1.7时字符串常量池在堆区)
 字符串常量池是逻辑内部表概念(实际对象创建还是在年轻代,年老代)
 堆区年轻代,年老代是物理分层概念
 				- Sring a = new String("a")
@@ -1481,7 +1481,7 @@ JDK默认为8即S0:S1:Eden比例为1:1:8, Eden占新生代大小的8/10份。
 		- 方法区大小(1.8-),可能会进行GC
 -XX:PermSize=10M 方法区初始化内存大小
 -XX:MaxPermSize=10M 方法区最大内存带下
-		- 元数据区(&gt;=1.8,MetaSpace),可能会进行GC
+		- 元数据区(>=1.8,MetaSpace),可能会进行GC
 -XX:MetaspaceSize=10M 元数据区初始化内存大小
 -XX:MaxMetaspaceSize=10M 元数据区最大内存大小
 		- JVM(HotSpot)7种垃圾回收器
@@ -1570,7 +1570,7 @@ G1将新生代,年老代的物理划分取消了,取而代之的是G1将堆分�
 Number of buckets in the interned String table
 -XX:StringTableSize=66666
 <=jdk1.6 默认大小为:1009
-&gt;=1.7 大小默认为:60013
+\>=1.7 大小默认为:60013
 	- 业务场景考虑
 		- 高频业务处理
 		- 定时任务
@@ -1637,26 +1637,24 @@ jmap -heap PID 查看当前应用Heap情况
 			- 消息传递模型
 				- 消息的发送必须在消息的接收之前，所以同步是隐式进行的
 	- Java的并发采用的是共享内存模型
-		
 		- 线程间的通讯是隐式的
-- JMM(Java内存模型)
+	- JMM(Java内存模型)
 基于CAS
-	JSR-133(JDK5)
+JSR-133(JDK5)
 	  https://blog.csdn.net/w372426096/article/details/80898407
 	  JMM(Java Memory Model) JAVA内存模型主要目标是定义程序中的变量(指实例字段、静态字段等，不包含局部变量和方法参数，应为后2种为线程私有)在虚拟机中存储到内存与从内存读取出来的规则细节，Java 内存模型规定所有变量都存储在主内存中，每条线程还有自己的工作内存，工作内存保存了该线程使用到的变量到主内存副本拷贝，线程对变量的所有操作（读取、赋值）都必须在自己的工作内存中进行而不能直接读写主内存的变量，不同线程之间无法相互直接访问对方工作内存中的变量，线程间变量值的传递均需要在主内存来完成。
 	  Java JMM 内存模型是围绕并发编程中原子性、可见性、有序性三个特征来建立的
 		- Java中，所有实例域、静态域、数组元素存储在堆内存中，堆内存在线程之间共享。JMM中所指的变量即为堆内存共享变量。
-	- 
+		- 
 Java线程之间通信通过JMM控制，
-	JMM决定一个线程对共享变量的写入
+JMM决定一个线程对共享变量的写入
 		- 主内存
-			
 			- 硬件的物理内存
 		- 工作内存
 			- 寄存器和高速缓存
-		- 工作内存中的变量是主内存中的一份拷贝
-		- 线程操作,每个线程都有各自的工作内存，互相不可访问
-		都是读写工作内存，然后通过JMM控制器刷新到主内存
+			- 工作内存中的变量是主内存中的一份拷贝
+			- 线程操作,每个线程都有各自的工作内存，互相不可访问
+都是读写工作内存，然后通过JMM控制器刷新到主内存
 			- 所有共享变量都在主内存区创建，线程读取共享变量时，现在本地内存中创建主内存共享变量副本，然后再读取副本内容；修改共享变量时，先写入本地内存，然后由JMM控制器刷新到主内存中
 		- 重排序
 			- 编译器重排序
@@ -1666,16 +1664,16 @@ Java线程之间通信通过JMM控制，
 				- 内存重排序
 			- JAVA重排序过程: JAVA源码->编译器重排序->指令级并行重排序->内存重排序->最终执行的指令序列
 			- 内存屏障指令(memory barriers)
-		- as-if-serial语义
-			- 不管怎么重排序，同一线程内程序的执行结果不能被改变
-		编译器，runtime,处理器都必须准手as-if-serial语义
+			- as-if-serial语义
+				- 不管怎么重排序，同一线程内程序的执行结果不能被改变
+编译器，runtime,处理器都必须准手as-if-serial语义
 			- 重排序对多线程的影响
 				- 多线程下重排序可能会影响执行结果
 			- 顺序一致性内存模型
 				- 一个线程中所有操作必须按照程序的顺序执行
-			- (不管是否同步)所有线程都只能看到一个单一的操作顺序执行。在顺序一致性内存模型中，每个操作都必须原子执行且立刻对所有线程可见
-	- happens-before (先行发生规则)
-		阐述操作之间的内存可见性
+				- (不管是否同步)所有线程都只能看到一个单一的操作顺序执行。在顺序一致性内存模型中，每个操作都必须原子执行且立刻对所有线程可见
+		- happens-before (先行发生规则)
+阐述操作之间的内存可见性
 		  Happen-Before的规则有以下几条
 		  程序次序规则（Program Order Rule）：在一个线程内，程序的执行规则跟程序的书写规则是一致的，从上往下执行。
 		  管程锁定规则（Monitor Lock Rule）：一个Unlock的操作肯定先于下一次Lock的操作。这里必须是同一个锁。同理我们可以认为在synchronized同步同一个锁的时候，锁内先行执行的代码，对后续同步该锁的线程来说是完全可见的。
@@ -1691,9 +1689,9 @@ Java线程之间通信通过JMM控制，
 				- 对一个监视器的解锁，hanpens-before于对同一个监视器的加锁
 			- 3. volatile变量规则
 				- 对一个volatile域的写，hanpens-before于后续任意对该volatile域的读
-		- 4. 线程启动规则
-			- 假定线程A在执行过程中，通过执行ThreadB.start()来启动线程B，那么线程A对共享变量的修改在接下来线程B开始执行后确保对线程B可见。
-		start 先于 run方法
+			- 4. 线程启动规则
+				- 假定线程A在执行过程中，通过执行ThreadB.start()来启动线程B，那么线程A对共享变量的修改在接下来线程B开始执行后确保对线程B可见。
+start 先于 run方法
 			- 5. 线程终止规则
 				- 假定线程A在执行的过程中，通过制定ThreadB.join()等待线程B终止，那么线程B在终止之前对共享变量的修改在线程A等待返回后可见。
 			- 6. 线程中断规则
@@ -1706,19 +1704,19 @@ Java线程之间通信通过JMM控制，
 		  可保证指令不进行重排序
 			- synchriized
 				- 保证可见性和原子性，互斥
-		- volatile
-		- 只处理内存可见性，非原子性；
+			- volatile
+				- 只处理内存可见性，非原子性；
 保证变量在线程工作内存和主内存之间的一致
 原理: 内存锁，cpu缓存中存储内存地址，修改时通知总线修改，实现同步
 线程有自己独立的快速缓存区从主内存中读取，修改时会让其他快速缓存失效，然后从主内存中读取
 或
-	写volatile对象时，JMM会把该线程对应的本地内存中的共享变量值刷新到主内存中
-	读取volatile对象时，JMM会把该线程对应的本地内存置为失效，然后从主内存中读取变量
-				- 可见性
-	对一个volatile的读总能看到，任意线程对该变量最后的写
-			- 原子性
-	对单个volatile的读写具有原子性
-		对volatile的符合操作不具有原子性（i++之类）
+写volatile对象时，JMM会把该线程对应的本地内存中的共享变量值刷新到主内存中
+读取volatile对象时，JMM会把该线程对应的本地内存置为失效，然后从主内存中读取变量
+					- 可见性
+对一个volatile的读总能看到，任意线程对该变量最后的写
+					- 原子性
+对单个volatile的读写具有原子性
+对volatile的符合操作不具有原子性（i++之类）
 					- volatile内存语义实现
 						- JMM通过限制编译器，处理器重排序来实现volatile写/读内存语义
 1. volatile 变量写前任何操作不能重排序
@@ -1884,48 +1882,48 @@ ChildClass.2LocalClass lc = new ChildClass.2LocalClass(this, i);
 - 主要为Collection类型
 - 泛型的使用
 	- 泛型接口(generics interfeace)
-		- public interface Generator<T extend Object&gt; {...}
+		- public interface Generator<T extend Object> {...}
 	- 泛型类(generics class)
-		- public class Pair<T extend Object,U extend Object&gt; { ... }
+		- public class Pair<T extend Object,U extend Object> { ... }
 	- 泛型方法(generics method)
-		-  public static <T extend Object&gt; T getMiddle(T... a) {..  }
+		-  public static <T extend Object> T getMiddle(T... a) {..  }
 - 协变：子类能向父类转换 Animal a1=new Cat();
 - 逆变: 父类能向子类转换 Cat a2=(Cat)a1;
 - 不变: 两者均不能转变
 - 泛型与向上转型的概念
 泛型上下边界
 	- extends,super关键字与通配符?
-		- List < E extends Fruit&gt; 
+		- List < E extends Fruit> 
 			- 作用于类，接口，方法，变量泛型定义
-		- List < ? &gt; 
+		- List < ? > 
 通配符
 			- 具体类型为任意类型
 			- 作用于方法，变量泛型定义
 			- 不能向通配符泛型写入
 可以读取，但必须使用Object接
-		- List < ? extends Fruit&gt; 
+		- List < ? extends Fruit> 
 上边界通配符
 			- 具体类型必须是Fruit的子类类型
 			- 作用于方法，变量泛型定义
 			- 上界<? extends T>不能往里存，只能往外取
-			- Plate<? extends Fruit&gt; fruitPlate = new Plate<Apple>(new Apple());
-		- List < ? supers Fruit&gt; 
+			- Plate<? extends Fruit> fruitPlate = new Plate<Apple>(new Apple());
+		- List < ? supers Fruit> 
 下边界通配符
 			- 泛型具体类型必须是Fruit的父类类型
 			- 作用于方法，变量泛型定义
 			- 下界<? super T>可以存，但往外取只能放在Object对象里
-			- Plate<? super Fruit&gt; fruitPlate = new Plate<Fruit>(new Fruit());
+			- Plate<? super Fruit> fruitPlate = new Plate<Fruit>(new Fruit());
 		-  //普通通配符不能存，只能用object接收读取
-        Collection<?&gt; c = new ArrayList<String>();
+        Collection<?> c = new ArrayList<String>();
         Object  a = c.iterator().next();
         //c.add(new Object());
         //下界通配符super可以存，但取只能用Object接
-        Collection<? super Integer&gt; css = new ArrayList<Integer>();
+        Collection<? super Integer> css = new ArrayList<Integer>();
         css.add(1);
         css.add(2);
         Object aa = css.iterator().next();
         //上届界通配符extend 可以取，但不能存
-        Collection<? extends Number&gt; cssn = new ArrayList<Integer>();
+        Collection<? extends Number> cssn = new ArrayList<Integer>();
         //cssn.add(new Integer(1));
         Number aaa = cssn.iterator().next();
 	- PECS（Producer Extends Consumer Super）原则，已经很好理解了：
@@ -1933,7 +1931,7 @@ ChildClass.2LocalClass lc = new ChildClass.2LocalClass(this, i);
 频繁往外读取内容的，适合用上界Extends。
 经常往里插入的，适合用下界Super。
 - 泛型重载了extends，super关键字来解决通用泛型的表示
-- extend还被用来指定擦除到的具体类型，比如<E extend Fruit>，表示在运行时将E替换为Fruit,注意E表示的是一个具体的类型，但是这里的extend和通配符连续使用<? extend Fruit>这里通配符?表示一个通用类型，它所表示的泛型在编译的时候，被指定的具体的类型必须是Fruit的子类。比如List<? extend Fruit&gt; list= new ArrayList<Apple>，ArrayList<>中指定的类型必须是Apple,Orange等
+- extend还被用来指定擦除到的具体类型，比如<E extend Fruit>，表示在运行时将E替换为Fruit,注意E表示的是一个具体的类型，但是这里的extend和通配符连续使用<? extend Fruit>这里通配符?表示一个通用类型，它所表示的泛型在编译的时候，被指定的具体的类型必须是Fruit的子类。比如List<? extend Fruit> list= new ArrayList<Apple>，ArrayList<>中指定的类型必须是Apple,Orange等
 - 静态方法与泛型
 	- 静态方法无法访问类上定义的泛型；如果静态方法操作的引用数据类型不确定的时候，必须要将泛型定义在方法上。
 即：如果静态方法要使用泛型的话，必须将静态方法也定义成泛型方法 
@@ -1987,20 +1985,17 @@ List<String>[] ls = new ArrayList[10];
 			- 有参构造方法
 				- Constructor<ReflexClass>[] cs = (Constructor<ReflexClass>[]) claz.getConstructors();
             for (Constructor c:cs) {
-                if (c.getParameterCount() &gt; 0) {
+                if (c.getParameterCount() > 0) {
                   rc = (ReflexClass) c.newInstance("");
                 }
             }
-		- Class<?&gt; ec = claz.getEnclosingClass()
-			
+		- Class<?> ec = claz.getEnclosingClass()
 			- 返回该类是在那个类中定义的， 比如直接定义的内部类或匿名内部类
-		- Constructor<?&gt; encs = claz.getEnclosingConstructor();
-			
+		- Constructor<?> encs = claz.getEnclosingConstructor();
 			- 该类是在哪个构造函数中定义的，比如构造方法中定义的匿名内部类
 		- Method em = claz.getEnclosingMethod();
-			
 			- 该类是在哪个方法中定义的，比如方法中定义的匿名内部类
-		- Class asSubclass(Class<T&gt; clazz)	把传递的类的对象转换成代表其子类的对象
+		- Class asSubclass(Class<T> clazz)	把传递的类的对象转换成代表其子类的对象
 		- T cast(Object obj)	把对象转换成代表类或是接口的对象
 		- getClassLoader()	获得类的加载器
 		- getClasses()	返回一个数组，数组中包含该类中所有公共类和接口类的对象
@@ -2013,25 +2008,25 @@ List<String>[] ls = new ArrayList[10];
 		- getSuperclass()	获得当前类继承的父类的名字
 		- getInterfaces()	获得当前类实现的类或是接口
 		- isAnnotation()	如果是注解类型则返回true
-		- isAnnotationPresent(Class<? extends Annotation&gt; annotationClass)	如果是指定类型注解类型则返回true
+		- isAnnotationPresent(Class<? extends Annotation> annotationClass)	如果是指定类型注解类型则返回true
 		- isAnonymousClass()	如果是匿名类则返回true
 		- isArray()	如果是一个数组类则返回true
 		- isEnum()	如果是枚举类则返回true
 		- isInstance(Object obj)	如果obj是该类的实例则返回true
 		- isInterface()	如果是接口类则返回true
-- isLocalClass()	如果是局部类则返回true
+		- isLocalClass()	如果是局部类则返回true
 		- isMemberClass()	如果是内部类则返回true
 		- .getClass().getGenericInfo() 获取泛型信息
-		.getClass().getTypeParameters()
+.getClass().getTypeParameters()
 	- Constructor
 		- Constructor<?>[] cs1 = claz.getConstructors();
 			- 获取类的所有public构造方法
 		- Constructor<?>[] dcs = claz.getDeclaredConstructors();
 			- 获取类定义的所有构造方法
-		- Constructor<?&gt; ics = claz.getConstructor(String.class);
+		- Constructor<?> ics = claz.getConstructor(String.class);
 			- 获取指定参数类型的构造方法
-		- getConstructor(Class...<?&gt; parameterTypes)	获得该类中与参数类型匹配的公有构造方法
-		- getDeclaredConstructor(Class...<?&gt; parameterTypes)	获得该类中与参数类型匹配的构造方法
+		- getConstructor(Class...<?> parameterTypes)	获得该类中与参数类型匹配的公有构造方法
+		- getDeclaredConstructor(Class...<?> parameterTypes)	获得该类中与参数类型匹配的构造方法
 		- Constructor方法
 			- newInstance(Object... initargs)	根据传递的参数创建类的对象
 	- Field
@@ -2044,34 +2039,34 @@ List<String>[] ls = new ArrayList[10];
 			- get(Object obj)	获得obj中对应的属性值
 			- set(Object obj, Object value)	设置obj中对应属性值
 	- Method
-		- getMethod(String name, Class...<?&gt; parameterTypes)	获得该类某个公有的方法
+		- getMethod(String name, Class...<?> parameterTypes)	获得该类某个公有的方法
 		- getMethods()	获得该类所有公有的方法
-		- getDeclaredMethod(String name, Class...<?&gt; parameterTypes)	获得该类某个方法
+		- getDeclaredMethod(String name, Class...<?> parameterTypes)	获得该类某个方法
 		- getDeclaredMethods()	获得该类所有方法
-	- Method方法
+		- Method方法
 			- invoke(Object obj, Object... args)	传递object对象及参数调用该对象对应的方法
 			- Type[] empt= em.getGenericParameterTypes(); 获取参数列表的参数泛型列表
-	实际为ParameterizedType类型
-			- Type[] empt= em.getGenericParameterTypes();
+实际为ParameterizedType类型
+				- Type[] empt= em.getGenericParameterTypes();
 				- ((ParameterizedType)gcm1t[0]).getActualTypeArguments()[0]
-		-  //获取Class[]的参数列表
-	 Class[] cs = gcm1.getParameterTypes();
+			-  //获取Class[]的参数列表
+ Class[] cs = gcm1.getParameterTypes();
 			- //获取定义的泛型
-	TypeVariable[] tvs = gcm1.getTypeParameters();
+TypeVariable[] tvs = gcm1.getTypeParameters();
 	- Annotation
-		- getAnnotation(Class<T&gt; annotationClass)	返回该类中与参数类型匹配的公有注解对象
+		- getAnnotation(Class<T> annotationClass)	返回该类中与参数类型匹配的公有注解对象
 		- getAnnotations()	返回该类所有的公有注解对象
-		- getDeclaredAnnotation(Class<T&gt; annotationClass)	返回该类中与参数类型匹配的所有注解对象
-	- getDeclaredAnnotations()	返回该类所有的注解对象
-- 枚举Enum
+		- getDeclaredAnnotation(Class<T> annotationClass)	返回该类中与参数类型匹配的所有注解对象
+		- getDeclaredAnnotations()	返回该类所有的注解对象
+	- 枚举Enum
 		- enum关键字定义的枚举
 隐式继承自extends java.lang.Enum<EnumObj>
-	泛型为当前定义对象
-	- 枚举不能定义readObject,writeObject,readObjectNoData,writeReplace,readResolve 等方法处理反序列化
+泛型为当前定义对象
+		- 枚举不能定义readObject,writeObject,readObjectNoData,writeReplace,readResolve 等方法处理反序列化
 java.io.ObjectStreamClass中定义序列化时单独对enum做了处理
 		- enum 类型不支持 public 和 protected 修饰符的构造方法，因此构造函数一定要是 private 或 friendly 的。也正因为如此，所以枚举对象是无法在程序中通过直接调用其构造方法来初始化的
-	同时在Construct.newInstance中判断了枚举不能被实例化处理：
-	Cannot reflectively create enum objects
+同时在Construct.newInstance中判断了枚举不能被实例化处理：
+Cannot reflectively create enum objects
 		- 定义 enum 类型时候，如果是简单类型，那么最后一个枚举值后不用跟任何一个符号；但如果有定制方法，那么最后一个枚举值与后面代码要用分号';'隔开，不能用逗号或空格。
 		- 枚举中的值在编译后会成为 final static 成员变量
 ### Java中的引用
@@ -2293,7 +2288,7 @@ ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
 ThreadPoolExecutor executor = new ThreadPoolExecutor(0,1,0, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<>(10));
 			- 无法加入队列时抛出RejectedExecutionException
 		- 方法
-			- Future<?&gt; submit(()->{})  提交一个可以获取返回结果的任务
+			- Future<?> submit(()->{})  提交一个可以获取返回结果的任务
 内部创建一个 java.util.concurrent.FutureTask,然后将FutureTask 加入到execute中,并返回改对象，若执行成功，则返回null,反之抛出异常
 			- void execute(()->{}) 提交一个任务
 			- void shutdown()
@@ -2603,7 +2598,7 @@ HashMap底层是通过链表来解决hash冲突的。
 中间有个差值7可以防止链表和树之间频繁的转换
 		- 扩容： 默认下 数组大小为16，当元素超过16*0.75=12时.会扩容为2*16=32  Cap<<1  ,即扩容1倍
 capacity 的容量大小是 2 的 n 次幂
-		- hash值计算方式: (h = key.hashCode()) ^ (h >>&gt; 16)
+		- hash值计算方式: (h = key.hashCode()) ^ (h >>> 16)
 key为null时为0
 hashCode 的高 16 位不变，低 16 位与高 16 位做一个异或。
 		- modCount： HashMap 在结构上被修改的次数，结构修改是指改变HashMap中映射的次数，或者以其他方式修改其内部结构(例如，rehash)。此字段用于使HashMap集合视图上的迭代器快速失败(fail fast)。(著名的ConcurrentModificationException便与此有关)
@@ -2647,7 +2642,7 @@ key/value都不能为空
 数据结构: 数组+链表
 			- Key不能为null,因为完全使用Key的hashCode
 		- hash值计算方式: key.hashCode()
-		- Entry<K,V&gt; tables index ： (hash & 0x7FFFFFFF) % tab.length
+		- Entry<K,V> tables index ： (hash & 0x7FFFFFFF) % tab.length
 		- 遍历方式: Enumeration
 - TreeMap
 	- TreeMap
@@ -2686,6 +2681,8 @@ TreeMap的键和值都不能为空。
 	- TreeSet
 		- 继承于AbstractSet implements NavigableSet(extends SortedSet)
 默认为TreeMap实现， 值为Map Key,Map Value为 Object
+- java.util.concurrent.ConcurrentHashMap
+	- 支持并发的HashMap,Key和Value都不能为空
 ### JDK8新特性
 - Java语言新特性
 	- Lambdas 与  Functional 接口
@@ -2715,26 +2712,26 @@ System.out.println(e);
 接受一个输入参数，无返回值
 					- T apply(T t)
 						- Int,Long,Double,ObjInt... Consumer
-							- Consumer<String&gt; consumer = (x) -&gt; System.out.println("consumer: " + x);
+							- Consumer<String> consumer = (x) -> System.out.println("consumer: " + x);
 consumer.accept("Hello");
 				- Supplier
 无输入参数，返回一个结果
 					- T get()
 						- Boolean,Int,Long,Double...Supplier
-							- Supplier<String&gt; supplier = () -&gt; "Test supplier";
+							- Supplier<String> supplier = () -> "Test supplier";
 supplier.get();
 				- Predicate
 接受一个输入参数，返回布尔值
 Predicate 是一个可以指定入参类型，并返回 boolean 值的函数式接口。它内部提供了一些带有默认实现的方法，可以 被用来组合一个复杂的逻辑判断（and, or, negate）
-					- and(Predicate<? super T&gt; other)
-negate(Predicate<? super T&gt; other)
-						- Predicate<String&gt; predicate = (x) -&gt; x.length() &gt; 0;
+					- and(Predicate<? super T> other)
+negate(Predicate<? super T> other)
+						- Predicate<String> predicate = (x) -> x.length() > 0;
 predicate.test("String");
 				- Function
 接受一个输入参数，返回一个结果
 Function 函数式接口的作用是，我们可以为其提供一个原料，他给生产一个最终的产品。通过它提供的默认方法，组合,链行处理(compose, andThen)：
 					- R apply(T t)
-						- Function<Integer, String&gt; function1 = (x) -&gt; "result: " + x;
+						- Function<Integer, String> function1 = (x) -> "result: " + x;
 function1.apply(6);
 				- //比较接口
 java.util.Comparator
@@ -2749,7 +2746,7 @@ static void runS()
 (直接引用已有Java类或对象(实例)的方法或构造器)
 		- Class::new 构造器引用
 			- final Car car = Car.create(Car::new);
-final Car car2 = Car.create(() -&gt; new Car());
+final Car car2 = Car.create(() -> new Car());
 		- Class::static_method 静态方法引用
 			- cars.forEach(Car::collide);
 cars2.forEach((c)->Car.collide(c));
@@ -2797,14 +2794,14 @@ public class Annotations {
 @Retention( RetentionPolicy.RUNTIME )
 @Target( { ElementType.TYPE_USE, ElementType.TYPE_PARAMETER } )
 public @interface NonEmpty {
-	public static class Holder< @NonEmpty T &gt; extends @NonEmpty object {
+	public static class Holder< @NonEmpty T > extends @NonEmpty object {
 		public void method() throws @NonEmpty Exception [
 	}
 	}
 	@Suppressvarnings( "unused")
 	public static void main(String[] args){
-		final Holder< String &gt; holder = new @NonEmpty Holder< string >();
-		@NonEmpty Collections @NonEmpty String &gt; strings = new ArrayListo0;
+		final Holder< String > holder = new @NonEmpty Holder< string >();
+		@NonEmpty Collections @NonEmpty String > strings = new ArrayListo0;
 	}
 }
 
@@ -2822,7 +2819,7 @@ fullName.map(s->"Hey "+s+"!").orElse("Default");
 			- obj可以为null，为null时同Optional.empty()
 		- of.get() 获取Optional包含的值
 		- of.isPresent() 判断是否为空
-		- of.ifPresent(t-&gt; System.out.println(t)) 若Optional包含值不为空时，提供一个Consumer
+		- of.ifPresent(t-> System.out.println(t)) 若Optional包含值不为空时，提供一个Consumer
 		- //为空时提供回调方法(Supplier)产生默认值
 of.orElseGet(()->"[none]")
 			- of.orElseGet(Object::new)
@@ -2832,14 +2829,14 @@ of.orElseGet(()->"[none]")
 of.orElse("Default");
 			- 因为orElse的参数为具体对象或值，所以在传入参数时，会计算参数结果，导致不管of是否为空，都会执行参数计算
 		- //为空时返回自定义异常
-of.orElseThrow(Supplier<Exception&gt; t)
+of.orElseThrow(Supplier<Exception> t)
 		- //值转换， 返回一个Optional对象，传入函数值为任何值
- Optional<T&gt; map(Function<? super T, ? extends U&gt; mapper)
-of.map(t -&gt; t).orElseGet(()->"t")
+ Optional<T> map(Function<? super T, ? extends U> mapper)
+of.map(t -> t).orElseGet(()->"t")
 		- //值转换， 返回一个Optional对象，传入值需为Optional对象
-<T&gt; Optional<T&gt; flatMap(Function<? super T, Optional<T>&gt; mapper)
+<T> Optional<T> flatMap(Function<? super T, Optional<T>> mapper)
 		- //值过滤， 若值不满足条件，则返回Optional.empty();
-of.filter(t -&gt; t != null).orElse("null");
+of.filter(t -> t != null).orElse("null");
 	- java.util.Stream
 Steam 是对集合（Collection）对象功能的增强，它专注于对集合对象进行各种非常便利、高效的聚合操作（aggregate operation），或者大批量数据操作 (bulk data operation)
 简化了集合对象的处理
@@ -2895,16 +2892,16 @@ Steam.map()
 		- //将Steam中的元素映射为另一种类型
 //flatMap是一种扁平化、一对多的操作，会返回一个新的Stream，因此flatMap实现需要返回一个新的Stream对象
 Steam.flatMap()
-flatMap(e -&gt; Stream.of(e.split(" ")))
+flatMap(e -> Stream.of(e.split(" ")))
 			- Arrays.asList("Stream operations is a new API in Java 8")
 	  .stream()
-	  .flatMap(e -&gt; Stream.of(e.split(" ")))
+	  .flatMap(e -> Stream.of(e.split(" ")))
 	  .forEach(System.out::println);
 		- //规约操作（reduction operation），也称作折叠（fold）。可以通过相同的合并方法将系列的输入组合成一个结果。
 Steam.reduce
-			- //函数接口BinaryOperator<T&gt; accumulator称为累加器，需满足结合律，其抽象方法为T apply(T t1, T t2); 有两个参数和返回值，且他们的类型相同。t1为之前结合的结果，t2为当前元素，该抽象方法的实现需要将t1和t2结合，并返回结果。
-Optional<T&gt; reduce(BinaryOperator<T&gt; accumulator)
-			- T reduce(T identity, BinaryOperator<T&gt; accumulator) 跟1）相似，只不过需要制定计算时的初始值，
+			- //函数接口BinaryOperator<T> accumulator称为累加器，需满足结合律，其抽象方法为T apply(T t1, T t2); 有两个参数和返回值，且他们的类型相同。t1为之前结合的结果，t2为当前元素，该抽象方法的实现需要将t1和t2结合，并返回结果。
+Optional<T> reduce(BinaryOperator<T> accumulator)
+			- T reduce(T identity, BinaryOperator<T> accumulator) 跟1）相似，只不过需要制定计算时的初始值，
 		- Stream.parallelStream()
 与
 Stream.stream() 实现区别
@@ -2939,7 +2936,7 @@ isParallel()
 			- 一个sink有两种状态,初始/激活
 开始时是初始状态,begin 激活 ,  end使之回到初始状态,可以重复利用 
 accept只能在激活状态使用
-
+ 
 Sink用于协调相邻的stage之间的数据调用
 通过begin end accept方法 以及cancellationRequested短路标志位来控制处理流程,对数据进行管控
 			- Sink.begin(size)
@@ -3035,463 +3032,461 @@ x.equals(y)==true , y.equals(z)==true , 则 x.equals(z) == true
 ### NoSQL(Not Only SQL)
 NoSQL，泛指非关系型的数据库
 - Redis
-  (Key/Value)
-  - Redis: 内存Key-Value数据库
-  https://redis.io/
-  http://www.redis.cn/
-  	- Redis数据全部保存在内存中
-  只有save后会持久化到磁盘
-  	- Redis key是二进制安全的，可以使用任何二进制序列作为key
-  	- 空字符串也是有效key
-  	- 规则
-  		- key 不要太长， 不仅因为消耗内存，而且在数据中查找这类键值的计算成本很高。
-  		- key 不要太短
-  		- 最好使用一种模式,如 user:1000:password按:分割的模式
-  - 基础数据类型
-  	- Strings 字符串
-  		- 内容长度不能超过512M
-  		- SET 设置值: set mykey myvalue
-  		- GET 获取值: get mykey
-  		- SETNX key value  当key不存在时设置值
-  		- SETEX key seconds value 设置key有效期，单位s
-  		- PSETEX key milliseconds value 设置key有效期,单位ms
-  		- SET key val NX [EX seconds] [PX milliseconds] 当key不存在时设置值: set mykey newval nx
-  		- SET key val XX [EX seconds]  [PX milliseconds]  当key存在时设置值: set mykey newval xx
-  		- INCR原子递增
-  			- set counter 100
-  incr counter
-  			- INCR 命令将字符串值解析成整型，将其加一，最后将结果保存为新的字符串值，
-  			- 类似的命令有INCRBY, DECR 和 DECRBY。
-  		- INCRBY原子递增指定值
-  			- SET mykey "10"
-  INCRBY mykey 5
-  (integer 15)
-  		- DECR，DECRBY 原子递减
-  		- GETSET 设置新值并返回旧值
-  		- MSET批量设置多个keyvalue
-  			- mset a 10 b 20
-  		- MGET 批量获取多个key的值
-  			- mget a b
-  (
-  1) "10"
-  2) "20"
-  3) "30"
-  )
-  		- STRLEN key 获取key value的长度
-  		- APPEND key value 在value 尾部追加value
-  		- GETRANGE key start end 获取指定范围的字符串
-  		- SETRANGE key offset value 重写指定位置开始的字符串为新字符串
-  	- Hashes 散列
-  		- 由field和关联的value组成的map。field和value都是字符串的
-  hash的域数量没有限制(除内存外)
-  		- HSET key field val 设置HASH 值
-  		- HMSET  mykey field1 val1 key2 field2 val2 ... 设置多个HASH field value值 
-  			
-  			- hmset user:1000 username antirez birthyear 1977 verified 1
-  		- HSETNX key field val 当field不存在时设置HASH field，存在时不处理
-  		- HMGET mykey field1 field2 .. 获取多个HASH key的值
-  	- &gt; hmget user:1000 username birthyear no-such-field
-  1) "antirez"
-  2) "1977"
-  		3) (nil)
-  		- HGET mykey field1  获取HASH field的值
-  	- &gt; hget user:1000 username
-  		"antirez"
-  		- HGETALL mykey 获取所有HASH field/value对
-  	- redis&gt; HSET myhash field1 "Hello"
-  (integer) 1
-  redis&gt; HSET myhash field2 "World"
-  (integer) 1
-  redis&gt; HGETALL myhash
-  1) "field1"
-  2) "Hello"
-  3) "field2"
-  		4) "World"
-  		- HEXISTS mykey field 获取HASH field 是否存在
-  	- HEXISTS myhash field1
-  		(integer) 0
-  		- HDEL mykey field1 field2 ... 删除HASH 多个field
-  	- redis&gt; HDEL myhash field2
-  		(integer) 0
-  		- HINCRBY key field increment  原子递增(increment)HASH field值 
-  	- redis&gt; HSET myhash field 5
-  (integer) 1
-  redis&gt; HINCRBY myhash field 1
-  		(integer) 6
-  		- HINCRBYFLOAT key field increment 原子递增浮点数 HASH field值
-  		- HKEYS key 返回所有HASH field名称
-  		- HLEN key 获取HASH field数量
-  		- HSCAN key cursor [MATCH pattern] [COUNT count] 同SCAN
-  		- HSTRLEN key field 获取HASH field字符串长度
-  		- HVALS key 获取所有HASN values
-  	- redis&gt; HSET myhash field1 "Hello"
-  (integer) 1
-  redis&gt; HSET myhash field2 "World"
-  (integer) 1
-  redis&gt; HVALS myhash
-  1) "Hello"
-  		2) "World"
-  	- Lists 列表
-  		- 按插入顺序排序的字符串元素的集合，由链表实现
-  		- LPUSH mykey val1 val2 ... 向list头部添加多个元素，返回list 长度
-  		- RPUSH mykey val1 val2 ... 向list尾部添加多个元素，返回list 长度
-  		- LRANGE mykey startIdx stopIdx 从list中取出一定范围的元素
-  			- LRANGE 带有两个索引，一定范围的第一个和最后一个元素。这两个索引都可以为负来告知Redis从尾部开始计数，因此-1表示最后一个元素，-2表示list中的倒数第二个元素，以此类推
-  		- LINDEX key index 获取list中某个索引的元素值
-  		- LPOP mykey 从头部删除并返回删除的元素
-  		- RPOP mykey 从尾部删除并返回删除的元素
-  		- POP 空list时返回null
-  		- LTRIM mykey startIdx  stopIdx 把list从左边截取指定长度。
-  			- 从0位起截取到2索引位，3个元素： ltrim mykey 0 2 
-  		- list上的阻塞操作(可实现生产者，消费者队列）
-  			- BLPOP mylist1 mylist2 ... TIMEOUT  阻塞式从头部删除元素
-  				- TIMEOUT 为指定阻塞时间，若为0时，表示一直阻塞
-  			- BRPOP mylist1 mylist2 ... TIMEOUT 阻塞式从尾部删除元素
-  			- 多批量回复(multi-bulk-reply): 具体来说:
-  当没有元素可以被弹出时返回一个 nil 的多批量值，并且 timeout 过期。
-  当有元素弹出时会返回一个双元素的多批量值，其中第一个元素是弹出元素的 key，第二个元素是 value。
-  （
-  redis&gt; RPUSH list1 a b c
-  (integer) 3
-  redis&gt; BRPOP list1 list2 0
-  1) "list1"
-  2) "c"
-  	）
-  		- RPOPLPUSH  source destinatoin
-  		- 原子性地返回并移除存储在 source 的列表的最后一个元素（列表尾部元素）， 并把该元素放入存储在 destination 的列表的第一个元素位置（列表头部）。
-  返回值：
-  	bulk-string-reply: 被移除和放入的元素
-  				- 例如：假设 source 存储着列表 a,b,c， destination存储着列表 x,y,z。 执行 RPOPLPUSH 得到的结果是 source 保存着列表 a,b ，而 destination 保存着列表 c,x,y,z。
-  		- BRPOPLPUSH
-  		- LLEN mylist 获取list长度
-  		- LREM key count element  删除列表中的指定元素
-  		- count &gt; 0：删除等于element从头到尾移动的元素。
-  count < 0：删除等于element从尾到头移动的元素。
-  	count = 0：删除所有等于的元素element。
-  			- redis&gt; RPUSH mylist "hello"
-  (integer) 1
-  redis&gt; RPUSH mylist "hello"
-  (integer) 2
-  redis&gt; RPUSH mylist "foo"
-  (integer) 3
-  redis&gt; RPUSH mylist "hello"
-  (integer) 4
-  redis&gt; LREM mylist -2 "hello"
-  (integer) 2
-  redis&gt; LRANGE mylist 0 -1
-  1) "hello"
-  2) "foo"
-  	redis&gt; 
-  			- 例如，LREM list -2 "hello"将删除"hello"存储在中的列表中最后两个出现的 list。
-  		- LSET key index element 设置列表中某个位置的元素
-  		- redis&gt; RPUSH mylist "one"
-  (integer) 1
-  redis&gt; RPUSH mylist "two"
-  (integer) 2
-  redis&gt; RPUSH mylist "three"
-  (integer) 3
-  redis&gt; LSET mylist 0 "four"
-  "OK"
-  redis&gt; LSET mylist -2 "five"
-  "OK"
-  redis&gt; LRANGE mylist 0 -1
-  1) "four"
-  2) "five"
-  3) "three"
-  redis&gt; 
-  	
-  	- Sets 集合
-  		- 不重复且无序的字符串元素的集合。
-  		- SADD key value1 ,value2 ... 添加新元素到set中
-  		- SMEMBERS key 获取set中的所有元素
-  			- redis&gt; smembers myset1
-  		- 数据量大时，生产环境慎用，该操作会导致服务器阻塞
-  	使用SSCAN替代
-  		- SISMEMBER key value 检测元素是否存在，1:是 0:否
-  		- SINTER key [key ...]  返回从所有给定集合的交集得到的集合成员
-  		- key1 = {a,b,c,d}
-  key2 = {c}
-  key3 = {a,c,e}
-  	SINTER key1 key2 key3 = {c}
-  		- SINTERSTORE destination key [key ...] 获取给定集合的交集并保存到destination
-  		- SDIFF key [key ...] 返回给定集合的差集
-  		- key1 = {a,b,c,d}
-  key2 = {c}
-  key3 = {a,c,e}
-  	SDIFF key1 key2 key3 = {b,d}
-  		- SDIFFSTORE destination key [key ...]  获取给定集合的差集并保存到destination中
-  		- SUNION key [key ...] 获取给定集合的合集
-  		- key1 = {a,b,c,d}
-  key2 = {c}
-  key3 = {a,c,e}
-  	SUNION key1 key2 key3 = {a,b,c,d,e}
-  	- SUNIONSTORE destination key [key ...]
-  	 获取给定集合的合集并保存到destination中
-  		- SCARD key 获取集合中的元素个数
-  		- SPOP key [count] 随机删除集合中的1个或多个元素，并返回(count参数始于3.2版本)
-  			- redis&gt; spop myset 1
-  		- SREM key member [member ...]  删除集合中的多个元素，返回从集合中删除的元素数量
-  		- redis&gt; SREM myset "four"
-  	(integer) 0
-  		- SRANDMEMBER key [count] 从集合中随机获取指定数量的元素（不删除集合中的元素）
-  		- SMOVE source destination member 将集合中的元素移动到另一个集合中，返回元素是否移动成功，1：是，0：否
-  		- redis&gt; SMOVE myset myotherset "two"
-  	(integer) 0
-  		- SSCAN
-  	- Sortd Sets 有序集合
-  		- 类似Sets,但是每个字符串元素都关联到一个叫score浮动数值（floating number value）。里面的元素总是通过score进行着排序，所以不同的是，它是可以检索的一系列元素。
-  		- 排序规则
-  			- 如果A和B是两个具有不同分数的元素，那么如果A.score是&gt; B.score，则A>B。
-  			- 如果A和B的分数完全相同，那么如果A字符串在字典上大于B字符串，则A>B。A和B字符串不能相等，因为排序集仅具有唯一元素。
-  	- ZADD key [NX|XX] [CH] [INCR] score member [score member ...]  将具有指定分数的成员添加到有序集合中，课指定多个分数/成员对。返回添加到有序集合中的元素数量，不含更新分数的现有元素。
-  	+inf和-inf值也是有效值
-  			- XX： 只更新已存在元素
-  			- NX：元素不存在时，创建新元素
-  		- ZRANGE key start stop [WITHSCORES] 返回有序列表中指定范围的元素， 如果得分相同，将按字典排序。带有WITHSCORES 时同时返回每个元素的分数
-  		- redis&gt; ZRANGE myzset 0 1 WITHSCORES
-  1) "one"
-  2) "1"
-  3) "two"
-  	4) "2"
-  		- ZREVRANGE key start stop [WITHSCORES]  返回有序集key中，指定区间内的成员。其中成员的位置按score值递减(从大到小)来排列。具有相同score值的成员按字典序的反序排列。
-  		- ZCARD key 返回有序列表的基数（元素数）
-  		- redis&gt; ZCARD myzset
-  	（integer）2
-  	- ZCOUNT key min max 返回有序集合中的元素数量，元素得分介于min和max间，默认包含min max的分数。
-  	(min (max 时不包含值为min max分数的元素
-  		- redis&gt; ZADD myzset 1 "one"
-  (integer) 1
-  redis&gt; ZADD myzset 2 "two"
-  (integer) 1
-  redis&gt; ZADD myzset 3 "three"
-  (integer) 1
-  redis&gt; ZCOUNT myzset -inf +inf
-  (integer) 3
-  redis&gt; ZCOUNT myzset (1 3
-  (integer) 2
-  	redis&gt; 
-  		- redis&gt; zcount myzset (1 (3
-  	(integer) 1
-  		- ZINCRBY key increment member 递增元素在有序集合中的分数
-  		- ZSCORE key member 返回有序集合中元素的分数
-  		- redis&gt; ZADD myzset 1 "one"
-  (integer) 1
-  redis&gt; ZSCORE myzset "one"
-  "1"
-  	redis&gt; 
-  		- ZREM key member [member ...] 删除有序集合中多个元素
-  		- 等： https://redis.io/commands/zunionstore
-  	- Bitmaps (Bit arrays)
-  		
-  		- simply bitmaps: 通过特殊的命令，你可以将 String 值当作一系列 bits 处理：可以设置和清除单独的 bits，数出所有设为 1 的 bits 的数量，找到最前的被设为 1 或 0 的 bit，等等
-  	- hyperloglogs
-  		- 被用于估计一个 set 中元素数量的概率性的数据结构
-  		-  PFADD key element [element ...]
-  - 命令
-  	-  KYES pattern 列出所有匹配的key
-  		- 生产环境慎用，该操作会导致服务器阻塞
-  使用SCAN替代
-  	- EXISTS mykey 查询key是否存在，返回1/0
-  	- DEL mykey 删除key，返回1/0
-  	- TYPE mykey 返回key对应的存储类型
-  		- string
-  hash
-  list
-  set
-  zset
-  	- EXPIRE mykey secondVal 设置key有效期，精度可以使用毫秒或秒，默认：s
-  		- 设置key5s 超时 expire key 5
-  	- TTL mykey 获取key剩余有效时间
-  	- key的自动创建和删除
-  		- 推入元素之前创建空的 list，或者在 list 没有元素时删除它。在 list 为空时删除 key，并在用户试图添加元素（比如通过 LPUSH）而键不存在时创建空 list，是 Redis 的职责。
-  		- 三条规则来概括
-  			- 当我们向一个聚合数据类型中添加元素时，如果目标键不存在，就在添加元素前创建空的聚合数据类型。
-  			- 当我们从聚合数据类型中移除元素时，如果值仍然是空的，键自动被销毁。
-  			- 对一个空的 key 调用一个只读的命令，比如 LLEN （返回 list 的长度），或者一个删除元素的命令，将总是产生同样的结果。该结果和对一个空的聚合类型做同个操作的结果是一样的。
-  	- SCAN 
-  		- SCAN 命令用于迭代当前数据库中的key集合。
-  SSCAN 命令用于迭代SET集合中的元素。
-  HSCAN 命令用于迭代Hash类型中的键值对。
-  ZSCAN 命令用于迭代SortSet集合中的元素和元素对应的分值
-  		- SCAN 命令用于迭代当前数据库中的key集合。
-  			- SCAN cursor [MATCH pattern] [COUNT count]
-  			- SCAN命令是一个基于游标的迭代器。这意味着命令每次被调用都需要使用上一次这个调用返回的游标作为该次调用的游标参数，以此来延续之前的迭代过程
-  当SCAN命令的游标参数被设置为 0 时， 服务器将开始一次新的迭代， 而当服务器向用户返回值为 0 的游标时， 表示迭代已结束。
-  			- SCAN命令的返回值 是一个包含两个元素的数组， 第一个数组元素是用于进行下一次迭代的新游标， 而第二个数组元素则是一个数组， 这个数组中包含了所有被迭代的元素。
-  在第二次调用 SCAN 命令时， 命令返回了游标 0 ， 这表示迭代已经结束， 整个数据集已经被完整遍历过了。
-  full iteration ：以 0 作为游标开始一次新的迭代， 一直调用 SCAN 命令， 直到命令返回游标 0 ， 我们称这个过程为一次完整遍历。
-  			- Scan命令的保证（SCAN命令以及其他增量式迭代命令）
-  				- 从完整遍历开始直到完整遍历结束期间， 一直存在于数据集内的所有元素都会被完整遍历返回； 这意味着， 如果有一个元素， 它从遍历开始直到遍历结束期间都存在于被遍历的数据集当中， 那么 SCAN 命令总会在某次迭代中将这个元素返回给用户。
-  				- 同样，如果一个元素在开始遍历之前被移出集合，并且在遍历开始直到遍历结束期间都没有再加入，那么在遍历返回的元素集中就不会出现该元素。
-  			- SCAN命令每次执行返回的元素数量
-  				- SCAN增量式迭代命令并不保证每次执行都返回某个给定数量的元素,甚至可能会返回零个元素， 但只要命令返回的游标不是 0 ， 应用程序就不应该将迭代视作结束。
-  				- 默认COUNT=10，即最大返回10条记录
-  			- cursor 游标
-  				- 在开始一个新的迭代时， 游标必须为 0 。
-  增量式迭代命令在执行之后返回的， 用于延续迭代过程的游标。
-  			- SCAN, SSCAN, HSCAN 和 ZSCAN 命令都返回一个包含两个元素的 multi-bulk 回复： 回复的第一个元素是字符串表示的无符号 64 位整数（游标）， 回复的第二个元素是另一个 multi-bulk 回复， 包含了本次被迭代的元素。
-  SCAN 命令返回的每个元素都是一个key。
-  SSCAN 命令返回的每个元素都是一个集合成员。
-  HSCAN 命令返回的每个元素都是一个键值对，一个键值对由一个键和一个值组成。
-  ZSCAN命令返回的每个元素都是一个有序集合元素，一个有序集合元素由一个成员（member）和一个分值（score）组成。
-  		- SSCAN 命令用于迭代SET集合中的元素。
-  		- HSCAN 命令用于迭代Hash类型中的键值对。
-  		- ZSCAN 命令用于迭代SortSet集合中的元素和元素对应的分值
-  - 其他功能
-  	- Geospatial 地理空间半径查询
-  		- GEOADD key longitude latitude member [longitude latitude member ...]
-  			- 存储在ZSET中
-  			- 将指定的地理空间位置（纬度、经度、名称）添加到指定的key中。这些数据将会存储到sorted set这样的目的是为了方便使用GEORADIUS或者GEORADIUSBYMEMBER命令对数据进行半径查询等操作。
-  返回添加到ZSET中的元素数目，不包含更新score的元素
-  				- redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEODIST Sicily Palermo Catania
-  "166274.15156960039"
-  redis&gt; GEORADIUS Sicily 15 37 100 km
-  1) "Catania"
-  redis&gt; GEORADIUS Sicily 15 37 200 km
-  1) "Palermo"
-  2) "Catania"
-  redis&gt; 
-  		- GEODIST key member1 member2 [unit]
-  			- 返回两个给定位置之间的距离。
-  如果两个位置之间的其中一个不存在， 那么命令返回空值。
-  指定单位的参数 unit 必须是以下单位的其中一个：
-  m 表示单位为米。
-  km 表示单位为千米。
-  mi 表示单位为英里。
-  ft 表示单位为英尺。
-  如果用户没有显式地指定单位参数， 那么 GEODIST 默认使用米作为单位。
-  				- redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEODIST Sicily Palermo Catania
-  "166274.15156960039"
-  redis&gt; GEODIST Sicily Palermo Catania km
-  "166.27415156960038"
-  redis&gt; GEODIST Sicily Palermo Catania mi
-  "103.31822459492736"
-  redis&gt; GEODIST Sicily Foo Bar
-  (nil)
-  redis&gt; 
-  			- 计算出的距离会以双精度浮点数的形式被返回。 如果给定的位置元素不存在， 那么命令返回空值。
-  		- GEOHASH key member [member ...]
-  			- 返回一个或多个位置元素的 Geohash 表示。
-  通常使用表示位置的元素使用不同的技术，使用Geohash位置52点整数编码。由于编码和解码过程中所使用的初始最小和最大坐标不同，编码的编码也不同于标准。此命令返回一个标准的Geohash，在维基百科和geohash.org网站都有相关描述
-  				- redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEOHASH Sicily Palermo Catania
-  1) "sqc8b49rny0"
-  2) "sqdtr74hyu0"
-  redis&gt; 
-  		- GEOPOS key member [member ...]
-  			- 从key里返回所有给定位置元素的位置（经度和纬度）。
-  				- redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEOPOS Sicily Palermo Catania NonExisting
-  1) 1) "13.361389338970184"
+(Key/Value)
+	- Redis: 内存Key-Value数据库
+https://redis.io/
+http://www.redis.cn/
+		- Redis数据全部保存在内存中
+只有save后会持久化到磁盘
+		- Redis key是二进制安全的，可以使用任何二进制序列作为key
+		- 空字符串也是有效key
+		- 规则
+			- key 不要太长， 不仅因为消耗内存，而且在数据中查找这类键值的计算成本很高。
+			- key 不要太短
+			- 最好使用一种模式,如 user:1000:password按:分割的模式
+	- 基础数据类型
+		- Strings 字符串
+			- 内容长度不能超过512M
+			- SET 设置值: set mykey myvalue
+			- GET 获取值: get mykey
+			- SETNX key value  当key不存在时设置值
+			- SETEX key seconds value 设置key有效期，单位s
+			- PSETEX key milliseconds value 设置key有效期,单位ms
+			- SET key val NX [EX seconds] [PX milliseconds] 当key不存在时设置值: set mykey newval nx
+			- SET key val XX [EX seconds]  [PX milliseconds]  当key存在时设置值: set mykey newval xx
+			- INCR原子递增
+				- set counter 100
+incr counter
+				- INCR 命令将字符串值解析成整型，将其加一，最后将结果保存为新的字符串值，
+				- 类似的命令有INCRBY, DECR 和 DECRBY。
+			- INCRBY原子递增指定值
+				- SET mykey "10"
+INCRBY mykey 5
+(integer 15)
+			- DECR，DECRBY 原子递减
+			- GETSET 设置新值并返回旧值
+			- MSET批量设置多个keyvalue
+				- mset a 10 b 20
+			- MGET 批量获取多个key的值
+				- mget a b
+(
+1) "10"
+2) "20"
+3) "30"
+)
+			- STRLEN key 获取key value的长度
+			- APPEND key value 在value 尾部追加value
+			- GETRANGE key start end 获取指定范围的字符串
+			- SETRANGE key offset value 重写指定位置开始的字符串为新字符串
+		- Hashes 散列
+			- 由field和关联的value组成的map。field和value都是字符串的
+hash的域数量没有限制(除内存外)
+			- HSET key field val 设置HASH 值
+			- HMSET  mykey field1 val1 key2 field2 val2 ... 设置多个HASH field value值 
+				- hmset user:1000 username antirez birthyear 1977 verified 1
+			- HSETNX key field val 当field不存在时设置HASH field，存在时不处理
+			- HMGET mykey field1 field2 .. 获取多个HASH key的值
+				- > hmget user:1000 username birthyear no-such-field
+1) "antirez"
+2) "1977"
+3) (nil)
+			- HGET mykey field1  获取HASH field的值
+				- > hget user:1000 username
+"antirez"
+			- HGETALL mykey 获取所有HASH field/value对
+				- redis> HSET myhash field1 "Hello"
+(integer) 1
+redis> HSET myhash field2 "World"
+(integer) 1
+redis> HGETALL myhash
+1) "field1"
+2) "Hello"
+3) "field2"
+4) "World"
+			- HEXISTS mykey field 获取HASH field 是否存在
+				- HEXISTS myhash field1
+(integer) 0
+			- HDEL mykey field1 field2 ... 删除HASH 多个field
+				- redis> HDEL myhash field2
+(integer) 0
+			- HINCRBY key field increment  原子递增(increment)HASH field值 
+				- redis> HSET myhash field 5
+(integer) 1
+redis> HINCRBY myhash field 1
+(integer) 6
+			- HINCRBYFLOAT key field increment 原子递增浮点数 HASH field值
+			- HKEYS key 返回所有HASH field名称
+			- HLEN key 获取HASH field数量
+			- HSCAN key cursor [MATCH pattern] [COUNT count] 同SCAN
+			- HSTRLEN key field 获取HASH field字符串长度
+			- HVALS key 获取所有HASN values
+				- redis> HSET myhash field1 "Hello"
+(integer) 1
+redis> HSET myhash field2 "World"
+(integer) 1
+redis> HVALS myhash
+1) "Hello"
+2) "World"
+		- Lists 列表
+			- 按插入顺序排序的字符串元素的集合，由链表实现
+			- LPUSH mykey val1 val2 ... 向list头部添加多个元素，返回list 长度
+			- RPUSH mykey val1 val2 ... 向list尾部添加多个元素，返回list 长度
+			- LRANGE mykey startIdx stopIdx 从list中取出一定范围的元素
+				- LRANGE 带有两个索引，一定范围的第一个和最后一个元素。这两个索引都可以为负来告知Redis从尾部开始计数，因此-1表示最后一个元素，-2表示list中的倒数第二个元素，以此类推
+			- LINDEX key index 获取list中某个索引的元素值
+			- LPOP mykey 从头部删除并返回删除的元素
+			- RPOP mykey 从尾部删除并返回删除的元素
+			- POP 空list时返回null
+			- LTRIM mykey startIdx  stopIdx 把list从左边截取指定长度。
+				- 从0位起截取到2索引位，3个元素： ltrim mykey 0 2 
+			- list上的阻塞操作(可实现生产者，消费者队列）
+				- BLPOP mylist1 mylist2 ... TIMEOUT  阻塞式从头部删除元素
+					- TIMEOUT 为指定阻塞时间，若为0时，表示一直阻塞
+				- BRPOP mylist1 mylist2 ... TIMEOUT 阻塞式从尾部删除元素
+					- 多批量回复(multi-bulk-reply): 具体来说:
+当没有元素可以被弹出时返回一个 nil 的多批量值，并且 timeout 过期。
+当有元素弹出时会返回一个双元素的多批量值，其中第一个元素是弹出元素的 key，第二个元素是 value。
+（
+redis> RPUSH list1 a b c
+(integer) 3
+redis> BRPOP list1 list2 0
+1) "list1"
+2) "c"
+）
+			- RPOPLPUSH  source destinatoin
+				- 原子性地返回并移除存储在 source 的列表的最后一个元素（列表尾部元素）， 并把该元素放入存储在 destination 的列表的第一个元素位置（列表头部）。
+返回值：
+bulk-string-reply: 被移除和放入的元素
+					- 例如：假设 source 存储着列表 a,b,c， destination存储着列表 x,y,z。 执行 RPOPLPUSH 得到的结果是 source 保存着列表 a,b ，而 destination 保存着列表 c,x,y,z。
+			- BRPOPLPUSH
+			- LLEN mylist 获取list长度
+			- LREM key count element  删除列表中的指定元素
+				- count > 0：删除等于element从头到尾移动的元素。
+count < 0：删除等于element从尾到头移动的元素。
+count = 0：删除所有等于的元素element。
+					- redis> RPUSH mylist "hello"
+(integer) 1
+redis> RPUSH mylist "hello"
+(integer) 2
+redis> RPUSH mylist "foo"
+(integer) 3
+redis> RPUSH mylist "hello"
+(integer) 4
+redis> LREM mylist -2 "hello"
+(integer) 2
+redis> LRANGE mylist 0 -1
+1) "hello"
+2) "foo"
+redis> 
+				- 例如，LREM list -2 "hello"将删除"hello"存储在中的列表中最后两个出现的 list。
+			- LSET key index element 设置列表中某个位置的元素
+				- redis> RPUSH mylist "one"
+(integer) 1
+redis> RPUSH mylist "two"
+(integer) 2
+redis> RPUSH mylist "three"
+(integer) 3
+redis> LSET mylist 0 "four"
+"OK"
+redis> LSET mylist -2 "five"
+"OK"
+redis> LRANGE mylist 0 -1
+1) "four"
+2) "five"
+3) "three"
+redis> 
+
+		- Sets 集合
+			- 不重复且无序的字符串元素的集合。
+			- SADD key value1 ,value2 ... 添加新元素到set中
+			- SMEMBERS key 获取set中的所有元素
+				- redis> smembers myset1
+				- 数据量大时，生产环境慎用，该操作会导致服务器阻塞
+使用SSCAN替代
+			- SISMEMBER key value 检测元素是否存在，1:是 0:否
+			- SINTER key [key ...]  返回从所有给定集合的交集得到的集合成员
+				- key1 = {a,b,c,d}
+key2 = {c}
+key3 = {a,c,e}
+SINTER key1 key2 key3 = {c}
+			- SINTERSTORE destination key [key ...] 获取给定集合的交集并保存到destination
+			- SDIFF key [key ...] 返回给定集合的差集
+				- key1 = {a,b,c,d}
+key2 = {c}
+key3 = {a,c,e}
+SDIFF key1 key2 key3 = {b,d}
+			- SDIFFSTORE destination key [key ...]  获取给定集合的差集并保存到destination中
+			- SUNION key [key ...] 获取给定集合的合集
+				- key1 = {a,b,c,d}
+key2 = {c}
+key3 = {a,c,e}
+SUNION key1 key2 key3 = {a,b,c,d,e}
+			- SUNIONSTORE destination key [key ...]
+ 获取给定集合的合集并保存到destination中
+			- SCARD key 获取集合中的元素个数
+			- SPOP key [count] 随机删除集合中的1个或多个元素，并返回(count参数始于3.2版本)
+				- redis> spop myset 1
+			- SREM key member [member ...]  删除集合中的多个元素，返回从集合中删除的元素数量
+				- redis> SREM myset "four"
+(integer) 0
+			- SRANDMEMBER key [count] 从集合中随机获取指定数量的元素（不删除集合中的元素）
+			- SMOVE source destination member 将集合中的元素移动到另一个集合中，返回元素是否移动成功，1：是，0：否
+				- redis> SMOVE myset myotherset "two"
+(integer) 0
+			- SSCAN
+		- Sortd Sets 有序集合
+			- 类似Sets,但是每个字符串元素都关联到一个叫score浮动数值（floating number value）。里面的元素总是通过score进行着排序，所以不同的是，它是可以检索的一系列元素。
+			- 排序规则
+				- 如果A和B是两个具有不同分数的元素，那么如果A.score是> B.score，则A>B。
+				- 如果A和B的分数完全相同，那么如果A字符串在字典上大于B字符串，则A>B。A和B字符串不能相等，因为排序集仅具有唯一元素。
+			- ZADD key [NX|XX] [CH] [INCR] score member [score member ...]  将具有指定分数的成员添加到有序集合中，课指定多个分数/成员对。返回添加到有序集合中的元素数量，不含更新分数的现有元素。
++inf和-inf值也是有效值
+				- XX： 只更新已存在元素
+				- NX：元素不存在时，创建新元素
+			- ZRANGE key start stop [WITHSCORES] 返回有序列表中指定范围的元素， 如果得分相同，将按字典排序。带有WITHSCORES 时同时返回每个元素的分数
+				- redis> ZRANGE myzset 0 1 WITHSCORES
+1) "one"
+2) "1"
+3) "two"
+4) "2"
+			- ZREVRANGE key start stop [WITHSCORES]  返回有序集key中，指定区间内的成员。其中成员的位置按score值递减(从大到小)来排列。具有相同score值的成员按字典序的反序排列。
+			- ZCARD key 返回有序列表的基数（元素数）
+				- redis> ZCARD myzset
+（integer）2
+			- ZCOUNT key min max 返回有序集合中的元素数量，元素得分介于min和max间，默认包含min max的分数。
+(min (max 时不包含值为min max分数的元素
+				- redis> ZADD myzset 1 "one"
+(integer) 1
+redis> ZADD myzset 2 "two"
+(integer) 1
+redis> ZADD myzset 3 "three"
+(integer) 1
+redis> ZCOUNT myzset -inf +inf
+(integer) 3
+redis> ZCOUNT myzset (1 3
+(integer) 2
+redis> 
+				- redis> zcount myzset (1 (3
+(integer) 1
+			- ZINCRBY key increment member 递增元素在有序集合中的分数
+			- ZSCORE key member 返回有序集合中元素的分数
+				- redis> ZADD myzset 1 "one"
+(integer) 1
+redis> ZSCORE myzset "one"
+"1"
+redis> 
+			- ZREM key member [member ...] 删除有序集合中多个元素
+			- 等： https://redis.io/commands/zunionstore
+		- Bitmaps (Bit arrays)
+			- simply bitmaps: 通过特殊的命令，你可以将 String 值当作一系列 bits 处理：可以设置和清除单独的 bits，数出所有设为 1 的 bits 的数量，找到最前的被设为 1 或 0 的 bit，等等
+		- hyperloglogs
+			- 被用于估计一个 set 中元素数量的概率性的数据结构
+			-  PFADD key element [element ...]
+	- 命令
+		-  KYES pattern 列出所有匹配的key
+			- 生产环境慎用，该操作会导致服务器阻塞
+使用SCAN替代
+		- EXISTS mykey 查询key是否存在，返回1/0
+		- DEL mykey 删除key，返回1/0
+		- TYPE mykey 返回key对应的存储类型
+			- string
+hash
+list
+set
+zset
+		- EXPIRE mykey secondVal 设置key有效期，精度可以使用毫秒或秒，默认：s
+			- 设置key5s 超时 expire key 5
+		- TTL mykey 获取key剩余有效时间
+		- key的自动创建和删除
+			- 推入元素之前创建空的 list，或者在 list 没有元素时删除它。在 list 为空时删除 key，并在用户试图添加元素（比如通过 LPUSH）而键不存在时创建空 list，是 Redis 的职责。
+			- 三条规则来概括
+				- 当我们向一个聚合数据类型中添加元素时，如果目标键不存在，就在添加元素前创建空的聚合数据类型。
+				- 当我们从聚合数据类型中移除元素时，如果值仍然是空的，键自动被销毁。
+				- 对一个空的 key 调用一个只读的命令，比如 LLEN （返回 list 的长度），或者一个删除元素的命令，将总是产生同样的结果。该结果和对一个空的聚合类型做同个操作的结果是一样的。
+		- SCAN 
+			- SCAN 命令用于迭代当前数据库中的key集合。
+SSCAN 命令用于迭代SET集合中的元素。
+HSCAN 命令用于迭代Hash类型中的键值对。
+ZSCAN 命令用于迭代SortSet集合中的元素和元素对应的分值
+			- SCAN 命令用于迭代当前数据库中的key集合。
+				- SCAN cursor [MATCH pattern] [COUNT count]
+				- SCAN命令是一个基于游标的迭代器。这意味着命令每次被调用都需要使用上一次这个调用返回的游标作为该次调用的游标参数，以此来延续之前的迭代过程
+当SCAN命令的游标参数被设置为 0 时， 服务器将开始一次新的迭代， 而当服务器向用户返回值为 0 的游标时， 表示迭代已结束。
+				- SCAN命令的返回值 是一个包含两个元素的数组， 第一个数组元素是用于进行下一次迭代的新游标， 而第二个数组元素则是一个数组， 这个数组中包含了所有被迭代的元素。
+在第二次调用 SCAN 命令时， 命令返回了游标 0 ， 这表示迭代已经结束， 整个数据集已经被完整遍历过了。
+full iteration ：以 0 作为游标开始一次新的迭代， 一直调用 SCAN 命令， 直到命令返回游标 0 ， 我们称这个过程为一次完整遍历。
+				- Scan命令的保证（SCAN命令以及其他增量式迭代命令）
+					- 从完整遍历开始直到完整遍历结束期间， 一直存在于数据集内的所有元素都会被完整遍历返回； 这意味着， 如果有一个元素， 它从遍历开始直到遍历结束期间都存在于被遍历的数据集当中， 那么 SCAN 命令总会在某次迭代中将这个元素返回给用户。
+					- 同样，如果一个元素在开始遍历之前被移出集合，并且在遍历开始直到遍历结束期间都没有再加入，那么在遍历返回的元素集中就不会出现该元素。
+				- SCAN命令每次执行返回的元素数量
+					- SCAN增量式迭代命令并不保证每次执行都返回某个给定数量的元素,甚至可能会返回零个元素， 但只要命令返回的游标不是 0 ， 应用程序就不应该将迭代视作结束。
+					- 默认COUNT=10，即最大返回10条记录
+				- cursor 游标
+					- 在开始一个新的迭代时， 游标必须为 0 。
+增量式迭代命令在执行之后返回的， 用于延续迭代过程的游标。
+				- SCAN, SSCAN, HSCAN 和 ZSCAN 命令都返回一个包含两个元素的 multi-bulk 回复： 回复的第一个元素是字符串表示的无符号 64 位整数（游标）， 回复的第二个元素是另一个 multi-bulk 回复， 包含了本次被迭代的元素。
+SCAN 命令返回的每个元素都是一个key。
+SSCAN 命令返回的每个元素都是一个集合成员。
+HSCAN 命令返回的每个元素都是一个键值对，一个键值对由一个键和一个值组成。
+ZSCAN命令返回的每个元素都是一个有序集合元素，一个有序集合元素由一个成员（member）和一个分值（score）组成。
+			- SSCAN 命令用于迭代SET集合中的元素。
+			- HSCAN 命令用于迭代Hash类型中的键值对。
+			- ZSCAN 命令用于迭代SortSet集合中的元素和元素对应的分值
+	- 其他功能
+		- Geospatial 地理空间半径查询
+			- GEOADD key longitude latitude member [longitude latitude member ...]
+				- 存储在ZSET中
+				- 将指定的地理空间位置（纬度、经度、名称）添加到指定的key中。这些数据将会存储到sorted set这样的目的是为了方便使用GEORADIUS或者GEORADIUSBYMEMBER命令对数据进行半径查询等操作。
+返回添加到ZSET中的元素数目，不包含更新score的元素
+					- redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEODIST Sicily Palermo Catania
+"166274.15156960039"
+redis> GEORADIUS Sicily 15 37 100 km
+1) "Catania"
+redis> GEORADIUS Sicily 15 37 200 km
+1) "Palermo"
+2) "Catania"
+redis> 
+			- GEODIST key member1 member2 [unit]
+				- 返回两个给定位置之间的距离。
+如果两个位置之间的其中一个不存在， 那么命令返回空值。
+指定单位的参数 unit 必须是以下单位的其中一个：
+m 表示单位为米。
+km 表示单位为千米。
+mi 表示单位为英里。
+ft 表示单位为英尺。
+如果用户没有显式地指定单位参数， 那么 GEODIST 默认使用米作为单位。
+					- redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEODIST Sicily Palermo Catania
+"166274.15156960039"
+redis> GEODIST Sicily Palermo Catania km
+"166.27415156960038"
+redis> GEODIST Sicily Palermo Catania mi
+"103.31822459492736"
+redis> GEODIST Sicily Foo Bar
+(nil)
+redis> 
+				- 计算出的距离会以双精度浮点数的形式被返回。 如果给定的位置元素不存在， 那么命令返回空值。
+			- GEOHASH key member [member ...]
+				- 返回一个或多个位置元素的 Geohash 表示。
+通常使用表示位置的元素使用不同的技术，使用Geohash位置52点整数编码。由于编码和解码过程中所使用的初始最小和最大坐标不同，编码的编码也不同于标准。此命令返回一个标准的Geohash，在维基百科和geohash.org网站都有相关描述
+					- redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEOHASH Sicily Palermo Catania
+1) "sqc8b49rny0"
+2) "sqdtr74hyu0"
+redis> 
+			- GEOPOS key member [member ...]
+				- 从key里返回所有给定位置元素的位置（经度和纬度）。
+					- redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEOPOS Sicily Palermo Catania NonExisting
+1) 1) "13.361389338970184"
    2) "38.115556395496299"
-  2) 1) "15.087267458438873"
+2) 1) "15.087267458438873"
    2) "37.50266842333162"
-  3) (nil)
-  redis&gt; 
-  			- array-reply, 具体的:
-  GEOPOS 命令返回一个数组， 数组中的每个项都由两个元素组成： 第一个元素为给定位置元素的经度， 而第二个元素则为给定位置元素的纬度。
-  当给定的位置元素不存在时， 对应的数组项为空值。
-  		- GEORADIUS key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC]
-  			- 以给定的经纬度为中心， 返回键包含的位置元素当中， 与中心的距离不超过给定最大距离的所有位置元素。
-  范围可以使用以下其中一个单位：
-  m 表示单位为米。
-  km 表示单位为千米。
-  mi 表示单位为英里。
-  ft 表示单位为英尺。
-  在给定以下可选项时， 命令会返回额外的信息：
-  WITHDIST: 在返回位置元素的同时， 将位置元素与中心之间的距离也一并返回。 距离的单位和用户给定的范围单位保持一致。
-  WITHCOORD: 将位置元素的经度和维度也一并返回。
-  WITHHASH: 以 52 位有符号整数的形式， 返回位置元素经过原始 geohash 编码的有序集合分值。 这个选项主要用于底层应用或者调试， 实际中的作用并不大。
-  命令默认返回未排序的位置元素。 通过以下两个参数， 用户可以指定被返回位置元素的排序方式：
-  ASC: 根据中心的位置， 按照从近到远的方式返回位置元素。
-  DESC: 根据中心的位置， 按照从远到近的方式返回位置元素。
-  				- redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEORADIUS Sicily 15 37 200 km WITHDIST
-  1) 1) "Palermo"
+3) (nil)
+redis> 
+				- array-reply, 具体的:
+GEOPOS 命令返回一个数组， 数组中的每个项都由两个元素组成： 第一个元素为给定位置元素的经度， 而第二个元素则为给定位置元素的纬度。
+当给定的位置元素不存在时， 对应的数组项为空值。
+			- GEORADIUS key longitude latitude radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count] [ASC|DESC]
+				- 以给定的经纬度为中心， 返回键包含的位置元素当中， 与中心的距离不超过给定最大距离的所有位置元素。
+范围可以使用以下其中一个单位：
+m 表示单位为米。
+km 表示单位为千米。
+mi 表示单位为英里。
+ft 表示单位为英尺。
+在给定以下可选项时， 命令会返回额外的信息：
+WITHDIST: 在返回位置元素的同时， 将位置元素与中心之间的距离也一并返回。 距离的单位和用户给定的范围单位保持一致。
+WITHCOORD: 将位置元素的经度和维度也一并返回。
+WITHHASH: 以 52 位有符号整数的形式， 返回位置元素经过原始 geohash 编码的有序集合分值。 这个选项主要用于底层应用或者调试， 实际中的作用并不大。
+命令默认返回未排序的位置元素。 通过以下两个参数， 用户可以指定被返回位置元素的排序方式：
+ASC: 根据中心的位置， 按照从近到远的方式返回位置元素。
+DESC: 根据中心的位置， 按照从远到近的方式返回位置元素。
+					- redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEORADIUS Sicily 15 37 200 km WITHDIST
+1) 1) "Palermo"
    2) "190.4424"
-  2) 1) "Catania"
+2) 1) "Catania"
    2) "56.4413"
-  redis&gt; GEORADIUS Sicily 15 37 200 km WITHCOORD
-  1) 1) "Palermo"
+redis> GEORADIUS Sicily 15 37 200 km WITHCOORD
+1) 1) "Palermo"
    2) 1) "13.361389338970184"
       2) "38.115556395496299"
-  2) 1) "Catania"
+2) 1) "Catania"
    2) 1) "15.087267458438873"
       2) "37.50266842333162"
-  redis&gt; GEORADIUS Sicily 15 37 200 km WITHDIST WITHCOORD
-  1) 1) "Palermo"
+redis> GEORADIUS Sicily 15 37 200 km WITHDIST WITHCOORD
+1) 1) "Palermo"
    2) "190.4424"
    3) 1) "13.361389338970184"
       2) "38.115556395496299"
-  2) 1) "Catania"
+2) 1) "Catania"
    2) "56.4413"
    3) 1) "15.087267458438873"
       2) "37.50266842333162"
-  redis&gt; 
-  			- 返回： 
-  bulk-string-reply, 具体的:
-  在没有给定任何 WITH 选项的情况下， 命令只会返回一个像 [“New York”,”Milan”,”Paris”] 这样的线性（linear）列表。
-  在指定了 WITHCOORD 、 WITHDIST 、 WITHHASH 等选项的情况下， 命令返回一个二层嵌套数组， 内层的每个子数组就表示一个元素。
-  在返回嵌套数组时， 子数组的第一个元素总是位置元素的名字。 至于额外的信息， 则会作为子数组的后续元素， 按照以下顺序被返回：
-  以浮点数格式返回的中心与位置元素之间的距离， 单位与用户指定范围时的单位一致。
-  geohash 整数。
-  由两个元素组成的坐标，分别为经度和纬度。
-  举个例子， GEORADIUS Sicily 15 37 200 km WITHCOORD WITHDIST 这样的命令返回的每个子数组都是类似以下格式的：
-  ["Palermo","190.4424",["13.361389338970184","38.115556395496299"]]
-  		- GEORADIUSBYMEMBER key member radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]
-  			- 这个命令和 GEORADIUS 命令一样， 都可以找出位于指定范围内的元素， 但是 GEORADIUSBYMEMBER 的中心点是由给定的位置元素决定的， 而不是像 GEORADIUS 那样， 使用输入的经度和纬度来决定中心点
-  指定成员的位置被用作查询的中心。
-  关于 GEORADIUSBYMEMBER 命令的更多信息， 请参考 GEORADIUS 命令的文档。
-  				- redis&gt; GEOADD Sicily 13.583333 37.316667 "Agrigento"
-  (integer) 1
-  redis&gt; GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
-  (integer) 2
-  redis&gt; GEORADIUSBYMEMBER Sicily Agrigento 100 km
-  1) "Agrigento"
-  2) "Palermo"
-  redis&gt; 
-  		- 可用业务场景: 附近的人，距离位置
-  	- Lua Scripting LUA脚本
-  	- Transactions 事务
-  		- MULTI 、 EXEC 、 DISCARD 和 WATCH 是 Redis 事务相关的命令
-  			- 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。
-  			- 事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。
-  		- EXEC 命令负责触发并执行事务中的所有命令
-  			- 如果客户端在使用 MULTI 开启了一个事务之后，却因为断线而没有成功执行 EXEC ，那么事务中的所有命令都不会被执行。
-  			- 另一方面，如果客户端成功在开启事务之后执行 EXEC ，那么事务中的所有命令都会被执行。
-  		- 事务中的错误
-  			- 事务在执行 EXEC 之前，入队的命令可能会出错。比如说，命令可能会产生语法错误（参数数量错误，参数名错误，等等），或者其他更严重的错误，比如内存不足（如果服务器使用 maxmemory 设置了最大内存限制的话）。
-  			- 命令可能在 EXEC 调用之后失败。举个例子，事务中的命令可能处理了错误类型的键，比如将列表命令用在了字符串键上面，诸如此类。
-  				- 对于发生在 EXEC 执行之前的错误，客户端以前的做法是检查命令入队所得的返回值：如果命令入队时返回 QUEUED ，那么入队成功；否则，就是入队失败。如果有命令在入队时失败，那么大部分客户端都会停止并取消这个事务。
-  不过，从 Redis 2.6.5 开始，服务器会对命令入队失败的情况进行记录，并在客户端调用 EXEC 命令时，拒绝执行并自动放弃这个事务。
-  		- MULTI 命令开启一个事务，总是返回OK
-  			-   MULTI 执行之后， 客户端可以继续向服务器发送任意多条命令， 这些命令不会立即被执行， 而是被放到一个队列中， 当 EXEC命令被调用时， 所有队列中的命令才会被执行。
-  				- &gt; MULTI
-  OK
-&gt; INCR foo
+redis> 
+				- 返回： 
+bulk-string-reply, 具体的:
+在没有给定任何 WITH 选项的情况下， 命令只会返回一个像 [“New York”,”Milan”,”Paris”] 这样的线性（linear）列表。
+在指定了 WITHCOORD 、 WITHDIST 、 WITHHASH 等选项的情况下， 命令返回一个二层嵌套数组， 内层的每个子数组就表示一个元素。
+在返回嵌套数组时， 子数组的第一个元素总是位置元素的名字。 至于额外的信息， 则会作为子数组的后续元素， 按照以下顺序被返回：
+以浮点数格式返回的中心与位置元素之间的距离， 单位与用户指定范围时的单位一致。
+geohash 整数。
+由两个元素组成的坐标，分别为经度和纬度。
+举个例子， GEORADIUS Sicily 15 37 200 km WITHCOORD WITHDIST 这样的命令返回的每个子数组都是类似以下格式的：
+["Palermo","190.4424",["13.361389338970184","38.115556395496299"]]
+			- GEORADIUSBYMEMBER key member radius m|km|ft|mi [WITHCOORD] [WITHDIST] [WITHHASH] [COUNT count]
+				- 这个命令和 GEORADIUS 命令一样， 都可以找出位于指定范围内的元素， 但是 GEORADIUSBYMEMBER 的中心点是由给定的位置元素决定的， 而不是像 GEORADIUS 那样， 使用输入的经度和纬度来决定中心点
+指定成员的位置被用作查询的中心。
+关于 GEORADIUSBYMEMBER 命令的更多信息， 请参考 GEORADIUS 命令的文档。
+					- redis> GEOADD Sicily 13.583333 37.316667 "Agrigento"
+(integer) 1
+redis> GEOADD Sicily 13.361389 38.115556 "Palermo" 15.087269 37.502669 "Catania"
+(integer) 2
+redis> GEORADIUSBYMEMBER Sicily Agrigento 100 km
+1) "Agrigento"
+2) "Palermo"
+redis> 
+			- 可用业务场景: 附近的人，距离位置
+		- Lua Scripting LUA脚本
+		- Transactions 事务
+			- MULTI 、 EXEC 、 DISCARD 和 WATCH 是 Redis 事务相关的命令
+				- 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。
+				- 事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。
+			- EXEC 命令负责触发并执行事务中的所有命令
+				- 如果客户端在使用 MULTI 开启了一个事务之后，却因为断线而没有成功执行 EXEC ，那么事务中的所有命令都不会被执行。
+				- 另一方面，如果客户端成功在开启事务之后执行 EXEC ，那么事务中的所有命令都会被执行。
+			- 事务中的错误
+				- 事务在执行 EXEC 之前，入队的命令可能会出错。比如说，命令可能会产生语法错误（参数数量错误，参数名错误，等等），或者其他更严重的错误，比如内存不足（如果服务器使用 maxmemory 设置了最大内存限制的话）。
+				- 命令可能在 EXEC 调用之后失败。举个例子，事务中的命令可能处理了错误类型的键，比如将列表命令用在了字符串键上面，诸如此类。
+					- 对于发生在 EXEC 执行之前的错误，客户端以前的做法是检查命令入队所得的返回值：如果命令入队时返回 QUEUED ，那么入队成功；否则，就是入队失败。如果有命令在入队时失败，那么大部分客户端都会停止并取消这个事务。
+不过，从 Redis 2.6.5 开始，服务器会对命令入队失败的情况进行记录，并在客户端调用 EXEC 命令时，拒绝执行并自动放弃这个事务。
+			- MULTI 命令开启一个事务，总是返回OK
+				-   MULTI 执行之后， 客户端可以继续向服务器发送任意多条命令， 这些命令不会立即被执行， 而是被放到一个队列中， 当 EXEC命令被调用时， 所有队列中的命令才会被执行。
+					- > MULTI
+OK
+\> INCR foo
 QUEUED
-&gt; INCR bar
+\> INCR bar
 QUEUED
-&gt; EXEC
+\> EXEC
 1) (integer) 1
 2) (integer) 1
 			- DISCARD 客户端可以清空事务队列， 并放弃执行事务
-				- &gt; SET foo 1
+				- > SET foo 1
 OK
-&gt; MULTI
+\> MULTI
 OK
-&gt; INCR foo
+\> INCR foo
 QUEUED
-&gt; DISCARD
+\> DISCARD
 OK
-&gt; GET foo
+\> GET foo
 "1"
 			- EXEC 执行命令队列中的所有命令，
 返回一个数组， 数组中的每个元素都是执行事务中的命令所产生的回复。 其中， 回复元素的先后顺序和命令发送的先后顺序一致。
@@ -3665,11 +3660,11 @@ ObjectId 是一个12字节 BSON 类型数据，有以下格式：
 紧接的两个字节由进程id组成（PID）
 最后三个字节是随机数。
 			- 生成ObjectId(): ObjectId() | new ObjectId()
-&gt; var newObject = ObjectId()
-&gt; newObject.getTimestamp()
+\> var newObject = ObjectId()
+\> newObject.getTimestamp()
 ISODate("2017-11-25T07:21:10Z")
 			- 获取ObjectId字符串: ObjectId().str
-&gt; newObject.str
+\> newObject.str
 5a1919e63df83ce79df8b38f
 		- String :  字符串，UTF-8编码
 		- Integer：整型数值
@@ -3682,22 +3677,22 @@ ISODate("2017-11-25T07:21:10Z")
 		- Null: 用于创建空值
 		- Symbol: 符号。基本上等同于String，不同的是，一般用于采用特殊符号类型的语言
 		- Date: 日期。用于UNIX时间格式存储当前时间或日期。
-			- &gt; var mydate1 = new Date()     //格林尼治时间
-&gt; mydate1
+			- > var mydate1 = new Date()     //格林尼治时间
+\> mydate1
 ISODate("2018-03-04T14:58:51.233Z")
-&gt; typeof mydate1
+\> typeof mydate1
 object
-			- &gt; var mydate2 = ISODate() //格林尼治时间
-&gt; mydate2
+			- > var mydate2 = ISODate() //格林尼治时间
+\> mydate2
 ISODate("2018-03-04T15:00:45.479Z")
-&gt; typeof mydate2
+\> typeof mydate2
 object
-			- &gt; var mydate1str = mydate1.toString()
-&gt; mydate1str
+			- > var mydate1str = mydate1.toString()
+\> mydate1str
 Sun Mar 04 2018 14:58:51 GMT+0000 (UTC) 
-&gt; typeof mydate1str
+\> typeof mydate1str
 string
-			- &gt; Date()
+			- > Date()
 Sun Mar 04 2018 15:02:59 GMT+0000 (UTC)   
 		- Binary Data: 二进制数据
 		- Code: 代码类型，用于在文档中存储JavaScript代码
@@ -3751,17 +3746,17 @@ mongodb://host1,host2,host3/?safe=true;w=2;wtimeoutMS=2000
 	- 用法
 		- DB相关命令
 			- show dbs  显示所有数据的列表。
-				- &gt; show dbs
+				- > show dbs
 local  0.078GB
 test   0.078GB
-&gt; 
+\> 
 			- db  显示当前数据库对象或集合。
-			- use <database_name&gt; 连接到一个指定的数据库(若不存在则在插入文档后创建)。
-				- &gt; use local
+			- use <database_name> 连接到一个指定的数据库(若不存在则在插入文档后创建)。
+				- > use local
 switched to db local
-&gt; db
+\> db
 local
-&gt; 
+\> 
 			- db.dropDatabase() 删除数据库
 		- Collection相关命令
 			- show collections | show tables | db.getCollectionNames() 查看所有集合
@@ -3788,7 +3783,6 @@ db.cappedLogCollection.find().sort({$natural:-1})
 			- db.collection.find(query, projection) 查询文档
 				- query ：可选，使用查询操作符指定查询条件
 				- projection ：可选，使用投影操作符指定返回的键。查询时返回文档中所有键值， 只需省略该参数即可（默认省略）。1返回,0:不返回
-					
 					- >db.collection.findOne(<query>},{field1:1|0})
 			- db.collection.findOne(query, projection)  查询文档，只返回一个文档
 				- where 条件操作符
@@ -3807,11 +3801,11 @@ db.cappedLogCollection.find().sort({$natural:-1})
 				- or
 					- $or: [   {key1: value1}, {key2:value2}]
 				- $type 操作符
-		- https://docs.mongodb.com/manual/reference/operator/query/type/index.html
-			类型，值核对表
-		- db.col.find({"title" : {$type : 2}})
+					- https://docs.mongodb.com/manual/reference/operator/query/type/index.html
+类型，值核对表
+					- db.col.find({"title" : {$type : 2}})
 或
-			db.col.find({"title" : {$type : 'string'}})
+db.col.find({"title" : {$type : 'string'}})
 				- limit 读取指定数量的数据记录
 					- db.collection.find().limit(NUMBER)
 				- skip 跳过指定数量的数据
@@ -3821,18 +3815,18 @@ db.cappedLogCollection.find().sort({$natural:-1})
 				- $in $nin
 				- 正则表达式 $regex
 					- 注意事项
-			- 正则表达式中使用变量。一定要使用eval将组合的字符串进行转换，不能直接将字符串拼接后传入给表达式。否则没有报错信息，只是结果为空！
-			var name=eval("/" + 变量值key +"/i"); 
-			- 模糊查询包含title关键词, 且不区分大小写
-			title:eval("/"+title+"/i")    // 等同于 title:{$regex:title,$Option:"$i"} 
+						- 正则表达式中使用变量。一定要使用eval将组合的字符串进行转换，不能直接将字符串拼接后传入给表达式。否则没有报错信息，只是结果为空！
+var name=eval("/" + 变量值key +"/i"); 
+						- 模糊查询包含title关键词, 且不区分大小写
+title:eval("/"+title+"/i")    // 等同于 title:{$regex:title,$Option:"$i"} 
 					- regex操作符
 						- {<field>:{$regex:/pattern/，$options:’<options>’}}
 						- {<field>:{$regex:’pattern’，$options:’<options>’}}
 						- {<field>:{$regex:/pattern/<options>}}
 					- 正则表达式对象
 						- {<field>: /pattern/<options>}
-		- options
-			包括i, m, x以及S四个选项
+					- options
+包括i, m, x以及S四个选项
 						- i 忽略大小写，{<field>{$regex/pattern/i}}，设置i选项后，模式中的字母会进行大小写不敏感匹配。
 						- m 多行匹配模式，{<field>{$regex/pattern/,$options:'m'}，m选项会更改^和$元字符的默认行为，分别使用与行的开头和结尾匹配，而不是与输入字符串的开头和结尾匹配。
 						- x 忽略非转义的空白字符，{<field>:{$regex:/pattern/,$options:'m'}，设置x选项后，正则表达式中的非转义的空白字符将被忽略，同时井号(#)被解释为注释的开头注，只能显式位于option选项中。
@@ -3846,59 +3840,58 @@ db.cappedLogCollection.find().sort({$natural:-1})
 						- 当option选项中包含X或S选项时，只能使用$regex，例如:{name:{$regex:/m.*line/,$options:"si"}}
 			- db.<collection_name>.insert(document) 插入文档
 			- db.<collection_name>.insertOne() 插入1个文档
-  	- db.collection.insertOne(
+				- db.collection.insertOne(
    <document>,
-       {
-  writeConcern: <document>
- }
-			)
+   {
+      writeConcern: <document>
+   }
+)
 				- 可以将数据定义为一个变量，再插入
-		- &gt; document=({title: 'var obj', likes: 100});
-&gt; { "title" : "var obj", "likes" : 100 }
-db.col.insert(document)
-			WriteResult({ "nInserted" : 1 })
-			
-  		- db.collection.insertMany() 插入多个文档
-  - db.collection.insertMany(
-     [ <document 1&gt; , <document 2>, ... ],
-       {
-    writeConcern: <document>,
-ordered: <boolean>
-		 }
-			)
+					- > document=({title: 'var obj', likes: 100});
+{ "title" : "var obj", "likes" : 100 }
+\> db.col.insert(document)
+WriteResult({ "nInserted" : 1 })
+			- db.collection.insertMany() 插入多个文档
+				- db.collection.insertMany(
+   [ <document 1> , <document 2>, ... ],
+   {
+      writeConcern: <document>,
+      ordered: <boolean>
+   }
+)
 					- document：要写入的文档。
 					- writeConcern：写入策略，默认为 1，即要求确认写操作，0 是不要求。
 					- ordered：指定是否按顺序写入，默认 true，按顺序写入。
-- 更新文档
-  db.collection.update(
+			- 更新文档
+db.collection.update(
    <query>,
    <update>,
-     {
+   {
      upsert: <boolean>,
      multi: <boolean>,
-   writeConcern: <document>
- }
-			)
-	- db.collection.updateOne(<filter>, <update>, <options>)
+     writeConcern: <document>
+   }
+)
+				- db.collection.updateOne(<filter>, <update>, <options>)
 db.collection.updateMany(<filter>, <update>, <options>)
-			db.collection.replaceOne(<filter>, <update>, <options>)
+db.collection.replaceOne(<filter>, <update>, <options>)
 				- query : update的查询条件，类似sql update查询内where后面的。
 				- update : update的对象和一些更新的操作符（如$,$inc...）等，也可以理解为sql update查询内set后面的
 					- filde更新操作符
 						- $currentDate 设置字段为当前日期
-  				- db.customers.updateOne(
+							- db.customers.updateOne(
    { _id: 1 },
-     {
-       $currentDate: {
+   {
+     $currentDate: {
         lastModified: true,
-      "cancellation.date": { $type: "timestamp" }
+        "cancellation.date": { $type: "timestamp" }
      },
-       $set: {
+     $set: {
         "cancellation.reason": "user request",
-      status: "D"
+        status: "D"
+     }
    }
- }
-			)
+)
 						- $inc  为字段增加指定值
 							- { $inc: { <field1>: <amount1>, <field2>: <amount2>, ... } }
 						- $min 当指定值小余当前值时，将值更新为指定值
@@ -3906,153 +3899,149 @@ db.collection.updateMany(<filter>, <update>, <options>)
 						- $max 当指定值大于当前值时，将值更新为指定值
 							- { $max: { <field1>: <value1>, ... } }
 						- $mul 当前值与指定值相乘，若当前字段不存在，则用0相乘
-&gt; 				- { "_id" : 1, "item" : "ABC", "price" : NumberDecimal("10.99"), "qty" : 25 }
-  db.products.update(
+							- { "_id" : 1, "item" : "ABC", "price" : NumberDecimal("10.99"), "qty" : 25 }
+\>db.products.update(
    { _id: 1 },
- { $mul: { price: NumberDecimal("1.25"), qty: 2 } }
-&gt;)
-			{ "_id" : 1, "item" : "ABC", "price" : NumberDecimal("13.7375"), "qty" : 50 }
+   { $mul: { price: NumberDecimal("1.25"), qty: 2 } }
+)
+\>{ "_id" : 1, "item" : "ABC", "price" : NumberDecimal("13.7375"), "qty" : 50 }
 						- $rename 重命名字段名
 							- {$rename: { <field1>: <newName1>, <field2>: <newName2>, ... } }
 						- $setOnInsert 当upsert=1切为插入数据时，插入指定数据
-  				- db.collection.update(
+							- db.collection.update(
    <query>,
    { $setOnInsert: { <field1>: <value1>, ... } },
- { upsert: true }
-			)
+   { upsert: true }
+)
 						- $unset 删除字段
 							- { $unset: { <field1>: "", ... } }
 					- array 更新操作符
-			- $ 更新指定数组中的指定元素为新元素，而无需指定具体索引
+						- $ 更新指定数组中的指定元素为新元素，而无需指定具体索引
 <array>.$:val
-			<array>.$.field:val
-  				- db.collection.update(
+<array>.$.field:val
+							- db.collection.update(
    { <array>: value ... },
- { <update operator>: { "<array>.$" : value } }
-			)
-  					- >db.students.insert([
+   { <update operator>: { "<array>.$" : value } }
+)
+								- >db.students.insert([
    { "_id" : 1, "grades" : [ 85, 80, 80 ] },
    { "_id" : 2, "grades" : [ 88, 90, 92 ] },
- { "_id" : 3, "grades" : [ 85, 100, 90 ] }
-&gt;])
-  db.students.updateOne(
+   { "_id" : 3, "grades" : [ 85, 100, 90 ] }
+])
+\>db.students.updateOne(
    { _id: 1, grades: 80 },
- { $set: { "grades.$" : 82 } }
-&gt; 		)
-
+   { $set: { "grades.$" : 82 } }
+)
+\>
 { "_id" : 1, "grades" : [ 85, 82, 80 ] }
 { "_id" : 2, "grades" : [ 88, 90, 92 ] }
-	{ "_id" : 3, "grades" : [ 85, 100, 90 ] }
-  						- db.collection.update(
-      { <query selector&gt; },
- { <update operator>: { "array.$.field" : value } }
-	)
-    							- {
-      _id: 4,
-      grades: [
-
+{ "_id" : 3, "grades" : [ 85, 100, 90 ] }
+							- db.collection.update(
+   { <query selector> },
+   { <update operator>: { "array.$.field" : value } }
+)
+								- {
+  _id: 4,
+  grades: [
      { grade: 80, mean: 75, std: 8 },
      { grade: 85, mean: 90, std: 5 },
      { grade: 85, mean: 85, std: 8 }
-]
-&gt;}
-  db.students.updateOne(
+  ]
+}
+\>db.students.updateOne(
    { _id: 4, "grades.grade": 85 },
- { $set: { "grades.$.std" : 6 } }
-&gt;)
-
-  {
+   { $set: { "grades.$.std" : 6 } }
+)
+\>
+{
    "_id" : 4,
    "grades" : [
       { "grade" : 80, "mean" : 75, "std" : 8 },
       { "grade" : 85, "mean" : 90, "std" : 6 },
       { "grade" : 85, "mean" : 85, "std" : 8 }
- ]
-	}
-  							- db.students.updateOne(
-      {
-
+   ]
+}
+								- db.students.updateOne(
+   {
      _id: 5,
      grades: { $elemMatch: { grade: { $lte: 90 }, mean: { $gt: 80 } } }
    },
- { $set: { "grades.$.std" : 6 } }
-	)
-					- $[] 更新字段中的所有元素
-	<array>.$[]:val
-						- { <update operator>: { "<array>.$[]" : value } }
-  db.collection.updateMany(
-   { <query conditions&gt; },
- { <update operator>: { "<array>.$[]" : value } }
-	)
+   { $set: { "grades.$.std" : 6 } }
+)
+						- $[] 更新字段中的所有元素
+<array>.$[]:val
+							- { <update operator>: { "<array>.$[]" : value } }
+db.collection.updateMany(
+   { <query conditions> },
+   { <update operator>: { "<array>.$[]" : value } }
+)
 						- $[<identifier>] 按条件更新数组中的部分数据
-  						- db.collection.updateMany(
-      { <query conditions&gt; },
-      { <update operator>: { "<array>.$[<identifier>]" : value } },
- { arrayFilters: [ { <identifier>: <condition&gt; } ] }
-	)
-							- { "_id" : 1, "grades" : [ 95, 92, 90 ] }
+							- db.collection.updateMany(
+   { <query conditions> },
+   { <update operator>: { "<array>.$[<identifier>]" : value } },
+   { arrayFilters: [ { <identifier>: <condition> } ] }
+)
+								- { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 102 ] }
-&gt;{ "_id" : 3, "grades" : [ 95, 110, 100 ] }
-    db.students.update(
-      { },
-      { $set: { "grades.$[element]" : 100 } },
-      { multi: true,
-
+{ "_id" : 3, "grades" : [ 95, 110, 100 ] }
+\>db.students.update(
+   { },
+   { $set: { "grades.$[element]" : 100 } },
+   { multi: true,
      arrayFilters: [ { "element": { $gte: 100 } } ]
- }
-&gt;)
-
+   }
+)
+\>
 { "_id" : 1, "grades" : [ 95, 92, 90 ] }
 { "_id" : 2, "grades" : [ 98, 100, 100 ] }
-	{ "_id" : 3, "grades" : [ 95, 100, 100 ] }
+{ "_id" : 3, "grades" : [ 95, 100, 100 ] }
 						- $addToSet 将元素添加到数组中(若元素中已存在，则不插入)
-  						- db.collection.update(
-      { <query&gt; },
- { $addToSet: { field: val } }
-	)
-    							- db.foo.update(
-         { _id: 1 },
- { $addToSet: { colors: "c" } }
-	)
+							- db.collection.update(
+   { <query> },
+   { $addToSet: { field: val } }
+)
+								- db.foo.update(
+   { _id: 1 },
+   { $addToSet: { colors: "c" } }
+)
 						- $pop 删除数组中的第一个或最后一个元素
-						- db.collection.update( { <query&gt; }, 
-	{ $pop: { field: -1|1 } } )
+							- db.collection.update( { <query> }, 
+{ $pop: { field: -1|1 } } )
 						- $pull 删除数组中指定条件的元素，或完全匹配的1个元素
 							- { $pull: { <field1>: <value|condition>, <field2>: <value|condition>, ... } }
-      							- {
-            _id: 1,
-            fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
- vegetables: [ "carrots", "celery", "squash", "carrots" ]
+								- {
+   _id: 1,
+   fruits: [ "apples", "pears", "oranges", "grapes", "bananas" ],
+   vegetables: [ "carrots", "celery", "squash", "carrots" ]
 }
-        {
-            _id: 2,
-            fruits: [ "plums", "kiwis", "oranges", "bananas", "apples" ],
- vegetables: [ "broccoli", "zucchini", "carrots", "onions" ]
-&gt;}
-        db.stores.update(
-
+{
+   _id: 2,
+   fruits: [ "plums", "kiwis", "oranges", "bananas", "apples" ],
+   vegetables: [ "broccoli", "zucchini", "carrots", "onions" ]
+}
+\>db.stores.update(
     { },
     { $pull: { fruits: { $in: [ "apples", "oranges" ] }, vegetables: "carrots" } },
-  { multi: true }
-&gt;)
-
-  {
+    { multi: true }
+)
+\>
+{
   "_id" : 1,
   "fruits" : [ "pears", "grapes", "bananas" ],
-"vegetables" : [ "celery", "squash" ]
+  "vegetables" : [ "celery", "squash" ]
 }
-  {
+{
   "_id" : 2,
   "fruits" : [ "plums", "kiwis", "bananas" ],
-"vegetables" : [ "broccoli", "zucchini", "onions" ]
-	}
+  "vegetables" : [ "broccoli", "zucchini", "onions" ]
+}
 						- $pullAll 从数组中删除多个指定元素
-							- { $pullAll: { <field1>: [ <value1>, <value2&gt; ... ], ... } }
+							- { $pullAll: { <field1>: [ <value1>, <value2> ... ], ... } }
 						- $push 将元素添加到数组中
 							- { $push: { <field1>: <value1>, ... } }
 							- { $push: { <field1>: { <modifier1>: <value1>, ... }, ... } }
-						- 添加多个元素到数组中
-  db.students.update(
+							- 添加多个元素到数组中
+db.students.update(
    { _id: 5 },
    {
      $push: {
@@ -4061,92 +4050,89 @@ db.collection.updateMany(<filter>, <update>, <options>)
           $sort: { score: -1 }
        }
      }
- }
-	)
+   }
+)
 						- 修饰符
 							- $each 将多个值添加到数组中，用于$addToSet,$push
-								- { $addToSet: { <field>: { $each: [ <value1>, <value2&gt; ... ] } } }
-								- { $push: { <field>: { $each: [ <value1>, <value2&gt; ... ] } } }
+								- { $addToSet: { <field>: { $each: [ <value1>, <value2> ... ] } } }
+								- { $push: { <field>: { $each: [ <value1>, <value2> ... ] } } }
 							- $position(NUMBER),与$each配合使用 将元素插入到指定位置，用于$push，下标从0开始
-  							- {
-    $push: {
-
+								- {
+  $push: {
     <field>: {
        $each: [ <value1>, <value2>, ... ],
        $position: <num>
     }
+  }
 }
-	}
-						- $slice(NUMBER) 将数组截取为指定数量的大小 
-	，用于$push
-  							- {
-    $push: {
-
+							- $slice(NUMBER) 将数组截取为指定数量的大小 
+，用于$push
+								- {
+  $push: {
      <field>: {
        $each: [ <value1>, <value2>, ... ],
        $slice: <num>
      }
+  }
 }
-	}
 							- $sort 对数组进行排序， 与$each配合使用，用于$push
-  							- {
-    $push: {
-
+								- {
+  $push: {
      <field>: {
        $each: [ <value1>, <value2>, ... ],
        $sort: <sort specification>
      }
+  }
 }
-	}
 				- upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
 				- multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。
 				- writeConcern :可选，抛出异常的级别
 				- 实例
-				- 更新匹配到的所有记录
-	db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}},{multi:true})
-				- 全部更新
-	db.col.update( { "count" : { $gt : 3 } } , { $set : { "test2" : "OK"} },false,true );
-		-  删除文档
-  db.collection.remove(
+					- 更新匹配到的所有记录
+db.col.update({'title':'MongoDB 教程'},{$set:{'title':'MongoDB'}},{multi:true})
+					- 全部更新
+db.col.update( { "count" : { $gt : 3 } } , { $set : { "test2" : "OK"} },false,true );
+			-  删除文档
+db.collection.remove(
    <query>,
    {
      justOne: <boolean>,
      writeConcern: <document>
- }
-	)
+   }
+)
 				- query :（可选）删除的文档的条件。
 				- justOne : （可选）如果设为 true 或 1，则只删除一个文档，如果不设置该参数，或使用默认值 false，则删除所有匹配条件的文档。
 				- writeConcern :（可选）抛出异常的级别。
 		- index索引相关命令
 			- db.collection.createIndex(keys, options) 创建索引
 				- options
-				- name	string	
-	索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。
-				- background	Boolean	
-	建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为false。
-				- unique	Boolean	
-	建立的索引是否唯一。指定为true创建唯一索引。默认值为false.
-				- sparse	Boolean	
-	对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.
-				- expireAfterSeconds	integer	
-	指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。
-				- v	index version	
-	索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。
-				- weights	document
-	索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。
-				- default_language	string	
-	对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
-				- language_override	string	
-	对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
+					- name	string	
+索引的名称。如果未指定，MongoDB的通过连接索引的字段名和排序顺序生成一个索引名称。
+					- background	Boolean	
+建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加 "background" 可选参数。 "background" 默认值为false。
+					- unique	Boolean	
+建立的索引是否唯一。指定为true创建唯一索引。默认值为false.
+					- sparse	Boolean	
+对文档中不存在的字段数据不启用索引；这个参数需要特别注意，如果设置为true的话，在索引字段中不会查询出不包含对应字段的文档.。默认值为 false.
+					- expireAfterSeconds	integer	
+指定一个以秒为单位的数值，完成 TTL设定，设定集合的生存时间。
+					- v	index version	
+索引的版本号。默认的索引版本取决于mongod创建索引时运行的版本。
+					- weights	document
+索引权重值，数值在 1 到 99,999 之间，表示该索引相对于其他索引字段的得分权重。
+					- default_language	string	
+对于文本索引，该参数决定了停用词及词干和词器的规则的列表。 默认为英语
+					- language_override	string	
+对于文本索引，该参数指定了包含在文档中的字段名，语言覆盖默认的language，默认值为 language.
 			- db.collection.getIndexes() 查询集合索引
 			- db.col.dropIndex("inedxName") 删除指定索引
 			- db.collection.dropIndexes() 删除所有索引
 			- db.collection.totalIndexSize() 查看集合索引大小
 			- 全文索引
 				- MongoDB 在 2.6 版本以后是默认开启全文检索的，如果你使用之前的版本，你需要使用以下代码来启用全文检索:
-				- >db.adminCommand({setParameter:true,textSearchEnabled:true})
+					- >db.adminCommand({setParameter:true,textSearchEnabled:true})
 或者使用命令：
-	mongod --setParameter textSearchEnabled=true
+mongod --setParameter textSearchEnabled=true
 				- 创建全文索引
 					- db.collection.createIndex({post_text:"text"})
 				- 查询全文索引
@@ -4155,20 +4141,20 @@ db.collection.updateMany(<filter>, <update>, <options>)
 			- db.collection.aggregate(AGGREGATE_OPERATION)
 				- AGGREGATE_OPERATION
 					- $project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
-					- 结果中就只还有tilte和author2个字段了（_id默认被包含）
-  db.article.aggregate(
+						- 结果中就只还有tilte和author2个字段了（_id默认被包含）
+db.article.aggregate(
     { $project : {
         _id : 0 ,
         title : 1 ,
         author : 1
-	  }});
+    }});
 					- $match：用于过滤数据，只输出符合条件的文档。 $match使用MongoDB的标准查询操作。
-					- $match用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段$group管道操作符进行处理。
+						- $match用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段$group管道操作符进行处理。
 db.articles.aggregate( [
  { $match : { score : { $gt : 70, $lte : 90 } } },
-   { $group: { _id: null,
-                 count: { $sum: 1 } } }    
-	] );
+ { $group: { _id: null,
+                   count: { $sum: 1 } } }    
+] );
 					- $limit：用来限制MongoDB聚合管道返回的文档数。
 					- $skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。
 					- $unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
@@ -4177,8 +4163,8 @@ db.articles.aggregate( [
 					- $geoNear：输出接近某一地理位置的有序文档。
 		- MongoDB中的关系
 			- 1. 嵌入文档
-			- 2类数据维护在1条数据中
-  {
+				- 2类数据维护在1条数据中
+{
    "_id":ObjectId("52ffc33cd85242f436000001"),
    "contact": "987654321",
    "dob": "01-01-1991",
@@ -4195,11 +4181,11 @@ db.articles.aggregate( [
          "pincode": 456789,
          "city": "Chicago",
          "state": "Illinois"
-    }]
-	} 
+      }]
+} 
 			- 2. 引用式关系
-			- 两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。
-  {
+				- 两次查询，第一次查询用户地址的对象id（ObjectId），第二次通过查询的id获取用户的详细地址信息。
+{
    "_id":ObjectId("52ffc33cd85242f436000001"),
    "contact": "987654321",
    "dob": "01-01-1991",
@@ -4207,33 +4193,33 @@ db.articles.aggregate( [
    "address_ids": [
       ObjectId("52ffc4a5d85242602e000000"),
       ObjectId("52ffc4a5d85242602e000001")
- ]
-	}
+   ]
+}
 			- 3. 数据库应用DBRef
 				- 指定集合，一个文档从多个集合引用文档，我们应该使用 DBRefs。
 				- 形式： { $ref : , $id : , $db :  }
 					- $ref：集合名称
 					- $id：引用的id
 					- $db:数据库名称，可选参数
-  			- {
-      "_id":ObjectId("53402597d852426020000002"),
-      "address": {
-      "$ref": "address_home",
-      "$id": ObjectId("534009e4d852427820000002"),
-      "$db": "runoob"},
-      "contact": "987654321",
-      "dob": "01-01-1991",
- "name": "Tom Benzamin"
-	}
-&gt; 				- >var user = db.users.findOne({"name":"Tom Benzamin"})
->var dbRef = user.address
-	db[dbRef.$ref].findOne({"_id":(dbRef.$id)})
+				- {
+   "_id":ObjectId("53402597d852426020000002"),
+   "address": {
+   "$ref": "address_home",
+   "$id": ObjectId("534009e4d852427820000002"),
+   "$db": "runoob"},
+   "contact": "987654321",
+   "dob": "01-01-1991",
+   "name": "Tom Benzamin"
+}
+					- >var user = db.users.findOne({"name":"Tom Benzamin"})
+\>var dbRef = user.address
+\>db[dbRef.$ref].findOne({"_id":(dbRef.$id)})
 	- 集群（ReplicaSet副本集）
 		- 原理
-		- mongodb的复制至少需要两个节点。其中一个是主节点，负责处理客户端请求，其余的都是从节点，负责复制主节点上的数据。
+			- mongodb的复制至少需要两个节点。其中一个是主节点，负责处理客户端请求，其余的都是从节点，负责复制主节点上的数据。
 mongodb各个节点常见的搭配方式为：一主一从、一主多从。
 主节点记录在其上的所有操作oplog，从节点定期轮询主节点获取这些操作，然后对自己的数据副本执行这些操作，从而保证从节点的数据与主节点一致。
-	副本集在主机宕机后，副本会接管主节点成为主节点，不会出现宕机的情况。
+副本集在主机宕机后，副本会接管主节点成为主节点，不会出现宕机的情况。
 		- 设置
 			- 1. mongod --port "PORT" --dbpath "YOUR_DB_DATA_PATH" --replSet "REPLICA_SET_INSTANCE_NAME"
 				- mongod --port 27017 --dbpath "D:\set up\mongodb\data" --replSet rs0
@@ -4241,23 +4227,22 @@ mongodb各个节点常见的搭配方式为：一主一从、一主多从。
 				- rs.conf()来查看副本集的配置
 				- rs.status()  查看副本集状态
 				- db.isMaster() 判断服务是否是主节点
-		- 3. rs.add()方法来添加副本集的成员
-	rs.add(HOST_NAME:PORT)
+			- 3. rs.add()方法来添加副本集的成员
+rs.add(HOST_NAME:PORT)
 				- rs.add("mongod1.net:27017")
 	- 集群(Shard分片)
-
 		- https://www.runoob.com/mongodb/mongodb-sharding.html
 	- 监控
 		- mongostat 
 			- mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
 		- mongotop 
 			- mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例，查看哪些大量的时间花费在读取和写入数据。 mongotop提供每个集合的水平的统计数据。默认情况下，mongotop返回值的每一秒。
-- 查询分析
+	- 查询分析
 		- MongoDB 查询分析可以确保我们所建立的索引是否有效，是查询语句性能分析的重要工具。
-	MongoDB 查询分析常用函数有：explain() 和 hint()。
+MongoDB 查询分析常用函数有：explain() 和 hint()。
 		- explain() 
-    		- db.collection.find().explain()
-    			- {
+			- db.collection.find().explain()
+				- {
    "cursor" : "BtreeCursor gender_1_user_name_1",
    "isMultiKey" : false,
    "n" : 1,
@@ -4286,18 +4271,18 @@ mongodb各个节点常见的搭配方式为：一主一从、一主多从。
                "$maxElement" : 1
             }
          ]
-    ]
-	 }
-	}
+      ]
+   }
+}
 				- 返回字段说明
 					- indexOnly: 字段为 true ，表示我们使用了索引。
 					- cursor：因为这个查询使用了索引，MongoDB 中索引存储在B树结构中，所以这是也使用了 BtreeCursor 类型的游标。如果没有使用索引，游标的类型是 BasicCursor。这个键还会给出你所使用的索引的名称，你通过这个名称可以查看当前数据库下的system.indexes集合（系统自动创建，由于存储索引信息，这个稍微会提到）来得到索引的详细信息。
 					- n：当前查询返回的文档数量。
 					- nscanned/nscannedObjects：表明当前这次查询一共扫描了集合中多少个文档，我们的目的是，让这个数值和返回文档的数量越接近越好。
 					- millis：当前查询所需时间，毫秒数。
-				- indexBounds：当前查询具体使用的索引。
+					- indexBounds：当前查询具体使用的索引。
 		- hint()
-	使用 hint 来强制 MongoDB 使用一个指定的索引
+使用 hint 来强制 MongoDB 使用一个指定的索引
 			- db.collection.find().hint({field1:1,field2:1})
 	- Mongo中的原子操作
 		- mongodb不支持事务 ，但是mongodb提供了许多原子操作，比如文档的保存，修改，删除等，都是原子操作
@@ -4331,30 +4316,29 @@ mongodb各个节点常见的搭配方式为：一主一从、一主多从。
 				- 索引名的长度不能超过128个字符
 				- 一个复合索引最多可以有31个字段
 	- MapReduce
-&gt; 	- Map-Reduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。
-  	- 基本语法：
-    db.collection.mapReduce(
-      function() {emit(key,value);},  //map 函数
-      function(key,values) {return reduceFunction},   //reduce 函数
-      {
+		- Map-Reduce是一种计算模型，简单的说就是将大批量的工作（数据）分解（MAP）执行，然后再将结果合并成最终结果（REDUCE）。
+		- 基本语法：
+\>db.collection.mapReduce(
+   function() {emit(key,value);},  //map 函数
+   function(key,values) {return reduceFunction},   //reduce 函数
+   {
       out: collection,
       query: document,
       sort: document,
-
-    limit: number
-     }
+      limit: number
+   }
 )<.find()查询返回结果>
 			- 使用 MapReduce 要实现两个函数 Map 函数和 Reduce 函数,Map 函数调用 emit(key, value), 遍历 collection 中所有的记录, 将 key 与 value 传递给 Reduce 函数进行处理。
->Map 函数必须调用 emit(key, value) 返回键值对。
-  		- 实例：
-  db.posts.mapReduce( 
+Map 函数必须调用 emit(key, value) 返回键值对。
+			- 实例：
+\>db.posts.mapReduce( 
    function() { emit(this.user_name,1); }, 
    function(key, values) {return Array.sum(values)}, 
       {  
          query:{status:"active"},  
-       out:"post_total" 
-	    }
-	)
+         out:"post_total" 
+      }
+)
 		- 参数说明:
 			- map ：映射函数 (生成键值对序列,作为 reduce 函数参数)。
 			- reduce 统计函数，reduce函数的任务就是将key-values变成key-value把values数组变成一个单一的值value。
@@ -4398,11 +4382,10 @@ out: { inline: 1 }
       });
    return sequenceDocument.sequence_value;
 }
->db.products.insert({
+\>db.products.insert({
    "_id":getNextSequenceValue("productid"),
    "product_name":"Samsung S3",
    "category":"mobiles"})
-
 	- 调优
 - Memcache
 - Neo4j
@@ -4438,8 +4421,474 @@ out: { inline: 1 }
 ### Spring基础
 - Spring核心概念
 	- 架构分析
-	- IOC概念
-	- AOP概念
+(Spring框架是一个分层架构，包含大约20个模块)
+		- Core Container
+Core和Beans模块是 框架的基础部分，提供IoC(控制翻转)和DI(依赖注入)特性，基础概念是 BeanFactory
+			- Core模块(4.3.12.RELEASE)
+主要包含Spring框架基本的核心工具类
+				- Core模块下的包org.springframework
+					- asm Spring对于ASM的重新打包(带有特定Spring补丁)
+					- cglib Spring对于CGLIB 的重新打包(带有特定Spring补丁)
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/cglib/package-summary.html
+					- core Core模块核心包
+						- core.annotation
+注解，元注解以及具有属性覆盖的合并批注的核心支持包
+如@AliasFor @Order等注解及注解操作
+						- core.convert
+类型转换系统API
+						- core.env
+Spring的环境抽象包括bean定义配置文件和分层属性源支持。
+如:Environment,PropertiesSource, CommandLineArgs等接口和类
+						- core.io 
+整个框架中使用的资源相关包
+							- org.springframework.core.io.Resource
+extends InputStreamSource
+配置文件转为资源接口(配置文件的封装)
+								- org.springframework.core.io.AbstractResource
+抽象资源类
+									- ByteArrayResource
+Byte数组资源类
+									- ClassPathResource
+基于Class Path实现的资源类
+不支持jar中文件
+									- FileSystemResource
+基于java.io.File文件系统资源类
+									- PathResource
+基于java.nio.file.Path的资源类
+									- InputStreamResource
+基于输入流的资源类
+									- DescriptiveResource
+简单实现保存资源的描述,不是一个真正可读的资源
+									- VfsResource
+基于jboss Virtual File System的资源类
+									- AbstractFileResolvingResource
+将URLs 转换为File 引用的抽象基类资源类
+如: UrlResource,ClassPathResource
+									- org.springframework.beans.factory.support.BeanDefinitionResource
+org.springframework.beans.factory.config.BeanDefinition 的包装类
+								- org.springframework.core.io.WritableResource
+扩展Resource接口以支持写入
+							- org.springframework.core.io.support.EncodedResource extends InputStreamSource
+绑定资源描述符和指定编码或为读取的资源设置编码
+							- org.springframework.core.io.ResourceLoader
+资源加载策略接口
+								- DefaultResourceLoader
+默认资源加载类
+								- org.springframework.core.io.support.ResourcePatternResolver
+处理一个位置模式(location pattern)到一个资源对象
+如:模式为classpath*: 的路径
+									- org.springframework.context.ApplicationContext
+
+						- core.serializer
+Spring的序列化程序接口和实现的根包。
+						- core.style
+支持将样式值设置为字符串，以ToStringCreator作为中心类。
+						- core.task
+这个包定义了Spring的核心TaskExecutor抽象，并提供SyncTaskExecutor和SimpleAsyncTaskExecutor实现。
+						- core. type
+类型自省的核心支持包。
+						- MessageSource 消息处理策略接口,用于处理消息国际化
+messageSource.getMessage(code,defaultMsg,local)
+Spring provides two out-of-the-box implementations for production:
+ResourceBundleMessageSource, built on top of the standard ResourceBundle
+ReloadableResourceBundleMessageSource, being able to reload message definitions without restarting the VM.
+Spring提供了两种开箱即用的实现，一种是标准实现，一种是运行时可重新加载。
+默认使用bean名称为messageSource的单例Bean
+							- ResourceBundleMessageSource 默认实现
+							- ReloadableResourceBundleMessageSource
+					- lang 具有语言级语义的常见注解: Nullable , UsesJava7, UsesJava8等
+					- objenesis Spring对Objenesis 3.0的重新打包 （带有SpringObjenesis入口点)
+					- util 其他应用程序工具类包
+			- Beans模块
+所有应用都要用到的，它包含访问配置文件、创建和管理bean以及进行Inversion of Control/Dependency Injection(Ioc/DI)操作相关的所有类
+				- Beans模块下的包org.springframwork.beans
+					- annotation
+用于Java 5注释的bean样式处理的支持包
+					- factory
+实现Spring的轻量级控制反转（IoC/DI）容器的核心包
+						- 接口
+							- (interface)org.springframwork.beans.factory.Aware
+标记超级接口，用于指示bean有资格通过回调样式方法由Spring容器通知特定框架对象。
+用于容器加载通知的特定回调接口,如EnvironmentAware,ApplicationContextware
+								- (interface)org.springframework.beans.factory.BeanClassLoaderAware
+允许bean知道bean的回调 class loader; 也就是说，当前bean工厂使用的类加载器来加载bean类。
+								- BeanFactoryAware
+希望了解其所有权的bean将实现的接口BeanFactory。
+								- BeanNameAware
+由想要在bean工厂中知道其bean名称的bean实现的接口。
+							- org.springframwork.beans.factory.BeanFactory
+用于访问Spring bean容器的根接口
+								- HierarchicalBeanFactory
+由beanFactory实现的子接口，可以是层次结构的一部分。
+									- !!!org.springframework.beans.factory.support.AbstractBeanFactory
+BeanFactory的抽象化接口，提供ConfigurableBeanFatory的全部能力，可以用于BeanFactory获取后端资源
+类提供单例缓存
+Bean实例化核心类
+org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory:实现默认bean创建的抽象BeanFactory超类,具有RootBeanDefinition类指定的全部功能
+										- Bean实例创建及初始化(初始化过程中触发Aware,InitializingBean,BeanPostProcessor回调实现类)流程:
+doGetBean()获取Bean实例
+1. 转换beanName,将自动生成的bean名称转换为可用的beanName
+2. 从Singleton缓存中获取Bean实例
+Map<String, Object> singletonObjects = new ConcurrentHashMap<String, Object>(256)
+获取不到时,从【FactoryBean中获取新对象实例，通过getObjectForBeanInstance获取后触发postProcessObjectFromFactoryBean】,触发BeanPostProcessor.postProcessAfterInitialization()
+3.若缓存不存在时，先判断是否存在循环引用，然后判断是否存在parentBenFactory,若存在,则使用parentBeanFactory.getBean()获取对象实例
+若不存在parentBeanFactory,则开始处理当Bean依赖列表,注册依赖Bean(synchronized同步注册)，然后实例化依赖Bean
+4. 判断当前Bean类型(singleton,prototype,其他)分别实例化Bean(单例使用缓存对象,prototype每次创建新对象)
+a. 单例Bean创建，使用 AbstractAutowireCapableBeanFactory.createBean创建Bean实例，期间会触发所有InstantiationAwareBeanPostProcessor extexds BeanPostProcessor实现类的postProcessBeforeInstantiation,使得可以对Bean进行自定义修改，然后若返回bean不为空会继续触发所有InstantiationAwareBeanPostProcessor extexds BeanPostProcessor实现类的postProcessAfterInitialization以对Bean进一步操作。
+若resolveBeforeInstantiation的BeanPostProcessor没有创建Bean实例，则继续创建Bean;
+真正Bean创建:
+【AbstractAutowireCapableBeanFactory.doCreateBean(final String beanName, final RootBeanDefinition mbd, final Object[] args)真正创建Bean实例,Bean Class默认要求为public, 然后创建BeanWrapper,并创建Bean实例(通过CglibSubclassingInstantiationStrategy.instantiate创建), 创建完成后，将Bean加入到registeredSingletons缓存中，用来解决循环引用问题,
+然后解析填充bean属性AbstractAutowireCapableBeanFactory.populateBean(beanName, mbd, instanceWrapper);
+填充bean属性时，会进行autowire自动装配依赖bean,通过AUTOWIRE_BY_NAME或AUTOWIRE_BY_TYPE,即依赖注入的过程(DI)
+AbstractAutowireCapableBeanFactory.autowireByName()
+AbstractAutowireCapableBeanFactory.autowireByType()
+注入时,设置属性名对应bean,并注册该属性和当前bean的依赖关系,注解@Autowired注入也在该步骤中(AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter);
+!!!Beans属性填充后开始初始化Bean,AbstractAutowireCapableBeanFactory.initializeBean()初始化指定的Bean实例,执行initMethod ，beanPostProcessors 工厂回调,
+!!!先执行invokeAwareMethods, 执行BeanNameAware,BeanClassLoaderAware,BeanFactoryAware三种类型的回调,
+!!!然后触发所有BeanPostProcessors.postProcessBeforeInitializations(),然后执行initMethod,即InitializingBean.afterPropertiesSet()
+!!!然后触发所有BeanPostProcessors.postProcessAfterInitializations()
+!!!最后注册distroyMethod方法,若当前bean 实现了DisposableBean,或实现了java.lang.AutoCloseable或提供了destoryMethod属性(当destoryMethodName为(inffered)时,存在close或shutdown方法),则将该bean注册为DisposableBean
+】
+最后进行类型转换,在返回bean时,将Bean转换为输入时要求的类型
+(【在ApplicationContext中会注册BeanPostProcessor,一般为org.springframework.context.support.AbstractApplicationContext.refresh()中registerBeanPostProcessors()】)
+										- 创建Bean实例 早于 Aware调用 早于 BeanPostProcessor.postProcessBeforeInitializations() 早于 InitialingBean.afterPropertiesSet() 早于 BeanPostProcessor.postProcessAfterInitializations()
+										- 加载Bean时如果当前缓存中不存在,则到ParentBeanFactory中查找加载
+								- ListableBeanFactory
+由BeanFactory实现的扩展接口;
+该工厂可以枚举其所有bean实例，而不是按照名称一一尝试
+									- !!!XmlBeanFactory extends DefaultListableBeanFactory
+(Spring3.1以后建议使用 DefaultListableBeanFactory(Bean实例化+DI) +XmlBeanDefinitionReader(加载配置文件资源,扫描Bean),DefaultListableBeanFactory是XmlBeanDefinitionReader的BeanDefinitionRegistry)
+容器的基础,加载xml配置文件构建BeanFactory,并加载初始化Bean
+BeanFactory bf = new XmlBeanFactory( new ClassPathResource("spring-config.xml"));
+!!!!IoC核心流程(Bean扫描加载为BeanDefinition+Bean实例化(创建Bean+初始化Bean+DI(依赖注入))):
+										- XmlBeanFacotry加载流程:
+使用XmlBeanDefinitionReader从XML配置文件中加载Bean定义,并返回Bean个数
+private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
+this.reader.loadBeanDefinitions(resource);
+										- 1. D:\.m2\repository\org\springframework\spring-beans\4.3.12.RELEASE\spring-beans-(4.3.12.RELEASE-sources.jar!\org\springframework\beans\factory\xml\XmlBeanDefinitionReader.java)
+XmlBeanDefinitionReader .loadBeanDefinitions(new EncodedResource(resource));
+将资源转换为已编码资源
+2. public int loadBeanDefinitions(EncodedResource encodedResource) throws BeanDefinitionStoreException {} 加载Bean
+将已加载Bean保存到一个HashSet中,同时判断是否多次加载过改配置资源
+3.获取ResourceInputStream,并设置编码
+4. 从指定的XML中真正加载BeanDefinitions
+protected int doLoadBeanDefinitions(InputSource inputSource, Resource resource)
+throws BeanDefinitionStoreException {}
+doLoadBeanDefinitions中核心方法为doLoadDocument 和 registerBeanDefinitions
+从XML文档中读取Bean(使用JAXP和ResourceLoader解析Bean XML DTD 和Schema),将XML文件转换为Document,并注册Bean
+5.注册Bean,使用BeanDefinitionDocumentReader注册Bean
+DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions(Element root) {}
+从根解析Document树，
+DefaultBeanDefinitionDocumentReader.parseBeanDefinitions(Element root, BeanDefinitionParserDelegate delegate) 
+解析Document节点分为2部分:
+a.解析默认元素，解析import(import标签),alias(alise标签),bean(bean标签),nestedBeans(beans标签)
+parseDefaultElement(Element ele, BeanDefinitionParserDelegate delegate)
+b.解析自定义元素
+解析默认元素:
+a. 解析import标签
+protected void importBeanDefinitionResource(Element ele) {}
+获取import标签的resource属性，并解析placeHolder
+然后加载import对应的XML文件AbstractBeanDefinitionReader.loadBeanDefinitions(String location, Set<Resource> actualResources) 
+解析后触发 XmlReaderContext.fireImportProcessed(location, actResArray, extractSource(ele));事件
+b. 解析alias标签
+DefaultBeanDefinitionDocumentReader.protected void processAliasRegistration(Element ele){}
+注册别名，并保存到org.springframework.core.AliasRegistry.aliasMap中,并检查是否有别名循环引用(即存在name和alise 对应的别名注册)
+解析后触发 XmlReaderContext.fireAliasRegistered(name, alias, extractSource(ele));事件
+c. 解析bean标签
+BeanDefinitionParserDelegate.parseBeanDefinitionElement(ele)解析Bean,解析id,name属性，并将name属性解析为alias列表，按,或;分隔;默认将id作为beanName若id未提供,将名称列表中的第一个名称作为beanName;同时校验beanName,aliases是否唯一，将所有beanName,aliases 保存到BeanDefinitionParserDelegate.usedNames中
+然后解析bean标签的各种属性，若id,name都未提供，则使用提供的Class名称,若class属性未提供，则尝试使用父标签名字+"$child"或FactoryBeanName+"$created" 作为beanName,反之抛出异常,当为自动生成的beanName时,将若已存在当前名称,则设置beanName+"#"+counter
+解析后触发 XmlReaderContext.fireComponentRegistered(new BeanComponentDefinition(bdHolder);事件
+										- d.解析beans标签
+同解析Document根节点,按照根节点解析方法处理
+最后通过org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean()实例化Bean实例
+										- DefaultListableBeanFactory.getBean()
+									-  BeanFactory(XmlBeanFatory,XmlBeanDefinitionReader+ListableBeanFactory)Bean加载简单流程
+1.XmlBeanDefinitionReader加载配置文件为Resource,并扫描所有Bean
+2.ListableBeanFactory.getBean() 来加载及实例/初始化Bean,即IoC+DI,实例化Bean,及Bean属性赋值后触发部分Aware接口,然后触发BeanPostProcessor.postProcessBeforeInitialications(),然后调用Bean的initMethod方法,然后触发BeanPostProcessor.postProcessAfterInitializations()
+最后注册DisposiableBean
+3.实例化Bean时使用InstantiationStrategy策略接口,默认使用CglibSubclassingInstantiationStrategy生成类实例(普通类及方法注入类,含SimpleInstantiationStrategy方法)
+4.Bean实例化有 2种方式,1种使用FactoryBean.getObject()创建,另一种使用InstantiationStrategy.instantiate()创建
+							- FactoryBean <T> 
+由内部使用的对象实现的接口，这些对象BeanFactory本身就是单个对象的工厂,是一个能生产或修饰对象生成的工厂Bean。如果Bean实现此接口，则他将用作对象公开的工厂，而不是直接用作将自生公开的Bean实例。
+!!!注意:实现此接口的bean不能作为普通bean。FactoryBean已Bean样式定义，但是为bean引用(getObject())公开的对象始终是它创建的对象,
+可以通过&factoryBeanName获取其本身对象
+								- FactoryBean是一个工厂方法Bean,用于生成Bean实例,可以让我们自定义Bean创建过程;
+FactoryBean提供getObject(),getObjectType(),isSingleton()方法
+使用方法:
+1.创建自定义FactoryBean并implements FactoryBean,实现getObject(),getObjectType(),isSingleton()方法,并将该FactoryBean注册为Bean
+2.使用时,自定义FactoryBean代理的对象无需注册为Bean,在创建Bean doCreateBean()时,会自动扫描到匹配到的FacotryBean.getObject()创建Bean实例
+									- 通过BeanFactory.getBean(Class requiredType)时,最终会调用到AbstractBeanFactory.doCreateBean(),会通过requiredType匹配所有的已知Bean,当匹配的Bean为FactoryBean类型时,会检查FactoryBean.getObjectType()是否匹配
+(DefaultListableBeanFactory.doGetBeanNamesForType,AbstractBeanFactory.isTypeMatch())requiredType,若匹配,则使用该FactoryBean.getObject()创建Bean对象
+									- @Component
+public class AutowireBeanFactoryBean implements FactoryBean {
+    @Override
+    public Object getObject() throws Exception {
+        return new AutowireBean();
+    }
+    @Override
+    public Class<?> getObjectType() {
+        return AutowireBean.class;
+    }
+    @Override
+    public boolean isSingleton() {
+        return true;
+    }
+}
+//直接注入Bean,Spring doCreateBean时会扫描autowireBean的FactoryBean
+@Autowired
+AutowireBean autowireBean;
+								- FactoryBean是一个能生产或修饰对象生成的工厂Bean。一个Bean如果实现了FactoryBean接口，那么根据该Bean的名称获取到的实际上是getObject()返回的对象，而不是这个Bean自身实例，如果要获取这个Bean自身实例，那么需要在名称前面加上'&'符号。
+一般情况下，Spring通过反射机制利用的class属性指定实现类实例化Bean，在某些情况下，实例化Bean过程比较复杂，如果按照传统的方式，则需要在中提供大量的配置信息。配置方式的灵活性是受限的，这时采用编码的方式可能会得到一个简单的方案。Spring为此提供了一个org.springframework.bean.factory.FactoryBean的工厂类接口，用户可以通过实现该接口定制实例化Bean的逻辑。FactoryBean接口对于Spring框架来说占用重要的地位，Spring自身就提供了70多个FactoryBean的实现。它们隐藏了实例化一些复杂Bean的细节，给上层应用带来了便利。从Spring3.0开始，FactoryBean开始支持泛型，即接口声明改为FactoryBean的形式。
+beanFactory.getBean("consumeFactoryBean") 返回getObject()创建的对象
+beanFactory.getBean("&consumeFactoryBean") 返回consumeFactoryBean本身对象
+								- org.springframework.beans.factory.config.AbstracFactoryBean
+创建单例或原型对象的简单模版超类
+								- BeanFactory与FactoryBean的区别
+									- 1.1BeanFactory 是Spring 访问容器的根入口,为IoC的核心处理类 主要有XmlBeanFactory,DefaultListableBeanFactory,ConfigurableBeanFactory,AbstructAutowireCapableBeanFactory等实现类
+1.2FactoryBean 是内部使用对象的实现接口,本身是一个单个对象工厂。如果Bean实现这个接口,则这个Bean就作为一个公开的对象工厂,该Bean不能作为普通Bean,Bean引用(getObject())始终都是他创建的对象;我们可以自定义FactoryBean来控制Bean对象的创建过程,需要使用自定义FactoryBean创建的对象,不需要声明为Bean容器,在初始化实例时,Spring会扫描bean(BeanDefinitionName)列表,找到该Bean对应的FactoryBean.getObject()获取对象实例
+									- 2.1.BeanFactory是IoC容器的底层接口,为Bean容器访问的根入口,是ApplicationContext的顶级接口,是一个Bean工厂类,负责扫描生产和管理Bean的一个工厂类。
+2.2.FactoryBean是Spring提供的工厂Bean接口,在IoC容器的基础上给Bean的实现添加了简单工厂模式和装饰模式,生产的对象由getObject()方法决定
+							- InitializingBean
+被BeanFactory设置所有属性后需要作出一次反应的Bean接口
+提供了afterPropertiesSet()方法,用于Bean属性设置完成后做的额外的操作,即初始化完成后做的操作
+							- DisposableBean
+要在销毁时释放资源的bean所实现的接口
+提供destory方法，支持在销毁Bean时，调用destory-method,即销毁时做的操作
+							- NamedBean
+BeanNameAware 对应的获取Bean名称的接口,
+只提供一个getBeanName方法
+						- xml包
+org.springframework.beans.factory.xml
+							- spring-beans-*.xsd
+spring-tool-*.xsd
+spring-util-*.xsd
+定义文件
+							- XmlBeanFactory
+Xml加载Bean的核心类
+							- XmlBeanDefinitionReader
+Xml加载Bean对象真正的实现类
+							- DocumentLoader
+XML读取策略接口
+								- DefaultDocumentLoader
+Spring默认Document加载类
+使用标准JAXP XML解析器(JDK提供)加载
+						- config包
+							- BeanPostProcessor 工厂hook允许对新的实例进行自定义修改,并提供2个回调方法:
+1. postProcessBeforeInitialization
+在任何bean初始化回调（如InitializingBean afterPropertiesSet 或自定义init-method）之前，将此BeanPostProcessor应用于给定的新bean实例。
+2. postProcessAfterInitialization
+在任何bean初始化回调（如InitializingBean afterPropertiesSet 或自定义init-method）之后，将此BeanPostProcessor应用于给定的新bean实例。
+						- annotation 注解相关类实现包
+如@Autowired,@Configurable及注解注入处理类等
+						- support
+							- RootBeanDefinition extends AbstractBeanDefinition
+根bean定义表示合并的bean定义，该定义在运行时支持Spring BeanFactory中的特定bean。它可能是由多个相互继承的原始bean定义创建的，通常定义为GenericBeanDefinitions。根bean定义本质上是运行时的“统一” bean定义视图。
+							- AbstractBeanDefinitionReader 实现BeanDefinitionReader的抽象接口
+							- InstantiationStrategy 
+负责创建与rootBeanDefinition相对于的实例策略接口,
+包括使用CGLIB动态创建子类用于方法注入
+								- SimpleInstantiationStrategy
+BeanFactory简单对象实例化策略,不支持方法注入,但提供了对子类重写方法注入的支持
+								- CglibSubclassingInstantiationStrategy extends SimpleInstantiationStrategy
+BeanFactory的默认对象实例化策略类(如果方法需要由容器重写以实现方法注入，则使用CGLIB动态生成子类)
+					- propertyeditors
+属性编辑器用于将String值转换为对象类型，例如java.util.Properties。
+					- support
+支持org.springframework.beans包的类，例如用于排序和保存bean列表的实用程序类。
+				- spring-beans核心类
+DefaultListableBeanFactory
+XmlBeanDefinitionReader
+					- DefaultListableBeanFactory
+DefaultListableBeanFactory是整个bean加载的核心部分，是Spring注册及加载bean的默认实现
+					- XmlBeanDefinitionReader
+XmlBeanFactory与DefaultListableBeanFactory不同的地方其实是在XmlBeanFactory中使用了自定义的XML读取器XmlBeanDefinitionReader，实现了个性化的BeanDefinitionReader读取，DefaultListableBeanFactory继承了AbstractAutowireCapableBeanFactory并实现了ConfigurableListableBeanFactory以及BeanDefinitionRegistry接口
+						- ResourceLoader：定义资源加载器，主要应用于根据给定的资源文件地址返回对应的Resource
+						- BeanDefinitionReader：主要定义资源文件读取并转换为BeanDefinition的各个功能
+						- EnvironmentCapable：定义获取Environment方法
+						- DocumentLoader：定义从资源文件加载到转换为Document的功能
+						- AbstractBeanDefinitionReader：对EnvironmentCapable、BeanDefinitionReader类定义的功能进行实现
+						- BeanDefinitionDocumentReader：定义读取Document并注册BeanDefinition功能
+						- BeanDefinitionParserDelegate：定义解析Element的各种方法
+				- Spring核心加载类之间的类关系
+					- Resource,ResourceLoader 资源加载
+						- Iorg.springframework.core.io.Resource 加载的配置资源接口:
+子类有:ClassPathResource,AbstractResource,FileSystemResource,UrlResource等
+						- Iorg.springframework.core.io.ResourceLoader 资源加载接口:
+默认实现为:DefaultResourceLoader,自动检测路径进行Resource加载
+					- BeanDefinition扫描加载
+						- Iorg.springframework.beans.factory.config.BeanDefinition Bean定义接口 
+默认实现为AbstractBeanDefinition抽象类,
+常用类为RootBeanDefinition extends AbstractBeanDefinition
+						- Iorg.springframework.beans.factory.support.BeanDefinitionReader BeanDefinition加载的接口
+默认实现为:AbstractBeanDefinitionReader
+常用类有:XmlBeanDefinitionReader extends AbstractBeanDefinitionReader
+					- BeanFactory Bean创建管理流程
+						- Iorg.springframework.beans.factory.BeanFactory Bean容器加载的入口,Spring IoC实现的核心接口
+抽象实现为AbstractBeanFactory
+主要实现类:DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacotry extends AbstractBeanFactory implements ConfigurableBeanFactory extends BeanFactory(AbstractAutowireCapableBeanFactory.doCreateBean为创建Bean实例的主方法)
+						- org.sprignframework.beans.factory.support.DefaultSingletonBeanRegistry 共享Bean实例的基本注册表,实现了org.springframework.beans.factory.config.SingletonBeanRegistry,允许缓存单例Bean,通过名称获取bean实例
+					- FactoryBean 自定义实例化Bean
+						- Iorg.springframework.beans.factory.FactoryBean
+实现自定义初始化Bean的工厂方法接口
+					- ApplicationContext加载Spring
+						- Iorg.springframework.context.ApplicationContext 
+为应用程序提供配置的中央接口,
+主要实现类有:AbstractApplicationContext,ApplicationContext实现的核心抽象方法(refresh是加载Spring的主方法)
+XmlWebApplicationContext extends 
+AbstractRefreshableWebApplicationContext extends
+AbstractApplication Spring通过web.xml加载SpringXml的实现类
+					- InitializingBean
+						- Iorg.springframework.beans.factory.InitializingBean 实现Bean加载后执行afterPropertiesSet回调的接口
+					- DisposableBean
+						- Iorg.springframework.beans.factory.DisposableBean
+实现Bean销毁时执行distory-method回调的接口
+					- BeanPostProcessor
+						- Iorg.springframe.beans.factory.config.BeanPostProcessor 实现Bean初始化前后的回调接口
+				- Spring Bean加载循环依赖问题
+					- 循环依赖即循环引用,是2个或2个以上Bean相互持有对方,最终形成闭环,如A依赖于B,B依赖于C,C依赖于A
+Spring中循环依赖场景有:
+1.构造器循环依赖
+2.field属性循环依赖
+Singleton方式支持循环依赖
+Prototype不支持循环依赖
+					- 检查循环依赖:
+Bean创建时,将Bean标记为正在创建中,Spring中使用singletonsCurrentlyInCreation ConcurrentHashMap保存标记
+					- 解决循环依赖: (对于缓存的操作都使用了singletonObject作为syncronized(singleton)对象)
+Spring解决循环依赖使用了三级缓存,分别为
+singletonObject: 单例对象Cache,一级缓存(ConcurrentHashMap)
+earlySingletonObjects:提前曝光的单例对象Cache,二级缓存(HashMap)
+singletonFactories:单例对象工厂的Cache,三级缓存(HashMap)
+						- Bean缓存获取流程(org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(beanName,allowEarlyReference))
+1. 获取Bean时,首先从一级缓存singletonObject中获取Bean
+2. 如果1中获取不到,并且对象正在创建中,则从二级缓存earlySingletonObject中获取
+3. 如果2中获取不到切允许singletonFactories通过getObject()获取,则从三级缓存singletonFactory.getObject()中获取
+						- Cache流程:
+1. Bean加载时,首先完成了实例创建,然后将自己曝光到singletonFactories中(org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean())
+2. getSingleton时若singletonFactories.get(beanName)可以获取到Bean时,将Bean从singletonFactories转移到二级缓存earlySingletonObjects中(org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(beanName,allowEarlyReference),getBean时先getSingleton,获取不到时再doCreateBean,doCreateBean时做1和3步骤的操作)
+3. Bean完全加载完成之后,从二级缓存earlySingletonObjects移动到一级缓存singleObjects中(org.springframework.beans.support.DefaultSingletonBeanRegistry.getSingleton(beanName,sinigletonFactory)后addSingleton(beanName,singletonObject))
+						- 使用3级缓存:
+若仅解决循环依赖问题,则2级缓存也可以实现,
+添加3级缓存是给用户提供了接口扩展(SmartInstantiationAwareBeanPostProcessor)
+						- 3级缓存解决的循环依赖是基于单例类的Field字段级别的(setter)注入,
+构造方法注入循环依赖依然会有问题,且暂时无法解决
+				- SpringBean延迟加载
+					- https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#beans-dependency-resolution
+			- Context模块
+构建于Core和Beans模块基础之上，提供了一种类似于JNDI注册器的框架式的对象访问方法。Context模块继承了Beans的特性，为Spring核心提供了大量扩展，添加了对国际化(如资源绑定)、事件传播、资源加载和对Context的透明创建的支持。
+ApplicationContext接口是Context模块的关键
+org.springframework
+				- org.springframework.context 构建在Core和Beans模块基础之上
+					- annotation 对应用程序上下文的注解支出
+包括公共注释，组件扫描和用于创建Spring管理对象的基于java的元数据
+如:@Bean @CompantentScan等
+					- config 用于高级应用程序上下文配置的支持包，其中XML模式是主要配置格式。
+					- event 应用程序事件的支持类，例如标准上下文事件
+					- expression Spring应用程序上下文中的表达式(SpEL)解析支持。
+					- i18n 国际化支持
+					- support 支持org.springframework.context包的类，例如ApplicationContext实现和MessageSource实现的抽象基类。
+					- weaving 在Spring的LoadTimeWeaver抽象基础上，对Spring应用程序上下文的加载时编织支持 。用于AspectJ
+					- ApplicationContext
+Spring应用关键接口
+及启动初始化入口
+ApplicationContext是BeanFactory的扩展
+						- org.springframework.context.support.AbstractApplicationContext implements ConfigurableApplicationContext
+org.springframework.context.ApplicationContext接口的抽象实现，简单地说实现公共上下文功能。使用模板方法设计模式，需要具体的子类来实现抽象方法
+AbstractRefreshableConfigApplicationContext
+添加对指定配置位置的共成功处理,基于XML的ApplicationContext实现,如:ClassPathXmlApplicationContext,FileSystemXmlApplicationContext,XmlWebApplicationCOntext等
+							- refresh()方法:
+从Xml,propoerties或数据库模式中加载或刷新配置的持久表示;由于这是一个启动方法,如果启动失败应该销毁全部已创建的单例,以免浪费资源,调用方法后要么全部实例化,要么全部不实例化;
+流程:
+1.prepareRefresh,为刷新context做准备,设置启动时间和激活标记，以及执行配置资源的初始化(初始化占位符资源)
+2.obtainiFreshBeanFatory,刷新内部BeanFactory,清空已有BeanFactory,创建新的BeanFacotry(DefaultListableBeanFactory),并扫描Bean容器,并loadBeanDefinitions()
+3.prepareBeanFatory()为使用BeanFacotry做准备
+4.postProcessBeanFactory()post BeanFactory处理
+5.invokeBeanFactoryPostProcessors()实例化并调用所有注册的BeanFactoryPostProcessor bean,如果给定显示顺序,则按顺序调用,必须在单例实例化之前调用
+6. !!!registerBeanPostProcessors注册所有BeanPostProcessorbean,如果给定显示顺序,则按顺序调用,必须在单例实例化之前调用(用于Bean初始化时的BeanFactoryPostProcessor回调),会按照PriorityOrdered->Ordered->nonOrdered顺序将BeanPostProcessor加入到列表中
+7.initMessageSource()初始化messageSource,用于Message国际化的支持
+8. initApplicationEventMulticaster()为上下文初始化事件多宿主
+9.onRefresh() 初始化其他指定的bean
+10.注册其他applicationListener Bean
+11.finishBeanFactoryInitialization()完成BeanFactoryde 初始化,并初始化所有剩余的单例SingletonBean(非延迟加载)
+!!!【org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons()预初始化单例Beans,加载的是Service,Reponstory层Bean:
+首先获取到所有的BeanDefinitionNames,然后循环创建及初始化Bean,即调用org.springframework.beans.factory.AbstractBeanFactory.getBean(name)创建及初始化Bean
+】
+12.finishRefresh()完成refresh方法
+							- refresh后Bean加载时机: Bean加载是在refresh方法中加载的,具体在PostBeanFacotry时的preInstantiateSingletons()循环加载初始化所有非延迟加载的SingletonBean
+							- Spring(含Bean)加载流程: Spring加载时,通过调用org.springframework.context.support.AbstractApplicationContext.refresh()方法开始初始化BeanFactory,扫描/加载BeanDefinitions,注册BeanFactoryPostProcessor,注册BeanPostProcessors,然后org.springframework.beans.factory.DefaultListableBeanFactory.preInstantiateSingletons()循环初始化所有非单例的Bean;在扫描加载BeanDefinitions时,使用org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinistrions()加载BeanDefinitions;
+初始化Bean时使用org.springframework.beans.factory.support.AbstractBeanFacotry.doCreateBean()创建及初始化bean;同时实例化Bean有2种情况,一种为默认的Bean初始化,即org.springframework.beans.factory.support.InstantiationStrategy()(含SimpleInstantiationStrategy和CglibSubclassingInstantiationStrategy),另一种为实现自定义org.springframework.beans.FactoryBean,实现其中isSingleton(),getObejctType(),getObject()方法,当加载Bean时,会扫描所有BeanDefinitions,若扫描到的Bean类型为FactoryBean时,通过getObjectType来判断与目标Bean是否为相同的对象,若是,则使用该FactoryBean.getObject()创建Bean实例。
+							- !!!Spring基于web.xml,XML配置文件的启动是通过ContextLoaderListener中调用XmlWebApplicationContext.refresh()启动Spring加载(实质为调用AbstractApplicationContext.refresh())
+!!!SpringBoot基于SpringApplication.run的启动是通过SpringApplication.refreshContext(),最终调用AbstractApplicationContext.refresh()启动Spring加载
+二者的核心都是使用AbstractApplicationContext.refresh()加载Spring
+							- SpringWeb中AbstractApplicationContext.refresh() 加载BeanFactory,扫描Beans加载BeanDefinitions,注册BeanPostProcessor.
+AbstractRefreshableConfigApplication来启动Spring,并初始化非延迟加载的所有Singleton单例Bean
+SpringMVC中org.springframework.web.servlet.DispatcherServlet
+								- org.springframework.web.servlet.DispatcherServlet加载流程:
+
+						- ClassPathXmlApplicationContext
+						- FileSystemXmlApplicationContext
+						- GenericXmlApplicationContext
+					- org.springframework.web.context.ContextLoaderListener extends ContextLoader implements ServletContextListener
+SpringMVC启动/关闭Spring Root WebApplicationContext 监听Listener;
+主要方法为contextInitialized()->org.springframework.web.context.ContextLoader.initWebApplicationContext(servletContext)
+默认WebApplicationContext为org.springframework.web.context.ContextLoader.properties配置的org.springframework.web.context.support.XmlWebApplicationContext
+						- org.springframework.web.context.ContextLoader
+执行根应用程序上下文(root application context)的初始化工作,被ContextLoaderListener调用
+initWebApplicationContext()方法初始化ApplicationContext
+初始化流程:
+1.校验web.xml中是否配置了多个ContextLoader,若配置多个则抛出异常
+2.校验context(ApplicationContext)是否为null,为null则创建WebApplicationContext
+3.若context instanceof ConfigurableWebApplicationContext()则执行【configureAndRefreshWebApplicationContext()】方法,此步骤为核心加载方法;
+首先设置WebApplicationId,然后加载PareentContext,然后加载设置contextConfigLocation参数配置，自定义Context,最后执行主要的Spring加载方法wac.refresh
+!!!wac.refresh()->org.springframework.context.support.AbstractApplicationContext.refresh()
+4.设置applicationContext加载标记
+				- org.springframework.cache Spring的通用缓存抽象。
+				- org.springframework.ejb
+				- org.springframework.formate
+				- org.springframework.jmx 包含Spring的JMX支持，其中包括将Spring托管的bean注册为JMX MBean以及对远程JMX MBean的访问。
+				- org.springframework.jndi 提供了对JNDI访问的类，简化了对存在JNDI中的配置访问
+				- org.springframework.remoting Spring远程处理基础结构的异常层次结构，独立于任何特定的远程方法调用系统。
+				- org.springframework.scheduling Spring调度模块
+				- org.springframework.scripting Spring脚本支持的核心接口。
+				- org.springframework.stereotype表示类型或方法在整个体系结构中的作用的注释（在概念级别，而不是在实现级别）
+				- org.springframework.ui 对通用UI层概念的支持
+				- org.springframework.validation 提供数据绑定和验证功能，以用于业务和/或UI层。
+			- Expression Language模块
+提供了一个强大的表达式语言用于在运行时查询和操纵对象，该语言支持设置/获取属性的值，属性的分配，方法的调用，访问数组上下文、容器和索引器、逻辑和算术运算符、命名变量以及从Spring的IoC容器中根据名称检索对象
+		- AOP
+			- AOP模块提供了一个符合AOP联盟标准的面向切面编程的实现，它让你可以定义例如方法拦截器和切点，从而将逻辑代码分开，降低它们之间的耦合性，利用source-level的元数据功能，还可以将各种行为信息合并到你的代码中
+Spring AOP模块为基于Spring的应用程序中的对象提供了事务管理服务，通过使用Spring AOP，不用依赖EJB组件，就可以将声明性事务管理集成到应用程序中
+		- Data Access/Integration
+			- JDBC模块
+JDBC模块提供了一个JDBC抽象层，它可以消除冗长的JDBC编码和解析数据库厂商特有的错误代码，这个模块包含了Spring对JDBC数据访问进行封装的所有类
+			- ORM模块
+为流行的对象-关系映射API，如JPA、JDO、Hibernate、iBatis等，提供了一个交互层，利用ORM封装包，可以混合使用所有Spring提供的特性进行O/R映射，如前边提到的简单声明性事务管理
+			- OXM模块
+提供了一个Object/XML映射实现的抽象层，Object/XML映射实现抽象层包括JAXB，Castor，XMLBeans，JiBX和XStream
+			- JMS模块
+java Message Service）模块主要包含了一些制造和消费消息的特性
+			- Transactions模块
+支持编程和声明式事物管理，这些事务类必须实现特定的接口，并且对所有POJO都适用
+		- Web
+Web上下文模块建立在应用程序上下文模块之上，为基于Web的应用程序提供了上下文，所以Spring框架支持与Jakarta Struts的集成。Web模块还简化了处理多部分请求以及将请求参数绑定到域对象的工作。Web层包含了Web、Web-Servlet、Web-Struts和Web、Porlet模块
+			- Web模块
+提供了基础的面向Web的集成特性，例如，多文件上传、使用Servlet
+listeners初始化IoC容器以及一个面向Web的应用上下文，它还包含了Spring远程支持中Web的相关部分
+			- Web-Servlet模块
+web.servlet.jar：该模块包含Spring的model-view-controller(MVC)实现，Spring的MVC框架使得模型范围内的代码和web forms之间能够清楚地分离开来，并与Spring框架的其他特性基础在一起
+			- Web-Struts模块
+该模块提供了对Struts的支持，使得类在Spring应用中能够与一个典型的Struts Web层集成在一起
+			- Web-Porlet模块
+提供了用于Portlet环境和Web-Servlet模块的MVC的实现
+		- Test
+			- Test模块支持使用Junit和TestNG对Spring组件进行测试
+	- 事件机制
+		- ApplicationEvent: 事件抽象类
+			- ApplicationListener 事件监听器接口
+定义通用方法onApplicationEvent
+			- ApplicationEventMulticaster 事件广播器接口
+用于事件监听器的注册和事件的广播
+			- ApplicationEventPublisher 事件发布者
 - SpringIOC(源码)
 	- IOC容器初始化流程
 		- 加载解析XML流程
@@ -4464,8 +4913,166 @@ out: { inline: 1 }
 	- ApplicationContext
 		- 循环依赖问题
 - SpringAOP
-	- AOP核心概念
+	- SpingAOP核心概念:SpringAOP是基于Java动态代理和CGLIB动态代理实现的方法级的AOP
+		- Aspect: 是包含Pointcut和Advice的集合
+		- Pointcut: 声明JointPoint列表的切点
+		- JoinPoint:连接点,具体的被切面的构造方法,属性,或方法
+		- Advice: 切入时,可以执行的操作;有Before(进入JoinPoint之前触发),AfterReturnning(返回之后触发),AfterThrowing(异常之后触发),After(不管成功失败最后触发),Around(环绕通知,通过在process.proceed()前后添加处理逻辑) 5种操作
+触发顺序Before->目标方法->After->AfterReturnning或AfterAround
+			- @EnableAspectJAutoProxy(proxyTargetClass:false,exposeProxy:false)
+声明自动处理被@Aspect注解的类
+proxyTargetClass:是否强制使用CGLIB代理
+exposeProxy:是否开启增强代理,用于目标对象内调用发发时,提供AopContext.currentProxy()获取当前Bean
+			- @Aspect 定义一个类为AOP类
+@Pointcut(value,argNames) 定义切入点,指定JointPoint
+value为切入点表达式:有2种形式,1为切入点表达式,如execution,target表达式等,第二种为声明@Pointcut注解的方法名(含括号)
+				- //情况一
+ @Before("execution(* com.zejian.spring.springAop.dao.UserDao.addUser(..))")
+    public void before(){
+        System.out.println("前置通知....");
+    }
+//2情况2
+@Before("before()")
+    public void before2(){
+        System.out.println("前置通知....");
+    }
+			- @Before(value,argNames) 前置通知
+JoinPoint，是Spring提供的静态变量，通过joinPoint 参数，可以获取目标对象的信息,如类名称,方法参数,方法名称等,该参数是可选的。
+				- /**
+ * 前置通知
+ * @param joinPoint 该参数可以获取目标对象的信息,如类名称,方法参数,方法名称等
+ */
+@Before("execution(* org.kangspace.UDao.add(..))")
+public void before(JoinPoint joinPoint){
+    System.out.println("我是前置通知");
+}
+			- @After(value,argNames) 后置通知
+				- /**
+* 后置通知，不需要参数时可以不提供
+*/
+@After(value="execution(* com.kangspace.*(..))")
+public void AfterReturning(JoinPoint joinPoint){
+   System.out.println("我是后置通知...");
+}
+			- @AfterReturning(value,pointcut,returning,argsName)后置通知
+pointcut和value意义相同,pointcut会覆盖value值
+returning指定返回值参数名称,可在方法中获通过该值获取返回值,若无返回值,则为null
+				- 
+/**
+* 后置通知
+* returnVal,切点方法执行后的返回值
+*/
+@AfterReturning(value="execution(* org.kangspace.*(..))",returning = "returnVal")
+public void AfterReturning(JoinPoint joinPoint,Object returnVal){
+   System.out.println("我是后置通知...returnVal+"+returnVal);
+}
+			- @AfterThrowing(value,pointcut,throwing,argnames) 后置异常通知
+throwing 指定异常参数名称,可在方法中获通过该值获取异常对象
+				- /**
+* 抛出通知
+* @param e 抛出异常的信息
+*/
+@AfterThrowing(value="execution(* org.kangspace.*(..))",throwing = "e")
+public void afterThrowable(Throwable e){
+  System.out.println("出现异常:msg="+e.getMessage());
+}
+			- @Around(value,argNames)环绕通知
+第一个参数必须是ProceedingJoinPoint，通过该对象的proceed()方法来执行目标函数，proceed()的返回值就是环绕通知的返回值。同样的，ProceedingJoinPoint对象也是可以获取目标对象的信息,如类名称,方法参数,方法名称等等。
+				- @Around("execution(* org.kangspace.*(..))")
+public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+    System.out.println("我是环绕通知前....");
+    //执行目标函数
+    Object obj= (Object) joinPoint.proceed();
+    System.out.println("我是环绕通知后....");
+    return obj;
+}
+			- 通知传递参数:
+SpringAOP中可以将匹配的方法相应的参数或对象自动传递给通知放方法。
+获取到匹配的方法参数后通过args指示符和 "argNames'属性指定参数名,argNames可省略,存在时必须与args指示器名称保持一致,多个参数按,分割。
+				- //带argNames参数
+@Before(value="args(param)", argNames="param") //明确指定了    
+public void before(int param) {    
+    System.out.println("param:" + param);    
+}  
+				- //不带argNmaes参数
+@Before("execution(public * org.kangspace..*.addUser(..)) && args(userId,..)")  
+public void before(int userId) {  
+    //调用addUser的方法时如果与addUser的参数匹配则会传递进来会传递进来
+    System.out.println("userId:" + userId);  
+}  
+			- Aspect 优先级: 如果多个通知需要在同一切点函数的过滤目标方法上执行;
+那些在目标方法前执行(”进入”)的通知函数，最高优先级的通知将会先执行，
+在执行在目标方法后执行(“退出”)的通知函数，最高优先级会最后执行。
+对于在同一个切面定义的通知函数将会根据在类中的声明顺序执行;
+对于在不同类中定义的通知函数将根据Aspect定义的Order顺序执行@Order 或实现Ordered接口并实现getOrder()方法指定。
+		- Weaving:织入,是将切面与外部类链接起来以创建通知对象(adviced object)的过程
+		- 切入点表达式(指示符)
+作用在@Before,@After等注解中的value,pointcut参数值(org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer)
+			- 运算符 and or not , && || !
+				- //匹配了任意实现了UDao接口的目标对象的方法并且该方法名称为add
+@Pointcut("target(org.kangspace.UDao)&&execution(* org.kangspace.UDao.add(..))")
+private void pointcut(){}
+			- 通配符:
+.. : 匹配方法定义中的任意数量的参数,或匹配类型定义中的任意数量的包
++ : 匹配给定类的子类
+*  : 匹配任意数量的字符
+				- //任意返回值，任意名称，任意参数的公共方法
+execution(public * *(..))
+//匹配实现了UDao接口的所有子类的方法
+within(org.kangspace.UDao+)
+//匹配org.kangspace包及其子包中所有类的所有方法
+within(org.kangspace..*)
+			- execution 方法签名表达式,可指定返回值类型,包,对象,参数类型等
+//scope ：方法作用域，如public,private,protect
+//returnt-type：方法返回值类型
+//fully-qualified-class-name：方法所在类的完全限定名称
+//parameters 方法参数
+execution(<scope> <return-type> <fully-qualified-class-name>.*(parameters))
+				- //匹配UDaoImpl类中第一个参数为int类型的所有公共的方法
+@Pointcut("execution(public * org.kangspace.UDaoImpl.*(int , ..))")
+			- within 类型签名表达式,方便类型(如接口,类,包名)过滤
+//type name 报名或类名
+within(<type name>)
+				- //匹配org.kangspace包及其子包中所有类中的所有方法
+@Pointcut("within(org.kangspace..*)")
+			- target : 用于匹配当前目标对象类型的执行方法
+//target name: 目标类名
+target(<target name>)
+				- //匹配了任意实现了UDao接口的目标对象的方法进行过滤
+@Pointcut("target(org.kangspace.UDao)")
+private void pointcut(){}
+			- bean:SpringAOP扩展,用于匹配特定名称的Bean对象的执行方法
+bean(<beanName>)
+				- //匹配名称中带有后缀Service的Bean
+@Pointcut("bean(*Service)")
+private void myPointcut1(){}
+			- this:用于匹配当前AOP代理对象类型的执行方法,AOP代理类本身
+//class name
+this(<class name>)
+				- //匹配了任意实现了UDao接口的代理对象的方法进行过滤
+@Pointcut("this(org.kangspace.UDao)")
+private void myPointcut2(){}
+			- @within:用于匹配所持有指定注解类型类内的方法(作用于类的注解)
+@within(<annotation type>)
+				- //匹配使用了CustAnnotation注解的类(注意是类)
+@Pointcut("@within(org.kangspace.CustAnnotation)")
+private void pointcut(){}
+			- @annotation:用于匹配所持有指定注解的方法(作用于方法的注解)
+@annotation(<annotation type>)
+				- //匹配使用了MethodAnnotation注解的方法(注意是方法)
+@Pointcut("@annotation(org.kangspace.MethodAnnotation)")
+private void pointcut(){}
+			- args(<paramName,...>) :参数指示器,用于配合其他指示器获取传递参数
+				- @Before("execution(public * org.kangspace..*.addUser(..)) && args(userId,..)")  
+public void before(int userId) {  
+    //调用addUser的方法时如果与addUser的参数匹配则会传递进来会传递进来
+    System.out.println("userId:" + userId);  
+}  
 	- AOP源码
+	- <aop:aspectj-autoproxy/>在SpringXML配置中开启AOP支持
+@EnabcleAspecjAutoProxy在SpringBoot中开启AOP
+	- proxy-target-class(true/false): 是否强制使用CGLIB创建对象代理，Spring AOP中使用JDK动态代理和CGLIB动态台历
+expose-proxy:增强代理,在目标对象内部的自我调用将无法实施切面中的增强,可开启aop:aspectj-autoproxy expose-proxy = "true"/>,并使用((A)AopContext.currentProxy()).method();或使用SpringApplicationContext.getBean(class).method()调用
 - SpringTx(事务)
 - Spring常见面试问题解析
 - SpringMVC
@@ -4491,8 +5098,271 @@ out: { inline: 1 }
 				- 类型转换
 			- 返回值处理流程
 - SpEL
+- Spring中用到的设计模式
+	- 简单工厂(静态工厂方法模式)：Spring中BeanFactory
+	- 工厂方法模式: FactoryBean
+	- 单例模式:  BeanFatory是单例，默认的Spring容器都是单例
+	- 适配器模式: AOP，拦截器
+		- org.springframework.context.evern.
+GenericApplicationListenerAdapter 基本ApplicationListener适配器,用于检测支持的事件类型
+EventPublishingRunListener.starting()时通过对指定类型的ApplicationListener发送广播(即invoke这些Listener的onApplicationEvent()方法)
+	- 装饰器模式: 各种Wrapper,Decorator
+如创建Bean时的BeanWrapper
+	- 代理模式: AOP就是代理模式,有2种代理:JDK动态代理(只支持有接口的类)，CGLIB代理(基于asm,用于操作字节码)
+	- 观察者模式: ApplicationListener,事件驱动
+	- 策略模式: 实例化对象用到的Strategy模式,即org.springframework.factory.support.InstantiationStategy接口
+	- 模版方法: JdbcTemplate,RestTemplate,RedisTemplate,AbstractApplicationContext
 ### SpringCloud
 - SpringBoot
+	- 加载流程
+(通过org.springframework.boot.SpringApplication.run()入口加载,若为WebApplication项目时,默认ApplicationContext为org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext,其他情况下为org.springframework.context.annotation.AnnotationConfigApplicationContext)
+		- new org.springframework.boot.SpringApplication(source).run()
+首先创建SpringApplication对象,并初始化ApplicationContextInitializer,然后加载所有ApplicationListener,(ApplicationContextInitiallizer,ApplicationListener从jar包中/META-INF/spring.factories中读取,使用SpringApplication.getSpringFactoriesInstances(ApplicationContextInitializer.class)
+SpringApplication.getSpringFactoriesInstances(ApplicationListener.class),使用org.springframework.core.io.support.SpringFactoriesLoader)
+设置主方法
+然后执行SpringApplication.run()：
+1.  设置StopWatch,
+配置headlessProperty
+!!!获取SpringApplicationRunListener(EventPublishingRunListener) 并将ApplicationListeners添加到SimpleApplicationEventMulticaster 上
+!!!开启SpringApplicationRunListeners.starting(),
+实际为EventPublishingRunListener.starting(),该步骤将触发SpringApplication创建时扫描到的与ApplicationStartedEvent事件相关的Listener的onApplicationEvent()方法;
+【其中会触发1.1RestartApplicationListener.onApplicationEvent()方法进行初始化Restart,初始化后立即开启restaredMain重启应用,重新进行SpringApplication.run()操作,第二次启动事件广播时,由于Restarter为单例对象,且已经加载,所以不再进行初始化,即不再重启SpringApplication
+1.2然后触发LoggingApplicationListener的onApplicationEvent()事件,进行日志初始化】
+2. 创建applicationArguments
+3. prepareEnvironment准备环境
+创建环境对象,并配置环境信息
+配置PropertySource,并解析args添加到配置列表中;
+然后配置Profile,加载spring.profiles.active配置,并更新activeProfiles列表(org.springframework.core.env.AbstractEnvironment),
+!!!并触发所有支持ApplicationEnvironmentPreparedEvent 类型的SpringApplicationRunListener.onApplicationEvent
+【3.1首先触发BoostrapApplicationListener,加载spring.factories和bootstrap.properties/.yml配置,再次执行SpringApplication.run创建BootstrapContext,Bootstrap创建完后再继续处理restartedMain中SpringApplication.run->prepareEnvironment流程】
+4. printBanner 打印Banner信息,并返回Banner对象
+5. createApplicationContext()创建ApplicationContext,若为Web(通过检查是否存在javax.servlet.Servlet或org.springframework.web.context.ConfigurableWebApplicationContext)应用时创建AnnotationConfigEmbeddedWebApplicationContext,反之为AnnotationConfigApplicationContext
+6.  !!! prepareContext准备context,
+postProcessApplicationContext()
+applyInitializers(context);
+触发listeners.contextPrepared(context);
+注册springApplicationArguments为singletonBean
+!!!load(context, sources.toArray(new Object[sources.size()])); 通过Source加载Beans
+【创建BeanDefinitionLoader->load()加载(BeanDefinitionLoader.load(objectSource))
+1. 先加载class org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration 相关Bean,使用AnnotatedBeanDefinitionReader.registerBean(Class annotatedClass)注册Bean
+】
+最后触发listeners.contextLoaded(context);
+7. !!!refreshContext() 刷新上下文,刷新BeanFacotry,扫描BeanDefinitions,加载预初始化Bean,启动Spring;
+同时在OnRefresh()时调用org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.onRefresh()->创建
+EmbeddedServletContainer(即创建Tomcat容器),首先通过扫描org.springframework.boot.context.embedded.EmbeddedServletContainerFactory 相关Bean获取EmbeddedServletContainnerFactory工厂来创建EmbeddedServletContainer,其中只能有1个ContainerFactory存在,否则抛出异常,然后创建
+tomcat实例,然后beanFactory.preInstantiateSingleton(),初始化所有Bean(含Controller),知道Tomcat启动完成;(此处在创建完BootstrapContext后,继续SpringApplicaton.run流程中触发,)
+!!!SpringBoot启动后,main线程和restartedMain线程结束,tomcat线程提供服务
+		- SpringBoot启动流程简述:
+1. 通过主方法执行org.springframework.boot.SpringApplication.run()方法开始加载SpringBoot,执行真正的run方法前会初始化SpringApplication,然后扫描所有ApplicationListener(其中会包含devtool的RestartApplicationListener,BoostrapApplicationListener,在spring-boot-devtools/META-INF/spring.factories中配置),Listener在/META-INF/spring.factirues中配置扫描
+2. run()流程中首先设置Headless属性,
+然后扫描注册所有SpringApplicationRunListener,实际为EventPublishingRunListener,并将1中扫描到的ApplicationListener列表注册到EventPublishingRunListener的multicast,
+然后向扫描到的Listener广播ApplicationStartedEvent事件
+3. 广播ApplicationStartedEvent时,若ApplicationListener列表中存在RestartApplicationListener(优先级最高,Ordered.HEIGHT_PRECEDENCE=Integer.MIN_VALUE)时,在RestartApplicationListener的onApplicationEvent事件处理中,启动新的restartedMain线程,使用SpringApplicationBuiilder重新加载SpringApplication.run方法，然后主线程join,restartedMain线程执行完后退出。
+(可通过/restart接口重启服务,在restartedMain线程中重新启动SpringApplication时还会向RestartListener广播ApplicationStartedEvent,但由于Restart是单例对象,所以不会再次触发重启操作)
+4. 若存在BootstrapApplicationListener(优先级较高,Ordered.HIGHEST_PRECENDENCE+5),则在BootstrapApplicationListener.onApplicationEvent方法中利用SpringApplicationBuilder中构造SpringApplication对象,再次重启SpringApplication并加载Bootstrap相关配置,并创建BootstrapContext
+(BootstrapContext加载时,重新触发BoostrapApplicationListener.ApplicationStartedEvent时,不再进行处理)
+5. BootstrapContext启动后,继续Application的run方法：
+打印Banner,创建ApplicationContext(AnnotationConfigApplicationContext或AnnotationConfigEmbeddedApplicationContext)
+6. prepareContext 准备上下文环境,会触发ApplicationEvent
+7. resfreshContext刷新上下文,即调用AbstractApplicationContext.refresh() 扫描Bean,加载beanDefinitions(),并初始化所有单例Bean,在OnRefresh时,调用EmbeddedWebApplicationContext创建tomcat容器
+8. 然后afterRefresh,listener.finished
+并触发响应的事件
+最后启动完成
+	- SpringBoot事件广播机制
+(EventMulticaster)
+		- org.springframework.boot.context.event.EventPublishingRunListener  importants SpringApplicationRunListener 用于监听SpringApplicatoin.run方法去发布事件
+		- org.springframework.context.event.SimpleApplicationEventMulticaster extends AbstractApplicationEventMulticaster 简单实现ApplicationEventMulticaster事件广播器,用于对ApplicationListener进行广播(观察者模式)
+		- org.springframework.context.ApplicationListener extends EventListener : Application event listeners 的实现接口
+GenericApplicationListener extends ApplicationListener 基础ApplicationListener,提供检查支持的EvenType类型及支持的SourceType类型
+			- org.springframework.boot.devtools.restart.RestartApplicationListener(Order:Int.Min) 初始化org.sprignframework.boot.devtools.restart.Restarter的ApplicationListener,
+用于处理ApplicationStartingEvent,ApplicationPreparedEvent,ApplicationReadyEvent,ApplicationFailedEvent事件
+devtools.Restart对象,用于重启应用
+(若存在devtools的RestartApplicationListener时,在执行Restart初始化时 SpringApplication 会进行一次重启,重启时使用restartedMain线程进行,此时主线程等待join)
+第一次初始化Restart时,在main主线程中进行,
+在重启SpringApplication.run()时,进行第二次事件广播,由于Restart对象为单例对象,所以不需要再次初始化,即不再执行重启操作
+				- 当接收的事件为ApplicationStartingEvent时,Restart会进行初始化,并使用新线程restaredMain立即重启应用,重新进行SpringApplication.run()的操作
+			- org.springframework.boot.logging.LoggingApplicationListener(Order:Int.Min+20) 配置日志系统的ApplicationListener.
+如果环境配置中包含logging.config则用于引导日志系统,反之使用默认配置。无论如何,当环境配置中包含logging.level.*条目时,将会被定制处理。
+用于SpringBoot日志处理监听
+			- org.springframework.boot.autoconfigure.BackgroundPreinitializer 在耗时任务的后台线程中触发早期初始化
+			- org.springframework.cloud.bootstrap.BootstrapApplicationListener(Order:Int.Min+5)
+在一个单独的bootstrap context中通过ApplicationContextInitializer 来准备SpringApplication,bootstrap context 是通过spring.factories定义的源作为BoostrapConfiguration,并且通过bootstrap.properties(或.xml,.yml,.ymal)配置文件来初始化
+				- BootstrapContext初始化,初始化时,会使用SpringApplicationBuilder.run()再次启动SpringApplication.run()方法加载BootstrapContext
+在启动BoostrapContext过程中,不再执行BootstrapApplicationListener;
+BoostrapContext加载时preInstantiateSingletons()加载propertySourceBootstrapConfiguration
+propertyPlaceholderAutoConfiguration等Bean
+			- org.springframework.cloud.bootstrap.LoggingSystemShutdownListener
+			- org.springframework.boot.context.config.ConfigFileApplicationListener
+			- org.springframework.boot.context.config.AnsiOutputApplicationListener
+			- org.springframework.boot.logging.ClasspathLoggingApplicationListener
+			- org.springframework.boot.context.config.DelegatingApplicationListener
+			- org.springframework.cloud.context.restart.RestartListener
+			- org.springframework.boot.builder.ParentContextCloserApplicationListener
+			- org.springframework.boot.ClearCachesApplicationListener
+			- org.springframework.boot.context.FileEncodingApplicationListener
+			- org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
+	- @Configuration 加载原理
+		- org.springframework.context.annotation.Configuration注解
+1.该注解指示一个类声明了一个或多个@Bean方法,并且可以由Spring容器进行处理
+2.加载 @Configuration 类
+2.1通过AnnotationConfigApplicationContext(org.springframework.context.annotation):通过AnnotationBeanDefinitionReader.register(),registerBean(class)加载注解标注的类
+@Configuration通常使用AnnotationConfigApplicationContext或支持Web的AnnotationConfigWebApplicationContext来加载,如:
+AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+ctx.register(AppConfig.class);
+ctx.refresh();
+ctx.getBean(MyBean.class);
+2.2通过Srping <beans> xml: @Configuration还可以Spring XML配置文件中声明<bean>,及在<Beans>标签中设置<context:annotation-config>即可
+<beans> 
+    <context：annotation-config /> 
+    <bean class =“ com.acme.AppConfig” /> 
+ </ beans>
+2.3通过@ComponentScan组件扫描加载
+注解被@Component元注解标注,所以标注为@Configuration的类会被扫描为Bean,通常使用SpringXml的<context:component-scan>
+		- @Configuration使用外部值
+1.使用EnvironmentAPI
+在@Configuration注入Environment envBean,通过env.getProperty("bean.name")获取外部值;
+同时可以使用@PropertySource("classpath:.property")配置属性源,
+也可以使用@ConfigurationProperties来设置配置前缀
+2.使用Value注解(@Value("${propertyName}"))
+@Configuration @PropertySource("classpath:/com/acme/app.properties")
+ public class AppConfig {
+     @Value("${bean.name}") String beanName;
+     @Bean
+     public MyBean myBean() {
+         return new MyBean(beanName);
+     }
+ }
+		- 编写@Configuration类
+1.使用 @Import注解,使用@Import注解可以导入其他@Configuration类,类似SpringXML中的<import>标签,@Import的类可以通过构造方法注入
+2. 使用@Profile注解,添加@Profile注解可以指示仅当提供的Profile配置为active时才处理该类;另外,@Profile还可以配置在@Bean方法上
+3. 使用@ImportResource注解导入SpringXML配置文件,使用@ImportResource可以导入SpringXML配置文件,然后使用@Inject注入XML中的Bean
+4.使用嵌套@Configuration类,可在@Configuration类中嵌套@Configutration并使用@Inject注入该嵌套类
+			- //1. @Import注解示例
+ @Configuration
+ public class DatabaseConfig {
+     @Bean
+     public DataSource dataSource() {
+         // instantiate, configure and return DataSource
+     }
+ }
+ @Configuration
+ @Import(DatabaseConfig.class)
+ public class AppConfig {
+     private final DatabaseConfig dataConfig;
+     public AppConfig(DatabaseConfig dataConfig) {
+         this.dataConfig = dataConfig;
+     }
+     @Bean
+     public MyBean myBean() {
+         // reference the dataSource() bean method
+         return new MyBean(dataConfig.dataSource());
+     }
+ }
+			- //2.@Profile注解示例
+ @Profile("development")
+ @Configuration
+ public class EmbeddedDatabaseConfig {
+     @Bean
+     public DataSource dataSource() {
+         // instantiate, configure and return embedded DataSource
+     }
+ }
+//@Profile标注在@Bean方法上
+ @Configuration
+ public class ProfileDatabaseConfig {
+     @Bean("dataSource")
+     @Profile("development")
+     public DataSource embeddedDatabase() { ... }
+     @Bean("dataSource")
+     @Profile("production")
+     public DataSource productionDatabase() { ... }
+ }
+			- //3. @ImportResource注解示例
+@Configuration
+@ImportResource("classpath:/com/acme/database-config.xml")
+public class AppConfig {
+     @Inject DataSource dataSource; // from XML
+     @Bean
+     public MyBean myBean() {
+         // inject the XML-defined dataSource bean
+         return new MyBean(this.dataSource);
+     }
+}
+			- //嵌套@Configuration类示例
+ @Configuration
+ public class AppConfig {
+     @Inject DataSource dataSource;
+     @Bean
+     public MyBean myBean() {
+         return new MyBean(dataSource);
+     }
+     @Configuration
+     static class DatabaseConfig {
+         @Bean
+         DataSource dataSource() {
+             return new EmbeddedDatabaseBuilder().build();
+         }
+     }
+ }
+		- @Configuration下的@Bean默认会被实例化,可以使用@Lazy注解来设置@Bean延迟加载,也可以直接在@Bean上设置@Lazy
+		- ConfigurationClassPostProcessor(org.springframework.context.annotation)该类为启动处理@Configuration类的BeanFacotryPostProcessor
+使用<context:annotation-config/>或<context:component-scan/>时自动注册
+		- @Configuration的加载位置:
+在AbstractApplicationContext.refresh()中的invokeBeanFactoryPostProcessors(),
+其中PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors()中registryProcessors.postProcessBeanDefinitionRegistry(registry),实际调用org.springframwork.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(registry)扫描处理@Configuration类
+		- @ConfigurationBean加载主要过程
+1.Spring容器初始化时注册ConfigurationClassPostProcessor
+2.Spring容器初始化执行refresh()中调用invokeBeanFactoryPostProcessor,并调用其中的ConfigurationClassPostProcessor
+3.ConfigurationClassPostProcessor处理器使用ConfigurationClassParser完成配置类解析
+4.ConfigurationClassParser配置内解析过程中完成嵌套的MemberClass、@PropertySource注解、@ComponentScan注解、@ImportResource、@Bean等处理
+5.完成@Bean注册,@ImportResource指定bean的注册以及@Import(实现ImportBeanDefinitionRegistrar接口方式)的Bean注册
+6.@Bean注解的方法在解析的时候作为@ConfigurationClass的一个属性,最后转换成BeanDefinition处理，实例化时作为一个工厂方法进行Bean的创建
+	- @Bean 加载原理
+		- org.springframework.context.annotation.Bean 指示一个方法产生一个由Spring容器管理的Bean,
+语义类似于SpringXML的<bean/>
+Bean名称: 默认使用被@Bean修饰的方法名,也可以指定多个名称@Bean({"b1","b2"}),但不能是方法名
+通常@Bean方法在@Configuration类中声明,在运行时会被CGLIB子类代理,@Bean方法可以调用同类中的其他@Bean方法,为了保证"Bean间引用"和AOP语义,所以@Configuration类和他们的工厂方法不能定义为final或private.
+@Bean精简模式:
+@Bean方法也可以在不使用@Configuration中的方法上使用,如在@Component下声明@Bean方法,这种情况下,@Bean方法会按照精简模式处理;
+容器将精简模式下的Bean视为普通工厂方法,精简模式下不支持"Bean间引用",调用另一个方法时,是普通的Java方法调用,Spring不会通过CGLIB代理拦截调用
+在将BeanFactoryPostProcessor设置为@Bean方法返回对象时,需将方法设置为static,因为BeanFactoryPostProcessor需要在容器生命周期很早前就被实例化.
+			- //语义示例
+  @Bean
+     public MyBean myBean() {
+         // instantiate and configure MyBean obj
+         return obj;
+     }
+//@Bean Methods in @Configuration Classes
+ @Configuration
+ public class AppConfig {
+     @Bean
+     public FooService fooService() {
+         return new FooService(fooRepository());
+     }
+     @Bean
+     public FooRepository fooRepository() {
+         return new JdbcFooRepository(dataSource());
+     }
+     // ...
+ }
+//@Bean Lite Mode
+  @Bean
+     public static PropertySourcesPlaceholderConfigurer pspc() {
+         // instantiate, configure and return pspc ...
+     }
+		- @Profile指示一个或多个指定配置文件处于活动时,该组件有资格注册,通过ConfigurableEnvironment.setActiveProfiles()或声明srping.profiles.active作为JVM属性,或在测试集成中添加@ActiveProfiles配置处于活动的Profile;
+可以以下方式声明:
+1.在任何被@Component注释的类上,包括@Configuration
+2.作为元注解,构造自定义注解
+3.作为任何@Bean方法的方法级注释
+@Profile支持简单字符串和逻辑表达式(&,|,!),如@Profile("p1 & p2") 或 @Profile({"p1","!p2"}),且表达式不能连写,如a&b&c是错误写法,需要加括号,如(a&b)|c;在不指定字符串时,表示任何profile下都有效
+@Scope 作用范围,与@Component类一起时,指示被注解的类的作用范围名称;与方法级@Bean一起时,@Scope指示该@Bean返回的对象实例的范围名称
+@Lazz指示是否要延迟初始化Bean
+@Component和@Bean上添加@Lazy注解时表示延迟加载该Bean,@Configuration上添加@Lazy注解时表示延迟加载@Configuration中所有的@Bean及import
+@DependsOn当前Bean所依赖的Bean,当不通过属性或构造方法注入时可以使用该注解声明依赖Bean
+@Primary指示当多个候选者有资格自动自动装配时，应该优先考虑Bean，若候选对象中只有1个@Primary时,该Bean为默认装配值
+@Order 定义容器注入优先级
+	- @ComponentScans/@ComponentScan
 - SpringCloud架构
 	- SpringCloud架构结构
 	- Gateway
@@ -4598,78 +5468,76 @@ server.1:localhost:2181:3181:observer
 			- Zookeeper选举和同步
 				- 一个 ZooKeeper 集群同一时刻只会有一个 Leader，其他都是 Follower 或 Observer。ZooKeeper 配置很简单，每个节点的配置文件(zoo.cfg)都是一样的，只有 myid 文件不一样。myid 的值必须是 zoo.cfg中server.{数值} 的{数值}部分。
 				- Zookeeper集群Leader选举
-    org.apache.zookeeper.server.quorum
-    .QuorumPeer#startLeaderElection
-    org.apache.zookeeper.server.quorum.QuorumPeerConfig
-				  - LeaderElection  
-				  - AuthFastLeaderElection
-				  - FastLeaderElection （最新默认）
-    org.apache.zookeeper.server.quorum.FastLeaderElection
-				    - 流程简述
-				    	- 目前有5台服务器，每台服务器均没有数据，它们的编号分别是1,2,3,4,5,按编号依次启动，它们的选择举过程如下：
-				    	- 服务器1启动，给自己投票，然后发投票信息，由于其它机器还没有启动所以它收不到反馈信息，服务器1的状态一直属于Looking(选举状态)。
-				    	- 服务器2启动，给自己投票，同时与之前启动的服务器1交换结果，由于服务器2的编号大所以服务器2胜出，但此时投票数没有大于半数，所以两个服务器的状态依然是LOOKING。
-				    	- 服务器3启动，给自己投票，同时与之前启动的服务器1,2交换信息，由于服务器3的编号最大所以服务器3胜出，此时投票数正好大于半数，所以服务器3成为领导者，服务器1,2成为小弟。
-				    	- 服务器4启动，给自己投票，同时与之前启动的服务器1,2,3交换信息，尽管服务器4的编号大，但之前服务器3已经胜出，所以服务器4只能成为小弟。
-				    	- 服务器5启动，后面的逻辑同服务器4成为小弟。
-				    - 选举操作使用UDP广播消息
-    DatagramSocket udpSocket
-				    - 概念
-				    	- ServerId: 服务器Id
-    如有3台服务器，编号为1,2,3
-				    	- Zxid: 数据ID，64位，前32位为Epoch,后32位为全局序列
-    服务器中存放的最大数据ID,值越大数据越新，在选举中数据越新权重越大
-    Zookeeper是要用zxid保证顺序一致性
-				    	- Epoch:逻辑时钟，(纪元,时代,新世纪)
-    或者叫投票的次数，同一轮投票过程中的逻辑时钟值是相同的。
-    每投完一次票这个数值就会增加，然后与收到的其他服务器返回的投票信息中的值比较，做出不同的判断
-				    	- Server状态：选举状态
-    LOOKING: 竞选状态
-    FOLLOWING: 随从状态，同步leader状态，参与投票
-    OBSERVING: 观察状态，同步leader状态，不参与投票
-    LEADING: 领导者状态
-				    - 选举消息内容
-				    	
-				    	- 投票完成后，需要将所有投票信息发送给集群中的所有机器，包含: ServerId, Zxid,Epoch 逻辑时钟, 选举状态
-				    - 选举流程
-    	- 1. 服务启动时，读取当前Server数据及配置信息(dataDir下)：
-    读取Zxid，currentEpoch,acceptedEpoch
-				    然后创建选举线程，开始选举
-    	- 2. 发送投票信息
-    首先，每个Server第一轮都会投票给自己，申请自己为Leader
-				    投票信息包括: 所选举Leader的Serverid,Zxid,Epoch. Epoch 会随着选举轮数增加而增加
-				    	- 3. 接收投票信息
-				    		- 若服务器B接收服务器A的信息(A为选举状态LOOKING)
-				    			- 1. 判断Epoch逻辑时钟
-    				- a) 若收到的逻辑时钟Epoch大于当前Server的逻辑时钟。
-    首先更新本Server逻辑时钟Epoch，同时清空本轮逻辑时钟收集到的其他server的选举数据。
-    然后判断是否需要更新当前自己选举的Leader Serverid.
-    判断规则rule judging: 保存的Zxid最大值和Leader Serverid 来进行判断。先判断Zxid，Zxid大者胜出，然后判断Leader Serverid，Leader Serverid大者胜出。
-				    然后将自身的选举结果(Leader Serverid,Zxid ,Epoch)广播给其他Server
-    				- b) 若收到的逻辑时钟Epoch小余当前Server的逻辑时钟
-				    说明对方Server在一个相对较早的Epoch中，这时，只需要将自己的状态数据(Leader Serverid, Zxid,Epoch)广播给其他Server
-    				- c）若收到的逻辑时钟Epoch等于当前Server的逻辑时钟
-				    根据rule judging来选举Leader,再讲自己选举结果广播给其他Server
-    			- 2. 其次，判断服务器是不是已经收集到了所有的选举状态：
-    若是，根据选举结果设置自己的角色（FOLLOWING,LEADING）,然后退出选举状态。
-				      若没有收到所有服务器的选举状态，则判断选举过程中最新选举的Leader是不是得到超过半数以上的服务器支持，若是，则尝试200ms之内接受一次数据，若没有新数据到达，则说明所有服务器已经默认当前结果，然后设置自己的角色，退出选举状态；反之，继续选举。
-				    		- 服务器A处在其他状态(FOLLOWING,LEADING)
-    			- a) 逻辑时钟Epoch等于当前Server的逻辑时钟，将该数据保存到recvset。此时的集群已经处于LEADING状态，说明此时的集群已经选出结果。
-				    若此时当前Server宣称自己为Leader，则判断是否有半数以上的服务器选举它，如果是，则当前Server为LEADING状态，反之为FOLLOWING状态，然后退出选举。
-    			- b) 否则，这是一条于当前逻辑时钟不符合的消息，说明在另一个选举中已经有了选举结构，
-				    于是将改选举结果加入到outofelection集合中，再根据outofelection来判断是否可以结束选举，如果可以，保存逻辑时钟，设置选举状态，退出选举
+org.apache.zookeeper.server.quorum
+.QuorumPeer#startLeaderElection
+org.apache.zookeeper.server.quorum.QuorumPeerConfig
+					- LeaderElection  
+					- AuthFastLeaderElection
+					- FastLeaderElection （最新默认）
+org.apache.zookeeper.server.quorum.FastLeaderElection
+						- 流程简述
+							- 目前有5台服务器，每台服务器均没有数据，它们的编号分别是1,2,3,4,5,按编号依次启动，它们的选择举过程如下：
+							- 服务器1启动，给自己投票，然后发投票信息，由于其它机器还没有启动所以它收不到反馈信息，服务器1的状态一直属于Looking(选举状态)。
+							- 服务器2启动，给自己投票，同时与之前启动的服务器1交换结果，由于服务器2的编号大所以服务器2胜出，但此时投票数没有大于半数，所以两个服务器的状态依然是LOOKING。
+							- 服务器3启动，给自己投票，同时与之前启动的服务器1,2交换信息，由于服务器3的编号最大所以服务器3胜出，此时投票数正好大于半数，所以服务器3成为领导者，服务器1,2成为小弟。
+							- 服务器4启动，给自己投票，同时与之前启动的服务器1,2,3交换信息，尽管服务器4的编号大，但之前服务器3已经胜出，所以服务器4只能成为小弟。
+							- 服务器5启动，后面的逻辑同服务器4成为小弟。
+						- 选举操作使用UDP广播消息
+DatagramSocket udpSocket
+						- 概念
+							- ServerId: 服务器Id
+如有3台服务器，编号为1,2,3
+							- Zxid: 数据ID，64位，前32位为Epoch,后32位为全局序列
+服务器中存放的最大数据ID,值越大数据越新，在选举中数据越新权重越大
+Zookeeper是要用zxid保证顺序一致性
+							- Epoch:逻辑时钟，(纪元,时代,新世纪)
+或者叫投票的次数，同一轮投票过程中的逻辑时钟值是相同的。
+每投完一次票这个数值就会增加，然后与收到的其他服务器返回的投票信息中的值比较，做出不同的判断
+							- Server状态：选举状态
+LOOKING: 竞选状态
+FOLLOWING: 随从状态，同步leader状态，参与投票
+OBSERVING: 观察状态，同步leader状态，不参与投票
+LEADING: 领导者状态
+						- 选举消息内容
+							- 投票完成后，需要将所有投票信息发送给集群中的所有机器，包含: ServerId, Zxid,Epoch 逻辑时钟, 选举状态
+						- 选举流程
+							- 1. 服务启动时，读取当前Server数据及配置信息(dataDir下)：
+读取Zxid，currentEpoch,acceptedEpoch
+然后创建选举线程，开始选举
+							- 2. 发送投票信息
+首先，每个Server第一轮都会投票给自己，申请自己为Leader
+投票信息包括: 所选举Leader的Serverid,Zxid,Epoch. Epoch 会随着选举轮数增加而增加
+							- 3. 接收投票信息
+								- 若服务器B接收服务器A的信息(A为选举状态LOOKING)
+									- 1. 判断Epoch逻辑时钟
+										- a) 若收到的逻辑时钟Epoch大于当前Server的逻辑时钟。
+首先更新本Server逻辑时钟Epoch，同时清空本轮逻辑时钟收集到的其他server的选举数据。
+然后判断是否需要更新当前自己选举的Leader Serverid.
+判断规则rule judging: 保存的Zxid最大值和Leader Serverid 来进行判断。先判断Zxid，Zxid大者胜出，然后判断Leader Serverid，Leader Serverid大者胜出。
+然后将自身的选举结果(Leader Serverid,Zxid ,Epoch)广播给其他Server
+										- b) 若收到的逻辑时钟Epoch小余当前Server的逻辑时钟
+说明对方Server在一个相对较早的Epoch中，这时，只需要将自己的状态数据(Leader Serverid, Zxid,Epoch)广播给其他Server
+										- c）若收到的逻辑时钟Epoch等于当前Server的逻辑时钟
+根据rule judging来选举Leader,再讲自己选举结果广播给其他Server
+									- 2. 其次，判断服务器是不是已经收集到了所有的选举状态：
+若是，根据选举结果设置自己的角色（FOLLOWING,LEADING）,然后退出选举状态。
+若没有收到所有服务器的选举状态，则判断选举过程中最新选举的Leader是不是得到超过半数以上的服务器支持，若是，则尝试200ms之内接受一次数据，若没有新数据到达，则说明所有服务器已经默认当前结果，然后设置自己的角色，退出选举状态；反之，继续选举。
+								- 服务器A处在其他状态(FOLLOWING,LEADING)
+									- a) 逻辑时钟Epoch等于当前Server的逻辑时钟，将该数据保存到recvset。此时的集群已经处于LEADING状态，说明此时的集群已经选出结果。
+若此时当前Server宣称自己为Leader，则判断是否有半数以上的服务器选举它，如果是，则当前Server为LEADING状态，反之为FOLLOWING状态，然后退出选举。
+									- b) 否则，这是一条于当前逻辑时钟不符合的消息，说明在另一个选举中已经有了选举结构，
+于是将改选举结果加入到outofelection集合中，再根据outofelection来判断是否可以结束选举，如果可以，保存逻辑时钟，设置选举状态，退出选举
 				- Zookeeper的同步过程
-					
 					- Leader
-- leader需要告知其他服务器当前的最新数据，即最大zxid是什么，此时leader会构建 一个NEWLEADER的数据包，包括当前最大的zxid，发送给follower或者observer，
-		此时leader会启动一个leanerHandler的线程来处理所有follower的同步请求，同时阻塞主线程，
-				只有半数以上的folower同步完毕之后，leader才成为真正的leader，退出选举同步过程。
+						- leader需要告知其他服务器当前的最新数据，即最大zxid是什么，此时leader会构建 一个NEWLEADER的数据包，包括当前最大的zxid，发送给follower或者observer，
+此时leader会启动一个leanerHandler的线程来处理所有follower的同步请求，同时阻塞主线程，
+只有半数以上的folower同步完毕之后，leader才成为真正的leader，退出选举同步过程。
 					- Follower
 						- 首先与leader建立连接，如果连接超时失败，则重新进入选举状态选举leader，如果连接成功，则会将自己的最新zxid封装为FOLLOWERINFO发送给leader
-- 首先会尝试与leader建立连接,这里有一个机制,如果一定时间内没有连接上,就报错退出,重新回到选举状态.
+						- 首先会尝试与leader建立连接,这里有一个机制,如果一定时间内没有连接上,就报错退出,重新回到选举状态.
 其次在函数learner::registerWithLeader中发送FOLLOWERINFO封包,该封包中带上自己的最大数据id,也就是会告知leader本机保存的最大数据id.
-		最后,根据前面对LeaderHandler的分析,leader会根据不同的情况发送DIFF,UPTODATE,TRUNC,SNAP,依次进行处理就是了,此时follower跟leader的数据也就同步上了.
-				由于leader端发送的最后一个封包是UPTODATE,因此在接收到这个封包之后follower结束同步数据过程,发送ACK封包回复leader.
+最后,根据前面对LeaderHandler的分析,leader会根据不同的情况发送DIFF,UPTODATE,TRUNC,SNAP,依次进行处理就是了,此时follower跟leader的数据也就同步上了.
+由于leader端发送的最后一个封包是UPTODATE,因此在接收到这个封包之后follower结束同步数据过程,发送ACK封包回复leader.
 					- 同步算法
 						- 直接差异化同步（DIFF同步）
 						- 仅回滚同步，即删除多余的事务日志（TRUNC）
@@ -4683,15 +5551,14 @@ server.1:localhost:2181:3181:observer
 					- ZooKeeper 集群的所有机器通过一个 Leader 选举过程来选定一台被称为『Leader』 的机器，Leader服务器为客户端提供读和写服务。
 					- Follower 和 Observer 都能提供读服务，不能提供写服务。两者唯一的区别在于， Observer机器不参与 Leader 选举过程，也不参与写操作的『过半写成功』策略，因 此 Observer 可以在不影响写性能的情况下提升集群的读性能。
 					- 一个Zookeeper集群（N>=3，N为奇数），那么只有一个Leader（通过FastLeaderElection选主策略选取），所有的写操作（客户端请求Leader或Follower的写操作）都由Leader统一处理，Follower虽然对外提供读写，但写操作会提交到Leader，由Leader和Follower共同保证同一个Follower请求的顺序性，Leader会为每个请求生成一个zxid（高32位是epoch，用来标识leader选举周期，每次一个leader被选出来，都会有一个新的epoch，标识当前属于哪个leader的统治时期，低32位用于递增计数）
-- zookeeper 如何保证半数提交后剩下的节点上最新的数据
+				- zookeeper 如何保证半数提交后剩下的节点上最新的数据
 					- zookeeper 的leader和follower的prepare和commit时，只要半数的节点通过就算同意，leader就会commit，那么剩下的半数节点的数据如何同步到最新的呢？
-				剩下的节点，会进行版本比对，发现版本不一致的话，会更新节点的数据。
+剩下的节点，会进行版本比对，发现版本不一致的话，会更新节点的数据。
 			- Session
 				- Session 是指客户端会话，在讲解客户端会话之前，我们先来了解下客户端连接。在 ZooKeeper 中，一个客户端连接是指客户端和 ZooKeeper 服务器之间的TCP长连接。
 				- ZooKeeper 对外的服务端口默认是2181，客户端启动时，首先会与服务器建立一个TCP 连接，从第一次连接建立开始，客户端会话的生命周期也开始了，通过这个连接，客户端能够通 过心跳检测和服务器保持有效的会话，也能够向 ZooKeeper 服务器发送请求并接受响应，同 时还能通过该连接接收来自服务器的 Watch 事件通知。
 				- Session 的 SessionTimeout 值用来设置一个客户端会话的超时时间。当由于服务器 压力太大、网络故障或是客户端主动断开连接等各种原因导致客户端连接断开时，只要在 SessionTimeout 规定的时间内能够重新连接上集群中任意一台服务器，那么之前创建的会话 仍然有效。
 	- Zookeeper会话生命周期：CONNECTIING，CONNECTED，CLOSE
-		
 		- 在会话到期时，群集将删除该会话拥有的任何/所有短暂节点，并立即通知任何/所有连接的客户端该更改（任何监听这些znode的客户端）
 	- Zookeeper节点命名
 		- 任何unicode字符都可以在受以下约束限制的路径中使用：
@@ -4700,67 +5567,67 @@ server.1:localhost:2181:3181:observer
 		- 不允许使用以下字符：\ud800 - \uF8FFF，\uFFF0 - \uFFFF。
 		- “.” character可以用作另一个名称的一部分，但是“.” 并且“...”不能单独用于表示沿路径的节点，因为ZooKeeper不使用相对路径。以下内容无效：“/ a / b /./ c”或“/a/b/../c”。
 			- . 或 ..不能单独作为节点名使用
-	- 令牌“zookeeper”被保留。
+		- 令牌“zookeeper”被保留。
 	- znode类型
-	- PERSISTENT-持久化目录节点
+		- PERSISTENT-持久化目录节点
 客户端与Zookeeper断开连接后，节点依然存在
 			- TTL - TTL节点
  创建持久化节点时，可以设置接待你的TTL(毫秒)。如果节点在TTL内未修改，且没有子节点，则会被服务删除。
 默认为禁用。
 		- PERSISTENT_SEQUENTIAL-持久化顺序标号目录节点
 客户端与Zookeeper断开连接后，节点依然存在，只是Zookeeper给该节点进行%10d的顺序编号；
-	重新连接后，创建的顺序节点会继续按序号增加
-	- EPHEMERAL-临时目录节点
-	客户端与Zookeeper断开连接后，节点被删除
-	- EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点
-	客户端与Zookeeper断开连接后，节点被删除，只是Zookeeper给该节点名称进行顺序编号
-- znode操作
+重新连接后，创建的顺序节点会继续按序号增加
+		- EPHEMERAL-临时目录节点
+客户端与Zookeeper断开连接后，节点被删除
+		- EPHEMERAL_SEQUENTIAL-临时顺序编号目录节点
+客户端与Zookeeper断开连接后，节点被删除，只是Zookeeper给该节点名称进行顺序编号
+	- znode操作
 https://zookeeper.apache.org/doc/current/zookeeperProgrammers.html#Container+Nodes
 		- zkClient -server ip:port[,ip2:port2...][/rootpath] 【连接ZkServer】
 可设置多个server连接地址，若第一个地址连接失败，则会尝试之后的地址
 /rootpath 设置连接后使用的根节点， 连接后的所有操作都基于该节点
-	- create [-s] [-e] path data acl 【创建节点】
+		- create [-s] [-e] path data acl 【创建节点】
 -s 创建节点为顺序节点，创建顺序节点时，会在节点名后自动添加顺序号，编号格式为【 %010d】 ，不足的数字位已0填充，如0000000001，最大值为 2147483647
 -e 创建节点为临时节点，节点默认为持久化节点
 path 创建的节点路径,按/分割层级，有多层级时，父接待那必须存在才能创建；临时节点不能有子节点；
 acl 节点的访问控制列表，控制权限，权限有5种：CREATE,READ,WRITE,DELETE,ADMIN , 简写为crwda
 身份认证有4中方式:
 world :默认方式，不限制访问
-	auth: 已通过认证的用户访问
+auth: 已通过认证的用户访问
 digest: 用户名密码认证
-		ip:使用ip认证访问
-				- 创建节点： create /kangspace.org "kangspace domain:kangspace.org" world:anyone:crwda
-		且节点权限为world,不限制访问
-&gt; Created /kangspace.org
+ip:使用ip认证访问
+			- 创建节点： create /kangspace.org "kangspace domain:kangspace.org" world:anyone:crwda
+且节点权限为world,不限制访问
+\> Created /kangspace.org
 			- 创建持久有序节点列表:
 create /kangspace.org/psnode "SAVED PERSISTENT_SEQUENTIAL NODES"
-&gt; Created /kangspace.org/psnode
+\>Created /kangspace.org/psnode
 create -s /kangspace.org/psnode/ps "001"
-&gt; Created /kangspace.org/psnode/ps0000000001
+\>Created /kangspace.org/psnode/ps0000000001
 create -s /kangspace.org/psnode/ps "002"
-&gt; Created /kangspace.org/psnode/ps0000000002
+\>Created /kangspace.org/psnode/ps0000000002
 create -s /kangspace.org/psnode/ps "003"
-&gt; Created /kangspace.org/psnode/ps0000000003
+\>Created /kangspace.org/psnode/ps0000000003
 create -s /kangspace.org/psnode/ps "004"
-&gt; Created /kangspace.org/psnode/ps0000000004
+\>Created /kangspace.org/psnode/ps0000000004
 			- 创建临时有序节点:
 create /kangspace.org/esnode "SAVED EPHEMERAL_SEQUENTIAL NODES"
-&gt; Created /kangspace.org/esnode
+\>Created /kangspace.org/esnode
 create -s -e /kangspace.org/esnode/es "001"
-&gt; Created /kangspace.org/esnode/es0000000000
+\>Created /kangspace.org/esnode/es0000000000
 create -s -e /kangspace.org/esnode/es "002"
-&gt; Created /kangspace.org/esnode/es0000000001
+\>Created /kangspace.org/esnode/es0000000001
 create -s -e /kangspace.org/esnode/es "003"
-&gt; Created /kangspace.org/esnode/es0000000002
+\>Created /kangspace.org/esnode/es0000000002
 create -s -e /kangspace.org/esnode/es "004"
-&gt; Created /kangspace.org/esnode/es0000000003
+\>Created /kangspace.org/esnode/es0000000003
 		- ls path [WATCH]  【获取节点下子节点名称列表】
 （只含一级子节点）；可设置监视
 			- ls /kangspace.org
-&gt; [esnode, psnode]
+\> [esnode, psnode]
 		- ls2 path [WATCH] 【获取节点下子节点名称列表】，并包含该节点属性信息；可设置监视
 			- ls2 /kangspace.org
-&gt; [esnode, psnode]
+\>[esnode, psnode]
 cZxid = 0x400457aa6
 ctime = Wed Jun 24 13:39:42 CST 2020
 mZxid = 0x400457aa6
@@ -4775,7 +5642,7 @@ numChildren = 2
 		- get path [WATCH] 【获取节点数据及属性信息】；
 可设置监视
 			- get /kangspace.org
-&gt; kangspace domain:kangspace.org
+\>kangspace domain:kangspace.org
 cZxid = 0x400457aa6
 ctime = Wed Jun 24 13:39:42 CST 2020
 mZxid = 0x400457aa6
@@ -4791,7 +5658,7 @@ numChildren = 2
 version为要更新的dataVersion , 每次更新后dataVersion+1，
 若输入的version不是节点当前version时，更新失败。
 			- set /kangspace.org/esnode/en "update001"
-&gt; cZxid = 0x400457ac0
+\>cZxid = 0x400457ac0
 ctime = Fri Jun 26 10:37:48 CST 2020
 mZxid = 0x400457ac5
 mtime = Fri Jun 26 10:50:20 CST 2020
@@ -4803,7 +5670,7 @@ ephemeralOwner = 0x172b69b32ba0016
 dataLength = 9
 numChildren = 0
 set /kangspace.org/esnode/en "update001" 3
-&gt; version No is not valid : /kangspace.org/esnode/en
+\>version No is not valid : /kangspace.org/esnode/en
 (此时version值应为1)
 		- delete path [version] 【删除节点】
 version 为要更新的dataVersion
@@ -4875,7 +5742,7 @@ org.apache.curator.framework.recipes.leader.LeaderLatch
 						- Apache Curator框架提供的第一种Leader选举策略是Leader Latch。
 这种选举策略，其核心思想是初始化多个LeaderLatch，然后在等待几秒钟后，Curator会自动从中选举出Leader。
 Leader Latch选举的本质是连接ZooKeeper，然后在“/curator/latchPath”路径为每个LeaderLatch创建临时有序节点：
-在创建临时节点时，org.apache.curator.framework.recipes.leader.LeaderLatch 的 checkLeadership(List<String&gt; children) 方法会将选举路径（/curator/latchPath）下面的所有节点按照序列号排序，如果当前节点的序列号最小，则将该节点设置为leader。反之则监听比当前节点序列号小一位的节点的状态（PS：因为每次都会选择序列号最小的节点为leader，所以在比当前节点序列号小一位的节点未被删除前，当前节点是不可能变成leader的）。如果监听的节点被删除，则会触发重新选举方法——reset()
+在创建临时节点时，org.apache.curator.framework.recipes.leader.LeaderLatch 的 checkLeadership(List<String> children) 方法会将选举路径（/curator/latchPath）下面的所有节点按照序列号排序，如果当前节点的序列号最小，则将该节点设置为leader。反之则监听比当前节点序列号小一位的节点的状态（PS：因为每次都会选择序列号最小的节点为leader，所以在比当前节点序列号小一位的节点未被删除前，当前节点是不可能变成leader的）。如果监听的节点被删除，则会触发重新选举方法——reset()
 						- Apache Curator框架提供的另一种Leader选举策略是Leader Election。
 这种选举策略跟Leader Latch选举策略不同之处在于每个实例都能公平获取领导权，而且当获取领导权的实例在释放领导权之后，该实例还有机会再次获取领导权。另外，选举出来的leader不会一直占有领导权，当 takeLeadership(CuratorFramework client) 方法执行结束之后会自动释放领导权
 //创建 CuratorFrameworkImpl实例
@@ -4883,12 +5750,10 @@ Leader Latch选举的本质是连接ZooKeeper，然后在“/curator/latchPath�
 //创建LeaderSelectorListenerAdapter实例
             CustomLeaderSelectorListenerAdapter leaderSelectorListener = 
                     new CustomLeaderSelectorListenerAdapter(client, PATH, "Client #" + i);
-            
             leaderSelectorListener.start();
             leaderSelectorListenerList.add(leaderSelectorListener);           
-        
-	    		- 随机竞争分布式锁
-	    			- 假设存在Leader节点/kangspace.org/leader/instance，
+				- 随机竞争分布式锁
+					- 假设存在Leader节点/kangspace.org/leader/instance，
 1.  服务启动时,向Leader节点尝试创建Master临时节点，若创建成功，则表示当前没有Master,该服务为Master;若创建失败，则表示当前存在Master，该服务设置为Follower。
 2.  监听Master临时节点的删除事件; 当事件触发时，所有server同时竞争分布式锁， 得到锁的服务，去创建Master临时节点，升级为Master，其他服务为follower
 				- 多数投票
@@ -5399,184 +6264,43 @@ replica=1时，表示只有1份数据；replica不能大于>broker数量; replic
 	- Kafka 消息存储可设置过期时间，默认7天
 	- Kafka提供的命令行大部分需要提供 bootstrap-server 或 zookeeper 
 - Kafka目录及配置,命令说明
-  默认端口: 9092
-  - 目录及配置
-  	- bin/bin windows Kafka命令所在目录
-  		- --bootstrap-server or --zookeeper 是命令中必传项
-  		- kafka-server-start.sh [-daemon] server.properties [--override property=value]*
-   启动Server
-  			- 如:
-  ./bin/kafka-server-start.sh config/server.properties &
-  		- kafka-server-stop.sh 停止集群服务 
-  			- 如:
-  ./bin/kafka-server-stop.sh
-  		- kafka-topics.sh kafka topic相关操作
-  			- --bootstrap-server [String ip:port,...] 指定kafka broker地址，与zookeeper其一必填
-  			- --zookeeper [String ip:port,...] 指定zookeeper地址
-  与--bootstrap-server其一必填
-  			- 子主题 11
-  			- --create 创建
-  			- --alter 修改
-  			- --delete 删除
-  			- --topic [String topicName] 指定topic名称
-  			- --partitions [int cnt] 指定分区数量 ，默认为1
-  --create --alter 可指定
-  			- --replication-factor [int cnt]  指定复制因子，即副本数量, 
-  --create 时可指定
-  			- --describe 查看topic详情，含partition,rsr , replica等
-  			- --list 查看topic列表
-  			- --if-not-exists  当topic不存在时执行
-  --create可指定
-  			- --replica-assignment 手工指定分区副本
-  这种方式根据分区号的数值大小按照从小到大的顺序进行排列， 分区与分区之间用逗号“,” 隔开，分区内多个副本用冒号“:”隔开。并且在使用 replica-assignment 参数创建主题时不需要原本必备 的 partitions 和 replication-factor 这两个参数。
-  如: 
-  --replica-assignment 1:2,3:4,5:6
-  topic有三个partition，其中partition_0的replica分布在broker1和2上，partition_1的replica分布在broker3和4上，partition_2的replica分布在broker5和6上.
-  --create , --alter可指定
-  			- 如:
-  &gt; ./bin/kafka-topics.sh --create  --bootstrap-server 127.0.0.1:9092 --topic test-topic --partitions 3 --replication-factor 3
-  &gt; Created topic test-topic.
-  java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeeper must be specified
-  --create 创建topic
-  --alter 修改topic partitions,replication-fator,配置等信息
-  --delete 删除partitions
-  --replication-factor 复制因子
-  --partitions 分区数
-  --topic topic名称
-  --list 查看kafka topic列表
-  --discribe 查看topic信息
-  &gt; ./bin/kafka-topics.sh --list  --bootstrap-server 127.0.0.1:9092
-  查看topic信息：
-  &gt; ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test-topic
-  修改Topic分区:
-  &gt; ./bin/kafka-topics.sh --alter --zookeeper localhost:22181 --topic test-topic --partitions 2
-
-  		- kafka-console-producer.sh kafka控制台生产者
-  			- 如: 
-  &gt; ./bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic test-topic
-  		- kafka-console-consumer.sh kafka控制台消费者
-  			- --group 指定消费者分组
-  			- --from-beginning 从最早位置开始消费数据
-  			- --offset [String offsetId] 指定消费位置id
-  			- --partition [int pid] 指定监听的分区号
-  			- 如:
-  &gt; ./bin/kafka-con
-  sole-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning --group 0
-  		- kafka-consumer-groups.sh kafka消费者组操作
-  			- --all-groups 应用到所有消费者组
-  			- --group [String group] 指定要查看的组
-  				
-  				- ./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --offsets --group 1
-  - --describe 显示消费者组及消费情况
-  			需指定--all-groups 或--group 使用
-  	- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups
-  GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
-  1               test-topic      0          85              109             24              -               -               -
-  TOPIC topic名字	
-  PARTITION 分区id	
-  CURRENT-OFFSET 当前已消费的条数	
-  LOG-END-OFFSET 总条数
-  LAG 未消费的条数
-  CONSUMER-ID 消费id
-  HOST 主机ip
-  CLIENT-ID 客户端id
-  			
-  - --offsets 只显示消费者组分区消费情况
-  仅在--bootstrap-server ,--describe下使用
-  			是--describe的默认子行为
-  				
-  				- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups --offsets
-  - --list 显示所有消费者组名称
-  	- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
-  &gt; 
-  			0
-  1
-  - --members 显示消费者组中成员的描述信息
-  			仅在--bootstrap-server ,--describe下使用
-  			不显示offset信息
-  				
-  	- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group 1 --members
-  			- --delete 删除组
-  			- --delete-offsets  删除消费者组消费位置
-  			同时只支持一个消费者和多个topic
-  	
-  				- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --delete-offsets --group 0 --topic test-topic execute
-  - --execute 执行操作: --reset-offsets
-  			- --reset-offsets 重置消费者组消费信息
-  可使用--dry-run或--execut 执行
-  - -all-topic  Consider all topics assigned to a
-  group in the `reset-offsets` process.
-  - --topic [String topicName] 指定topic名称，用于delete 或 offset process
-  			支持多个topic
-  需指定--all-topics 或 --topic [topicName:partitionId,..] 使用
-  . In `reset-offsets` case, partitions can be specified using this format: `topic1:0,1,2`, where 0,1,2 are the
-  partition to be included in the process.
-  - 重新指定消费者组消费位置
-  			--to-earliest  Reset offsets to earliest offset.
-  			--to-latest                Reset offsets to latest offset.
-  		--to-offset <Long: offset&gt;  Reset offsets to a specific offset.
-  			需在--reset-offsets 下指定该参数
-  				
-  				- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets  --group 0 --topic test-topic --to-earliest execute
-  	- config 配置文件目录
-  http://kafka.apache.org/documentation/#configuration
-  	- server.properties kafka broker(Server)配置
-  			- broker.id BrokerId
-  		- log.dirs 数据文件保存目录
-  		- zookeeper.connect zookeeper链接地址
-  格式: 
-  hostname1:port1,hostname2:port2,hostname3:port3/chroot/path
-  			- listeners 设置监听类型和端口
-  	FORMAT:
-  listeners = listener_name://[host.name]:port
-  	host.name 为变量 或具体指
-  	默认:  PLAINTEXT://:9092
-  			- num.partitions=1 设置默认分区数
-  			- compress-type 压缩类型
-  	gzip  snappy lz4 zstd
-  			- offsets.topic.replication.factor topic 分区默认副本数
-  			- offsets.topic.segment.bytes  topic分区保存磁盘的segment文件大小
-  		- producer.properties kafka-console-pruducer生产者配置
-  		- consumer.properties   kafka-console-consumer消费者配置
-  	- libs jar包目录
-  	- logs 日志目录
-  	- site-docs 文档目录
-  -  常用命令
-  	- 创建Topic: 
-  kafka-topic.sh --create --bootstrap-server 127.0.0.1:9092 --partitions 1 --replication-factor 1 --topic newTopic
-  	- 查看topic信息: 
-  kafka-topic.sh --describe --bootstrap-server 127.0.0.1:9092 --topic newTopic
-  	- 修改topic分区:
-  kafka-topic.sh --alter --bootstrap-server 127.0.0.1:9092 --partitions 2 --topic newTopic
-  	- 删除分区:
-  kafka-topic.sh --delete --topic newTopic
-  	- 查看topic消费情况:
-  &gt; ./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups --offsets
-  - Zookeeper结构
-  	- /brokers      kafka实例目录
-  /brokers/ids/ kafka实例列表
-  /brokers/topics/ kafka下topic列表
-  /brokers/topics/[topic]  kafka下某个topic
-  /brokers/topics/[topic]/partitions/ kafka下topic分区列表
-  /brokers/topics/[topic]/partitions/0..n/state
-  /brokers/topics/__consumer_offsets
-  /consumers kafka所有消费者
-- 快速开始
-http://kafka.apache.org/quickstart
-	- 1. 下载最新安装包并解压
-&gt; tar -xzf kafka_2.12-2.5.0.tgz
-&gt; cd kafka_2.12-2.5.0
-	- 2. 启动Kafka Server (需Java环境)
-依赖于zookeeper , 需先启动Zookeeper 
-&gt; bin/kafka-server-start.sh config/server.properties&
-可使用已有Zookeeper服务,或启动Kafka自带的单节点Zookeeper服务
-(启动Kafka自带Zookeeper单节点服务)
-&gt; bin/zookeeper-server-start.sh config/zookeeper.properties&
-	- 3.  创建topic
-创建topic命令需指定broker地址或zookeeper地址,
-java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeeper must be specifiedtopic名称,patition数量,patition replica数量
-&gt; ./bin/kafka-topics.sh --create  --bootstrap-server 127.0.0.1:9092 --topic test-topic
-&gt; Created topic test-topic.
+默认端口: 9092
+	- 目录及配置
+		- bin/bin windows Kafka命令所在目录
+			- --bootstrap-server or --zookeeper 是命令中必传项
+			- kafka-server-start.sh [-daemon] server.properties [--override property=value]*
+ 启动Server
+				- 如:
+./bin/kafka-server-start.sh config/server.properties &
+			- kafka-server-stop.sh 停止集群服务 
+				- 如:
+./bin/kafka-server-stop.sh
+			- kafka-topics.sh kafka topic相关操作
+				- --bootstrap-server [String ip:port,...] 指定kafka broker地址，与zookeeper其一必填
+				- --zookeeper [String ip:port,...] 指定zookeeper地址
+与--bootstrap-server其一必填
+				- 子主题 11
+				- --create 创建
+				- --alter 修改
+				- --delete 删除
+				- --topic [String topicName] 指定topic名称
+				- --partitions [int cnt] 指定分区数量 ，默认为1
+--create --alter 可指定
+				- --replication-factor [int cnt]  指定复制因子，即副本数量, 
+--create 时可指定
+				- --describe 查看topic详情，含partition,rsr , replica等
+				- --list 查看topic列表
+				- --if-not-exists  当topic不存在时执行
+--create可指定
+				- --replica-assignment 手工指定分区副本
+这种方式根据分区号的数值大小按照从小到大的顺序进行排列， 分区与分区之间用逗号“,” 隔开，分区内多个副本用冒号“:”隔开。并且在使用 replica-assignment 参数创建主题时不需要原本必备 的 partitions 和 replication-factor 这两个参数。
+如: 
+--replica-assignment 1:2,3:4,5:6
+topic有三个partition，其中partition_0的replica分布在broker1和2上，partition_1的replica分布在broker3和4上，partition_2的replica分布在broker5和6上.
+--create , --alter可指定
+				- 如:
+\>./bin/kafka-topics.sh --create  --bootstrap-server 127.0.0.1:9092 --topic test-topic --partitions 3 --replication-factor 3
+\>Created topic test-topic.
 java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeeper must be specified
 --create 创建topic
 --alter 修改topic partitions,replication-fator,配置等信息
@@ -5586,17 +6310,154 @@ java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeepe
 --topic topic名称
 --list 查看kafka topic列表
 --discribe 查看topic信息
-&gt; ./bin/kafka-topics.sh --list  --bootstrap-server 127.0.0.1:9092
+\>./bin/kafka-topics.sh --list  --bootstrap-server 127.0.0.1:9092
 查看topic信息：
-&gt; ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test-topic
+\> ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test-topic
 修改Topic分区:
-&gt; ./bin/kafka-topics.sh --alter --zookeeper localhost:22181 --topic test-topic --partitions 2
+\> ./bin/kafka-topics.sh --alter --zookeeper localhost:22181 --topic test-topic --partitions 2
+
+			- kafka-console-producer.sh kafka控制台生产者
+				- 如: 
+\> ./bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic test-topic
+			- kafka-console-consumer.sh kafka控制台消费者
+				- --group 指定消费者分组
+				- --from-beginning 从最早位置开始消费数据
+				- --offset [String offsetId] 指定消费位置id
+				- --partition [int pid] 指定监听的分区号
+				- 如:
+\>./bin/kafka-con
+sole-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning --group 0
+			- kafka-consumer-groups.sh kafka消费者组操作
+				- --all-groups 应用到所有消费者组
+				- --group [String group] 指定要查看的组
+					- ./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --offsets --group 1
+				- --describe 显示消费者组及消费情况
+需指定--all-groups 或--group 使用
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups
+GROUP           TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+1               test-topic      0          85              109             24              -               -               -
+TOPIC topic名字	
+PARTITION 分区id	
+CURRENT-OFFSET 当前已消费的条数	
+LOG-END-OFFSET 总条数
+LAG 未消费的条数
+CONSUMER-ID 消费id
+HOST 主机ip
+CLIENT-ID 客户端id
+				
+				- --offsets 只显示消费者组分区消费情况
+仅在--bootstrap-server ,--describe下使用
+是--describe的默认子行为
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups --offsets
+				- --list 显示所有消费者组名称
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --list
+\>
+0
+1
+				- --members 显示消费者组中成员的描述信息
+仅在--bootstrap-server ,--describe下使用
+不显示offset信息
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group 1 --members
+				- --delete 删除组
+				- --delete-offsets  删除消费者组消费位置
+同时只支持一个消费者和多个topic
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --delete-offsets --group 0 --topic test-topic execute
+				- --execute 执行操作: --reset-offsets
+				- --reset-offsets 重置消费者组消费信息
+可使用--dry-run或--execut 执行
+				- -all-topic  Consider all topics assigned to a
+group in the `reset-offsets` process.
+				- --topic [String topicName] 指定topic名称，用于delete 或 offset process
+支持多个topic
+需指定--all-topics 或 --topic [topicName:partitionId,..] 使用
+. In `reset-offsets` case, partitions can be specified using this format: `topic1:0,1,2`, where 0,1,2 are the
+partition to be included in the process.
+				- 重新指定消费者组消费位置
+--to-earliest  Reset offsets to earliest offset.
+--to-latest                Reset offsets to latest offset.
+--to-offset <Long: offset>  Reset offsets to a specific offset.
+需在--reset-offsets 下指定该参数
+					- >./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --reset-offsets  --group 0 --topic test-topic --to-earliest execute
+		- config 配置文件目录
+http://kafka.apache.org/documentation/#configuration
+			- server.properties kafka broker(Server)配置
+				- broker.id BrokerId
+				- log.dirs 数据文件保存目录
+				- zookeeper.connect zookeeper链接地址
+格式: 
+hostname1:port1,hostname2:port2,hostname3:port3/chroot/path
+				- listeners 设置监听类型和端口
+FORMAT:
+listeners = listener_name://[host.name]:port
+host.name 为变量 或具体指
+默认:  PLAINTEXT://:9092
+				- num.partitions=1 设置默认分区数
+				- compress-type 压缩类型
+gzip  snappy lz4 zstd
+				- offsets.topic.replication.factor topic 分区默认副本数
+				- offsets.topic.segment.bytes  topic分区保存磁盘的segment文件大小
+			- producer.properties kafka-console-pruducer生产者配置
+			- consumer.properties   kafka-console-consumer消费者配置
+		- libs jar包目录
+		- logs 日志目录
+		- site-docs 文档目录
+	-  常用命令
+		- 创建Topic: 
+kafka-topic.sh --create --bootstrap-server 127.0.0.1:9092 --partitions 1 --replication-factor 1 --topic newTopic
+		- 查看topic信息: 
+kafka-topic.sh --describe --bootstrap-server 127.0.0.1:9092 --topic newTopic
+		- 修改topic分区:
+kafka-topic.sh --alter --bootstrap-server 127.0.0.1:9092 --partitions 2 --topic newTopic
+		- 删除分区:
+kafka-topic.sh --delete --topic newTopic
+		- 查看topic消费情况:
+\>./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe  --all-groups --offsets
+	- Zookeeper结构
+		- /brokers      kafka实例目录
+/brokers/ids/ kafka实例列表
+/brokers/topics/ kafka下topic列表
+/brokers/topics/[topic]  kafka下某个topic
+/brokers/topics/[topic]/partitions/ kafka下topic分区列表
+/brokers/topics/[topic]/partitions/0..n/state
+/brokers/topics/__consumer_offsets
+/consumers kafka所有消费者
+- 快速开始
+http://kafka.apache.org/quickstart
+	- 1. 下载最新安装包并解压
+\> tar -xzf kafka_2.12-2.5.0.tgz
+\> cd kafka_2.12-2.5.0
+	- 2. 启动Kafka Server (需Java环境)
+依赖于zookeeper , 需先启动Zookeeper 
+\> bin/kafka-server-start.sh config/server.properties&
+可使用已有Zookeeper服务,或启动Kafka自带的单节点Zookeeper服务
+(启动Kafka自带Zookeeper单节点服务)
+\> bin/zookeeper-server-start.sh config/zookeeper.properties&
+	- 3.  创建topic
+创建topic命令需指定broker地址或zookeeper地址,
+java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeeper must be specifiedtopic名称,patition数量,patition replica数量
+\>./bin/kafka-topics.sh --create  --bootstrap-server 127.0.0.1:9092 --topic test-topic
+\>Created topic test-topic.
+java.lang.IllegalArgumentException: Only one of --bootstrap-server or --zookeeper must be specified
+--create 创建topic
+--alter 修改topic partitions,replication-fator,配置等信息
+--delete 删除partitions
+--replication-factor 复制因子
+--partitions 分区数
+--topic topic名称
+--list 查看kafka topic列表
+--discribe 查看topic信息
+\>./bin/kafka-topics.sh --list  --bootstrap-server 127.0.0.1:9092
+查看topic信息：
+\> ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic test-topic
+修改Topic分区:
+\> ./bin/kafka-topics.sh --alter --zookeeper localhost:22181 --topic test-topic --partitions 2
 手工指副本分配:
 --replica-assignment  broker_id_for_part1_replica1 : broker_id_for_part1_replica2...
 	- 4. 创建生产者，发送消息
-&gt; ./bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic test-topic
+\> ./bin/kafka-console-producer.sh --bootstrap-server 127.0.0.1:9092 --topic test-topic
 	- 5. 启动消费者，消费消息
-&gt; ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning --group 0
+\>./bin/kafka-con
+sole-consumer.sh --bootstrap-server localhost:9092 --topic test-topic --from-beginning --group 0
 --from-beginning 从头开始消费
 --group 指定Consumer Group
 	- 6. 创建kafka server集群
@@ -5605,19 +6466,18 @@ broker.id=0
 listeners=PLAINTEXT://:9093
 logDir=/tmp/kafka-logs-1
 		- 2. 分别启动3个Server
-&gt; bin/kafka-server-start.sh config/server-1.properties &
+\> bin/kafka-server-start.sh config/server-1.properties &
 ...
-&gt; bin/kafka-server-start.sh config/server-2.properties &
+\> bin/kafka-server-start.sh config/server-2.properties &
 ...
 		- 3. 创建一个具有3分区,3复制因子的topic: topic-three
- &gt; ./bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --partitions 3 --replication-factor 3 --topic topic-three
-&gt; ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092  --topic topic-three
+ > ./bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --partitions 3 --replication-factor 3 --topic topic-three
+\> ./bin/kafka-topics.sh --describe --bootstrap-server localhost:9092  --topic topic-three
 Topic: topic-three      PartitionCount: 3       ReplicationFactor: 3    Configs: segment.bytes=1073741824
-          Topic: topic-three      Partition: 0    Leader: 1       Replicas: 1,2,0 Isr: 1,2,0
-          Topic: topic-three      Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
-          Topic: topic-three      Partition: 2    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
+        Topic: topic-three      Partition: 0    Leader: 1       Replicas: 1,2,0 Isr: 1,2,0
+        Topic: topic-three      Partition: 1    Leader: 0       Replicas: 0,1,2 Isr: 0,1,2
+        Topic: topic-three      Partition: 2    Leader: 2       Replicas: 2,0,1 Isr: 2,0,1
 - UI客户端
-	
 	- kafkatool
 ### RocketMQ
 ### RabbitMQ
@@ -5733,7 +6593,7 @@ ConfigFileApplicationListener#getSearchNames()
     <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
          <version>2.1.3.RELEASE</version>
-         <relativePath/&gt; <!-- lookup parent from repository -->
+         <relativePath/> <!-- lookup parent from repository -->
 </parent>
 改方法可以使用properties覆盖内部依赖版本，如:
 <properties>
@@ -5762,7 +6622,7 @@ ConfigFileApplicationListener#getSearchNames()
 该方式不能使用properties形式覆盖原始依赖版本。要达到同样效果，需要在dendencyMangement中spring-boot-dependencies前添加pom依赖
 
 		- <--SpringBoot依赖-->
-<dependency&gt;                <groupId>org.springframework.boot</groupId>
+<dependency>                <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-dependencies</artifactId>
 <version>${spring-boot.version}</version>
 <type>pom</type>
@@ -5797,7 +6657,7 @@ public class MyBean {
     @Autowired
     public MyBean(ApplicationArguments args) {
         boolean debug = args.containsOption("debug");
-        List<String&gt; files = args.getNonOptionArgs();
+        List<String> files = args.getNonOptionArgs();
         // if run with "--debug logfile.txt" debug=true, files=["logfile.txt"]
     }
 }
@@ -5867,7 +6727,7 @@ public class AcmeProperties{
 }
 可使用@Validated添加验证
 				- 依赖:
-<dependency&gt;  <groupId>org.springframework.boot</groupId>
+<dependency>  <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-configuration-processor</artifactId>
 </dependency>
 				- @Component
@@ -5946,7 +6806,7 @@ org.springframework.cloud.client.discovery.EnableDiscoveryClient
 			- @EnableFeignClients 启用feign
 org.springframework.cloud.netflix.feign.EnableFeignClients
 				- feign/hystrix依赖
-    <dependency>
+  <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
         </dependency>
@@ -6008,7 +6868,7 @@ TimeZone.setDefault(TimeZone.getTimeZone("Asia/Shanghai"));
 @ActiveProfiles("test")
 @Slf4j
 public abstract class TestBase {
-    ......
+  ......
 }
 			- @Test声明一个方法为测试方法
 				-    @Test
@@ -6082,10 +6942,10 @@ token：grant_type=authorization_code
 		- 如: A网站需要B网站的授权，
 1. 访问 B网站授权接口获得授权码
 https://b.com/oauth2/authorize?
-    response_type=code&
-    client_id=CLIENT_ID&
-    redirect_uri=CALLBACK_URL&
-    scope=read
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=CALLBACK_URL&
+  scope=read
 2. B网站跳转用户登录授权页，授权成功后跳转回redirect_url A网站，同时返回授权码
 https://a.com/callback?code=AUTHORIZATION_CODE
 3. A网站后端拿到code后，使用code和client_id,client_secret 申请令牌
@@ -6097,13 +6957,13 @@ https://b.com/oauth2/token?
  redirect_uri=CALLBACK_URL
 响应数据：
 {    
-    "access_token":"ACCESS_TOKEN",
-    "token_type":"bearer",
-    "expires_in":2592000,
-    "refresh_token":"REFRESH_TOKEN",
-    "scope":"read",
-    "uid":100101,
-    "info":{...}
+  "access_token":"ACCESS_TOKEN",
+  "token_type":"bearer",
+  "expires_in":2592000,
+  "refresh_token":"REFRESH_TOKEN",
+  "scope":"read",
+  "uid":100101,
+  "info":{...}
 }
 		- 案例: 微信网页授权
 	- 2. 隐藏式(implicit)
@@ -6112,10 +6972,10 @@ authorize：response_type=token
 		- 如：
 1. A 网站提供一个 链接，要求用户跳转到B网站，授权用户数据给A完整使用。
 https://b.com/oauth2/authorize?
-    response_type=token&
-    client_id=CLIENT_ID&
-    redirect_uri=CALLBACK_URL&
-    scope=read
+  response_type=token&
+  client_id=CLIENT_ID&
+  redirect_uri=CALLBACK_URL&
+  scope=read
 2. 用户跳转到B网站，登录同意给予A网站授权。这时，B网站就会跳回redirect_uri参数的指定网站，并且把令牌作为URL参数，传给A网站
 https://a.com/callback#token=ACCESS_TOKEN
 注意，令牌的位置是 URL 锚点（fragment），而不是查询字符串（querystring），这是因为 OAuth 2.0 允许跳转网址是 HTTP 协议，因此存在"中间人攻击"的风险，而浏览器跳转时，锚点不会发到服务器，就减少了泄漏令牌的风险。
@@ -6126,10 +6986,10 @@ grant_type=password
 		- 如: 
 1.  A网站要求用户提供B网站的用户名和密码。拿到以后，A就直接向B请求令牌
 https://oauth.b.com/token?
-    grant_type=password&
-    username=USERNAME&
-    password=PASSWORD&
-    client_id=CLIENT_ID
+  grant_type=password&
+  username=USERNAME&
+  password=PASSWORD&
+  client_id=CLIENT_ID
 2. B网站验证身份通过后，直接给出令牌。注意，这时不需要跳转，而是把令牌放在JSON数据中，作为Http响应，A以此拿到令牌
 这种方式需要用户给出自己的用户名密码，风险很大， 因此只适用于其他授权方式都无法采用的情况，而且必须是用户高度信任的应用
 
@@ -6139,9 +6999,9 @@ grant_typoe=client_credentials
 		- 如:
 1.  A应用在命令行向B发出请求
 https://oauth.b.com/token?
-    grant_type=client_credentials&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET
+  grant_type=client_credentials&
+  client_id=CLIENT_ID&
+  client_secret=CLIENT_SECRET
 2. B网站验证通过后，直接返回令牌
 这种方式给出的令牌是针对第三方应用的，不是针对于用户，即有可能多个用户共享同一个令牌
 3. A拿到令牌后，请求B接口时，都必须在请求头带认证字段"Authorization"，值为"Bearer token"
@@ -6238,7 +7098,7 @@ https://www.cnblogs.com/kindnull/p/10307333.html
 （ 一次HTTP操作称为一个事务）
 			- 1. URL地址解析:  
 protocol ://[username:password@]hostname[:port] / path / [;parameters][?query]#fragment
-[协议名]://用户名:密码@服务器地址:服务器端口号/路径?查询字符串#片段ID
+[协议名]://[用户名]:[密码]@[服务器地址]:[服务器端口号]/[路径]?[查询字符串]#[片段ID]
 DNS解析域名为IP
 			- 2. 封装HTTP请求数据包
 把以上部分结合本机自己的信息，封装成一个HTTP请求数据包
@@ -6345,16 +7205,16 @@ TLS: SSL3.0 Transport Layer Security
 			- HTTPS协议握手阶段比较费时，对网站的响应速度有影响，影响用户体验
 	- SSL连接建立过程
 		- 1. Client 向 Server发送 Hello , 随机码1,客户端支持的加密算法列表
-Client -&gt; Hello ,random number1 ,cipher suites ->Server
+Client -> Hello ,random number1 ,cipher suites ->Server
 		- 2. Server接收数据后响应client，返回随机数2和匹配的加密算法
-Server -&gt; random number2,matched cipher suites - client
+Server -> random number2,matched cipher suites - client
 		- 3. 随即 Server给Client发送数字证书报文。
-Server -&gt; server certificate -&gt; Client
+Server -> server certificate -> Client
 		- 4. 客户端解析证书，验证公钥是否有效，如颁发机构，过期时间等，若异常，则弹出警告提示证书存在问题，
 若正常，则生成随机值（预主密钥）
 		- 5. 客户端通过认证后，通过随机数1，随机数2，预主密钥组装会话密钥，
 然后通过证书的公钥加密 预主密钥
-client -&gt; assemble session secret key = random number1+random2+premaster；
+client -> assemble session secret key = random number1+random2+premaster；
 encrypt (premaster secret）with public key ->Server
 		- 6. 传送加密信息：公钥加密的预主密钥
 		- 7. 服务器用私密解密6中的预主密钥，然后 通过随机数1，随机数2,预主密钥 组装会话密钥
@@ -6433,4 +7293,3 @@ public void onClose() {}
 ## 推送
 ### 友盟
 ### 极光
-*XMind - Trial Version*
