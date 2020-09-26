@@ -22,7 +22,7 @@ public class RenameFloderFileName {
     }
 
     public static void main(String[] args) {
-        String path = "C:\\Users\\kangxuefeng\\Desktop\\Assets";
+        String path = "C:\\Users\\kango2gler@gmail.com\\Desktop\\Assets";
         rename(path);
         System.out.println("OK");
     }

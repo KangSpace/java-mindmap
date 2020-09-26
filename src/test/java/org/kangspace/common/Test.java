@@ -13,10 +13,8 @@ import javax.crypto.spec.SecretKeySpec;
 import java.awt.*;
 import java.security.Key;
 import java.security.MessageDigest;
-import java.util.Base64;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author kango2gler@gmail.com
@@ -254,5 +252,13 @@ public class Test {
         {
             System.out.println(dd);
         }
+    }
+    @org.junit.Test
+    public void genericTest(){
+        tempList(new ArrayList<>());
+    }
+
+    private List<Integer> tempList(List<Integer>integerList) {
+        return integerList;
     }
 }

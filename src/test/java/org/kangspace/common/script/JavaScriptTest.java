@@ -40,7 +40,7 @@ public class JavaScriptTest {
 
     @Test
     public void classFileTest() throws FileNotFoundException {
-        String classFile = "C:\\Users\\kangxuefeng\\Desktop\\A.class";
+        String classFile = "C:\\Users\\kango2gler@gmail.com\\Desktop\\A.class";
         InputStream inputStream = new FileInputStream(classFile);
         if(classFile instanceof Object)
             ;
@@ -50,7 +50,7 @@ public class JavaScriptTest {
     }
     @Test
     public void instanceOfTest() throws FileNotFoundException {
-        String classFile = "C:\\Users\\kangxuefeng\\Desktop\\A.class";
+        String classFile = "C:\\Users\\kango2gler@gmail.com\\Desktop\\A.class";
 
         if(classFile instanceof Object)
             System.out.println("classFile instanceof Object");

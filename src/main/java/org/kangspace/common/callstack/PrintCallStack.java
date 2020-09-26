@@ -3,7 +3,7 @@ package org.kangspace.common.callstack;
 /**
  * 2020/4/27 14:19
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  */
 public class PrintCallStack {
     public static void print() {

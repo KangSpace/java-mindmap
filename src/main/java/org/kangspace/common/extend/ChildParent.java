@@ -5,7 +5,7 @@ package org.kangspace.common.extend;
  *  ABChild父类接口
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/8/26 10:46
  */
 public class ChildParent {

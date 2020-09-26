@@ -5,7 +5,7 @@ package org.kangspace.common.extend;
  * 接口超类,定义了rootCommon()方法
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/8/26 10:38
  */
 public interface IInterfaceParent {

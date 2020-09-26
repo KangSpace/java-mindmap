@@ -9,9 +9,9 @@ import java.net.URLEncoder;
  * @author kango2gler@gmail.com
  */
 public class Test {
-    final static String URL = "jdbc:oracle:thin:@192.168.10.27:1521:ettdb";
-    final static String USERNAME = "ett16111";
-    final static String PASSWORD = "ett16111";
+    final static String URL = "jdbc:oracle:thin:@localhost:1521:db";
+    final static String USERNAME = "name";
+    final static String PASSWORD = "pwd";
     //"d:\\tmp\\";
     final static String RESULT_FILE_PATH = null;
     public static void queryWordListTest(){

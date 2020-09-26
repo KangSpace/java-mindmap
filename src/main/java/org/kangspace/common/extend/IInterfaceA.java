@@ -5,7 +5,7 @@ package org.kangspace.common.extend;
  * 接口A,定义了common()方法
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/8/26 10:38
  */
 public interface IInterfaceA extends IInterfaceParent{

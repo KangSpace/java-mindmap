@@ -219,7 +219,7 @@ public class BinaryTree<T> {
      * 由一个数据域和2个指针域组成的节点
      *
      * @param <T>
-     * @author kangxuefeng
+     * @author kango2gler@gmail.com
      */
     public class Node<T> implements Comparable<Node<T>> {
         private T value;

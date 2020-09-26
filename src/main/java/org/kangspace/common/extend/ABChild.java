@@ -5,7 +5,7 @@ package org.kangspace.common.extend;
  * 接口 {@link IInterfaceA} {@link IInterfaceB}的实现类
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/8/26 10:40
  */
 public class ABChild extends ChildParent implements IInterfaceA,IInterfaceB {
