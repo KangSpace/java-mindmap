@@ -7,11 +7,12 @@ package org.kangspace.common.algorithms.dynamicprogramming.middle;
  * 给定一个字符串 s ，找到其中最长的回文子序列，并返回该序列的长度。可以假设 s 的最大长度为 1000 。
  * 示例 1:
  *
+ * 示例 1:
  * 输入:
- * "bbab"
+ * "bbbab"
  * 输出:
  * 4
- * 一个可能的最长回文子序列为 "bab"。
+ * 一个可能的最长回文子序列为 "bbbb"。
  * 示例 2:
  * 输入:
  * "cbbd"
@@ -24,68 +25,64 @@ package org.kangspace.common.algorithms.dynamicprogramming.middle;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-palindromic-subsequence
  *
- * 解题步骤
- * 分析:
- * 假设s(i...j)为最长回文子序列,则存在:
- * a. s(i)==s(j)
- * b. s(i+1..j-1) 存在 s(i+1) == s(j-1) j>=i+2
- *
+ * 解题步骤 *
  * 1. 定义状态
- *  假设p[i][j]表示为s[i..j]是否是回文子序列,若p[i][j]为回文子序列,则p[i][j] == p[i+1][j-1] 且s[i] == s[j]
+ *  假设dp[i][j]表示为s[i,j]的最长回文子序列长度
  * 2. 定义状态转移方程
- *    若p[i][j] == p[i+1][j-1] 且s[i] == s[j],则为回文子串,记录开始下标及子序列长度
+ * 若已知dp[i+1][j-1](s[i+1,j-1]的最长回文子序列长度)的值,求dp[i][j]的值有2种情况:
+ * 1. 当s[i]==s[j]时s[i,j]一定存在最长回文子序列,且长度+2,即
+ *   dp[i][j] = dp[i+1][j-1]+2
+ * 2. 当s[i]!=s[j]时,则需要分别s[i],s[j]加入到s[i+1,j-1]序列中,去最大的回文子序列长度,即
+ *   dp[i][j] = max{dp[i][j-1],dp[i+1][j]}
  * 3. 初始值(编写算法或代码)
- *    当数组只有1位时s[i]==s[j] = true为回文子序列
- *    当数组有2位时s[i]==s[j]为回文子序列
- *    循环序列:
- *     1. 先计算单个字符的子序列都为回文子序列(i,j 间隔为0)
- *     2. 计算相邻的字符组成的子序列是否是回文子序列(i,j 间隔为1)
- *     3. 计算i,j间隔为2的子序列是否为回文子序列,其中会用到1,2中的结果
- *     4. 计算i,j间隔为i的子序列是否为回文子序列，直至s[0],s[j]最长回文子序列
- *
+ *    当数组只有1位时 i==j时为回文子序列,长度为1
+ *    i<j,所以子序列长度为0
  * </pre>
+ *
  * @author kango2gler@gmail.com
  * @date 2020/9/21 21:55
  */
 public class LongestPalindromeSubseq {
-    public String longestPalindromeSubseq(String s) {
+    public int longestPalindromeSubseq(String s) {
         int len = s.length();
-        if (len == 0 || len > 1000) {
-            return "";
+        if (len == 1) {
+            return 1;
         }
         char[] chars = s.toCharArray();
-        int max = 0;
-        boolean p[][] = new boolean[len][len];
-        String result = "";
-        for (int l = 0; l < len; l++) {
-            for (int i = 0; i+l < len; i++) {
-                int j = i + l;
-                //若p[i][j] == p[i+1][j-1] 且s[i] == s[j],则为回文子串,记录开始下标及子序列长度
-                if (i == j) {
-                    p[i][j] = true;
-                }else if(i+1 == j &&chars[i] == chars[j]){
-                    p[i][j] = true;
-                }else if(i+1 == j &&chars[i] != chars[j]){
-                    p[i][j] = false;
-                }else if (chars[i] == chars[j] && p[i+1][j-1]) {
-                    p[i][j] = true;
-                }else{
-                    p[i][j] = false;
-                }
-                if (p[i][j]) {
-                    max = Math.max(max,j - i + 1);
-                    result = s.substring(i, j+1);
+        int dp[][] = new int[len][len];
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = 1;
+        }
+        //从下往上,从左往右计算最终dp[0][len-1]
+//        for (int i = len-1; i >=0; i--) {
+//            for (int j = i+1; j < len; j++) {
+//                if (chars[i] == chars[j]) {
+//                    dp[i][j] = dp[i + 1][j - 1] + 2;
+//                } else {
+//                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+//                }
+//            }
+//        }
+        //从左往右,从下往上计算最终dp[0][len-1]
+        for (int step = 1; step < len; step++) {
+            for (int i = 0; i + step < len; i++) {
+                int j = i + step;
+                if (chars[i] == chars[j]) {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                } else {
+                    dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
                 }
             }
         }
-        return  result;
+        return dp[0][len - 1];
     }
+
 
     public static void main(String[] args) {
         String s = "bbbab";
-        LongestPalindromeSubseq longestPalindromeSubseq= new LongestPalindromeSubseq();
-        System.out.println(longestPalindromeSubseq.longestPalindromeSubseq(s));
+        LongestPalindromeSubseq longestPalindromeSubseq = new LongestPalindromeSubseq();
+        System.out.println(s + ":" + longestPalindromeSubseq.longestPalindromeSubseq(s));
         String s1 = "cbbd";
-        System.out.println(longestPalindromeSubseq.longestPalindromeSubseq(s1));
+        System.out.println(s1 + ":" + longestPalindromeSubseq.longestPalindromeSubseq(s1));
     }
 }
