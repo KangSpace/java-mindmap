@@ -258,6 +258,13 @@ public class Test {
         tempList(new ArrayList<>());
     }
 
+    @org.junit.Test
+    public void nullCaseObjectTest(){
+        Object flag = null;
+        System.out.println((Boolean)flag);
+        System.out.println((flag!=null &&(Boolean)flag)?1:2);
+    }
+
     private List<Integer> tempList(List<Integer>integerList) {
         return integerList;
     }

@@ -19,7 +19,6 @@ public class AtomicClassTest implements Serializable {
         System.out.println("--i:"+i.decrementAndGet());
         //只有BoatstrapClassLoader可以调用Unsafe.getUnsafe()方法
 //        Unsafe unsafe= Unsafe.getUnsafe();
-//        System.out.println(unsafe.compareAndSwapInt(new Object(),1L,1,2));
         Integer inull = null;
         System.out.println(1==inull);
     }

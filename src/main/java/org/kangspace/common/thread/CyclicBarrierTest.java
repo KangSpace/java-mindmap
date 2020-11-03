@@ -77,7 +77,8 @@ public class CyclicBarrierTest {
             }
             System.out.println(Thread.currentThread().getName()+ "-CyclicBarrier 结束后继续执行2："+System.currentTimeMillis());
         }).start();
-
+        //可重置
+        cyclicBarrier.reset();
         System.out.println("全部到达屏障...."+System.currentTimeMillis());
     }
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package org.kangspace.common.annotation;
 
+import org.kangspace.common.annotation.test.MyClass1;
+
 import java.lang.annotation.*;
 
 /**
@@ -12,6 +14,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface MyFieldMethodAnnotation {
     String value();
+    MyClass1.Value tvalue() default MyClass1.Value.V;
     MyAnnotationTypeEnum type();
 
 }

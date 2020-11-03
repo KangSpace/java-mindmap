@@ -22,6 +22,8 @@ public class OddEvenPrintTest2 {
                 if (ai.get() % 2 == 0) {
 //                    System.out.println("p1:"+ai.get());
                     print();
+                }else{
+                    System.out.println("1");
                 }
             }
         },"Thread0").start();
@@ -30,6 +32,13 @@ public class OddEvenPrintTest2 {
                 if (ai.get() % 2 == 1) {
 //                    System.out.println("p2:"+ai.get());
                     print();
+//                    try {
+//                        Thread.sleep(100L);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+                }else{
+                    System.out.println("2");
                 }
             }
         },"Thread1").start();
