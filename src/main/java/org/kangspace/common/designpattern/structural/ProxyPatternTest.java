@@ -1,5 +1,9 @@
 package org.kangspace.common.designpattern.structural;
 
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -19,8 +23,11 @@ public class ProxyPatternTest {
     /**
      * 抽象类
      */
-    interface NormalObject{
+    public interface NormalObject{
         void action(String desc);
+        default void run(){
+            System.out.println("default run");
+        }
     }
 
     /**
@@ -69,6 +76,33 @@ public class ProxyPatternTest {
     /**
      * 3. CGLIB 代理
      */
+    public static NormalObject cglibDynamicProxyFn() {
+        Enhancer enhancer = new Enhancer();
+        enhancer.setSuperclass(NormalObject.class);
+      /*  enhancer.setCallback(new FixedValue() {
+            @Override
+            public Object loadObject() throws Exception {
+                return "Hello cglib";
+            }
+        });*/
+        //方法代理
+        enhancer.setCallback(new MethodInterceptor() {
+            @Override
+            public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
+                if ("action".equals(method.getName())) {
+                    System.out.println("cglib 代理方法执行前:" + method.getName());
+                    Object o1 = methodProxy.invokeSuper(o, args);
+                    System.out.println("cglib 代理方法执行后:" + method.getName());
+                    return o1;
+                }
+                return methodProxy.invokeSuper(o, args);
+            }
+        });
+        NormalObject proxy = (NormalObject) enhancer.create();
+        System.out.println(proxy.toString());
+        System.out.println(proxy.getClass());
+        return proxy;
+    }
 
     static void main(){
         NormalObject object = new NormalObjectImpl();
@@ -79,10 +113,15 @@ public class ProxyPatternTest {
         System.out.println("###动态代理(JDK代理):");
         NormalObject proxy2 = dynamicProxyFn(object);
         proxy2.action("动态代理action");
+        System.out.println("###动态代理(CGLIB代理):");
+        NormalObject proxy3 = cglibDynamicProxyFn();
+        proxy3.action("动态代理(CGLIB代理)action");
 
 
     }
     public static void main(String[] args) {
+        System.setProperty("cglib.debugLocation","D:\\classes\\java-mindmap\\");
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
         main();
     }
 }

@@ -1,5 +1,6 @@
 package org.kangspace.common.thread;
 
+import java.util.Date;
 import java.util.concurrent.*;
 
 /**
@@ -10,7 +11,7 @@ import java.util.concurrent.*;
 public class ThreadExecutorTest {
     static void newFiexedThreadPool() {
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(1);
-        fixedThreadPool.execute(()->{
+        fixedThreadPool.execute(() -> {
             try {
                 System.out.println("Thread1 run");
                 Thread.sleep(10000L);
@@ -23,7 +24,7 @@ public class ThreadExecutorTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        fixedThreadPool.execute(()->{
+        fixedThreadPool.execute(() -> {
             try {
                 System.out.println("Thread2 run");
                 Thread.sleep(10000L);
@@ -36,19 +37,20 @@ public class ThreadExecutorTest {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        if(fixedThreadPool.isShutdown()) {
+        if (fixedThreadPool.isShutdown()) {
             fixedThreadPool.shutdown();
         }
 //        System.out.println("Thread end");
     }
+
     static void newCachedThreadPool() {
         ExecutorService pool = Executors.newCachedThreadPool();
-        for (int i = 0; i <= 10000;i++) {
+        for (int i = 0; i <= 1000; i++) {
             int finalI = i;
-            pool.execute(()->{
+            pool.execute(() -> {
                 try {
-                    System.out.println("Thread"+ finalI +" run");
-                    Thread.sleep(10000L);
+                    System.out.println("Thread" + finalI + " run");
+                    Thread.sleep(10000L * 60);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -56,9 +58,10 @@ public class ThreadExecutorTest {
         }
 
     }
+
     static void diyThreadPool() {
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(0,1,0, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<>(1));
-        executor.execute(()->{
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 1, 0, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(1));
+        executor.execute(() -> {
             try {
                 System.out.println("Thread1 run");
                 Thread.sleep(10000L);
@@ -71,7 +74,7 @@ public class ThreadExecutorTest {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        executor.execute(()->{
+        executor.execute(() -> {
             try {
                 System.out.println("Thread2 run");
                 Thread.sleep(10000L);
@@ -84,17 +87,68 @@ public class ThreadExecutorTest {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        if(executor.isShutdown()) {
+        if (executor.isShutdown()) {
             executor.shutdown();
         }
 //        System.out.println("Thread end");
     }
-    static void main(){
+
+    public static void syncronizesQueueTest() {
+        //公平队列,默认创建head,tail节点,且为1个节点
+        SynchronousQueue<String> fairQueue = new SynchronousQueue<>(true);
+        new Thread(()->{
+            while (true) {
+                String s = null;
+                try {
+                    s = fairQueue.take();
+                    System.out.println("fairQueue s:" + s + ", time:" + new Date());
+                    Thread.sleep(1000L);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        },"fairQueueConsumerThread").start();
+        try {
+            //公平队列offer,加入队列等待消费
+            Boolean offered= fairQueue.offer("1");
+            System.out.println("fairQueue s: 1 offered:" +  offered+ ", time:" + new Date());
+            //公平队列,put后等待其他线程消费后才能继续put
+            fairQueue.put("2");
+            fairQueue.put("3");
+            fairQueue.put("4");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //非公平栈
+        SynchronousQueue<String> noFairStack = new SynchronousQueue<>(false);
+        try {
+            //非公平栈 offer时,直接返回失败,不等待
+            noFairStack.offer("11");
+            //非公平栈 put时,创建节点,等待消费
+            noFairStack.put("12");
+            noFairStack.put("13");
+            noFairStack.put("14");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i >= 4; i++) {
+            try {
+                String s  = noFairStack.take();
+                System.out.println("noFairStack s:"+ s +", time:" + new Date());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static void main() {
 //        diyThreadPool();
 //        newFiexedThreadPool();
-        newCachedThreadPool();
+//        newCachedThreadPool();
+        syncronizesQueueTest();
     }
-    static void main1(){
+
+    static void main1() {
         // 默认拒绝处理器RejectedExecutionHandler:
         //创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
         //最大线程数Integer.MAX_MAX_VALUE , keepAliveTime: 60s
@@ -110,10 +164,12 @@ public class ThreadExecutorTest {
         //创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
         //LinkedBlockingQueue 队列最大长度:Integer.MAX_MAX_VALUE
         ExecutorService singleThreadExecutor = Executors.newSingleThreadExecutor();
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(0,1,0, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<>(10));
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(0, 1, 0, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(10));
         try {
-            cachedThreadPool.submit(()->{}).get();
-            cachedThreadPool.execute(()->{});
+            cachedThreadPool.submit(() -> {
+            }).get();
+            cachedThreadPool.execute(() -> {
+            });
             cachedThreadPool.shutdown();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -122,6 +178,7 @@ public class ThreadExecutorTest {
         }
 
     }
+
     public static void main(String[] args) {
         main();
     }

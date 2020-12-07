@@ -138,5 +138,10 @@
             <artifactId>ojdbc14</artifactId>
             <version>10.2.0.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
     </dependencies>
 </project>
