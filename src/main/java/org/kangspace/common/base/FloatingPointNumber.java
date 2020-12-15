@@ -34,6 +34,8 @@ public class FloatingPointNumber {
         float d = 1234567.1234567f;
         System.out.println("c:123.123456789123f:"+c);
         System.out.println("d:1234567.1234567f:"+d);
+        System.out.println("10000000000000001f:"+10000000000000001f);
+        System.out.println("1.00000003E16:"+new Float(1.00000003E16f).longValue());
     }
     public static void main(String[] args) {
         main();
