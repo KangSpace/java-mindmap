@@ -7,7 +7,7 @@ import java.math.BigDecimal;
  * 浮点数
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/12/9 17:42
  */
 public class FloatingPointNumber {

@@ -9,7 +9,7 @@ import java.util.List;
  *
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/11/17 15:35
  */
 public class HashMapResizeTest {

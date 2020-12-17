@@ -8,7 +8,7 @@ import java.util.Date;
  * 父线程subThread1结束,子线程subThread2继续运行,同时主线程也结束
  * </pre>
  *
- * @author kangxuefeng@etiantian.com
+ * @author kango2gler@gmail.com
  * @date 2020/11/5 15:23
  */
 public class SubThreadRunningOnParentOrMainEnd {
