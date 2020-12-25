@@ -30,6 +30,7 @@ public class ForkJoinTest {
                 return new Integer(1);
             }
         });
+//        task2.get()
         task1.fork();
         task2.fork();
         task1.join();
