@@ -1,14 +1,12 @@
 package org.kangspace.common.wordapi;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.kangspace.common.util.db.oracle.DBUtil;
 import org.kangspace.common.wordapi.ettbean.TempWordsAPIData;
 import org.kangspace.common.wordapi.ettbean.Word;
-import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringEscapeUtils;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
@@ -134,7 +132,8 @@ public class ETTWordHandle{
         }
         //音标(IPA)处理为 &#
         result = wordIpaToHtmlEntity(result);
-        JSONObject json = JSONObject.fromObject(result);
+        final TempWordsAPIData tempWordsAPIData = null;
+        /*JSONObject json = JSONObject.fromObject(result);
         final TempWordsAPIData tempWordsAPIData = new TempWordsAPIData(wordId,
                 json.has("word")?json.getString("word"):null,
                 json.has("frequency")?new BigDecimal(json.getString("frequency")):null,
@@ -142,8 +141,8 @@ public class ETTWordHandle{
                         (json.get("pronunciation") instanceof JSONObject && json.getJSONObject("pronunciation").has("all")?
                                 json.getJSONObject("pronunciation").getString("all"):json.getString("pronunciation"))
                         :null,
-                result
-                );
+                return result
+                );*/
         return  (Integer) new DBUtil(this.url,this.username,this.password).oracleConnWrapper(new DBUtil.OracleConnInnerWrapper() {
             @Override
             public Object run() throws Exception {

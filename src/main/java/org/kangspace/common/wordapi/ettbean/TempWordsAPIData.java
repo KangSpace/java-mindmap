@@ -2,7 +2,7 @@ package org.kangspace.common.wordapi.ettbean;
 
 import org.kangspace.common.util.db.oracle.DBUtil;
 import org.kangspace.common.util.db.oracle.OracleConn;
-import oracle.sql.CLOB;
+//import oracle.sql.CLOB;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -143,9 +143,9 @@ public class TempWordsAPIData {
     public int updateWordClob(OracleConn orc,String word,String clobVal){
         String updateSql = "UPDATE TEMP_WORDS_API_DATA SET RESULT_JSON = ? WHERE WORD = '"+DBUtil.oracleSingleQuotationHandle(this.word )+"'";
         try (PreparedStatement ps = orc.getConnection().prepareStatement(updateSql)){
-            CLOB clob   = oracle.sql.CLOB.createTemporary(orc.getConnection(), false,oracle.sql.CLOB.DURATION_SESSION);
+          /*  CLOB clob   = oracle.sql.CLOB.createTemporary(orc.getConnection(), false,oracle.sql.CLOB.DURATION_SESSION);
             clob.setString(1, clobVal);
-            ps.setClob(1, clob);
+            ps.setClob(1, clob);*/
             ps.executeUpdate();
             return 1;
         }catch (Exception e){

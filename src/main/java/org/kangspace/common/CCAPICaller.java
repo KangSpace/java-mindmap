@@ -8,10 +8,10 @@ package org.kangspace.common;
 public class CCAPICaller {
 
    /* public static void main(String[] args) {
-        String roomId = "52572BBF8E9AA38E9C33DC5901307461";
-        String userId = "37C49374EEAEA75B";
-        String apiKey = "UgLl5Lu5WaLaud9stNZDhvk08K4yPh5V";
-        String recordUrl = "http://api.csslcloud.net/api/v2/record/info?";
+        String roomId = "";
+        String userId = "";
+        String apiKey = "";
+        String recordUrl = "?";
         Map<String, String> map = new TreeMap<String, String>();
         map.put("roomid", roomId);
         map.put("userid", userId);
