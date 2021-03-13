@@ -12,6 +12,7 @@
     <modules>
         <module>dubbo-demo/dubbo-server</module>
         <module>dubbo-demo/dubbo-client</module>
+        <module>rocketmq-demo</module>
     </modules>
 
     <properties>

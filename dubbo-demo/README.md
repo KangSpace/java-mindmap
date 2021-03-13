@@ -12,7 +12,7 @@ It's a demo project for Dubbo.
 
 相关类:
 ```java
-//Provider
+//org.kangspace.javamindmap.rocketmqdemo.Provider
 org.kangspace.javamindmap.dubbodemo.service.DubboServerXmlProviderApplication
 //接口
 org.kangspace.javamindmap.dubbodemo.service.xml.XmlDemoService
@@ -35,7 +35,7 @@ java-mindmap/dubbo-demo/dubbo-client/src/main/resources/dubbo-client-consumer.xm
 
 相关类
 ```java
-//Provider
+//org.kangspace.javamindmap.rocketmqdemo.Provider
 org.kangspace.javamindmap.dubbodemo.service.DubboServerAnnotationProviderApplication
 //接口
         org.kangspace.javamindmap.dubbodemo.service.annotation.AnnotationDemoService
