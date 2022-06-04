@@ -1,15 +1,17 @@
 package org.kangspace.common.util.db.oracle;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  * 2019/5/28 18:28
  *
  * @author kango2gler@gmail.com
  */
+@Slf4j
 public class DBUtil {
     private String url;
     private String username;
@@ -39,14 +41,6 @@ public class DBUtil {
         this.password = password;
     }
 
-    public Logger getLogger() {
-        return logger;
-    }
-
-    public void setLogger(Logger logger) {
-        this.logger = logger;
-    }
-
     public DBUtil() {
     }
 
@@ -56,7 +50,6 @@ public class DBUtil {
         this.password = password;
     }
 
-    Logger logger = LogManager.getLogger(this.getClass());
     /**
      * 获取ett20数据库链接
      * @param isRead 0: read , 1:wirte
@@ -71,7 +64,7 @@ public class DBUtil {
             orc.connect(url,username,password);
             return orc;
         }  catch(Exception e)  {
-            logger.error("网校数据库连接失败:"+e.getMessage(),e);
+            log.error("网校数据库连接失败:"+e.getMessage(),e);
             throw new UtilException(e);
         }
     }
@@ -134,7 +127,7 @@ public class DBUtil {
             obj = wrapper.run();
             oracleConn.commit();
         } catch (Exception e) {
-            logger.error(e.getMessage(),e);
+            log.error(e.getMessage(),e);
             throw new UtilException(e);
         }finally {
             closeOracleCon(oracleConn);

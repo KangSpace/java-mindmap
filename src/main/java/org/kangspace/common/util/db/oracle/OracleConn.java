@@ -1,16 +1,15 @@
 package org.kangspace.common.util.db.oracle;
 
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.*;
 
+@Slf4j
 public class OracleConn {
-    private static final Logger logger = LogManager.getLogger(OracleConn.class);
     public static final String ORACLE_DRIVER="oracle.jdbc.driver.OracleDriver";
 
     protected Connection conn = null;
@@ -130,17 +129,17 @@ public class OracleConn {
     }
 
     public ResultSet getResultSet(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         return this.stmt.executeQuery(sql);
     }
 
     public boolean execute(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         return this.stmt.execute(sql);
     }
 
     public int update(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         return this.stmt.executeUpdate(sql);
     }
 

@@ -86,7 +86,7 @@ public class JavaBasicTenQuesTest {
         int之后依次为: long,float,double
         找不到以上基础类型数据时,再找该基本数据类型对应的包装类型
         - 不同的基础类型转换只能转换为基础数据类型，不能转换为包装类型
-        - 包装类型在没有对应包装类型的方法时，可以转换为更高级的基础数据类型，如:Integer 转为 long ,Float 转为 double
+        - 包装类型在没有对应包装类型的方法时，可以转换为更高级的基础数据类型，如:Integer 转为 long 及以上 ,Float 转为 double 及以上
         - 包装类型不能自动转换
 
          */

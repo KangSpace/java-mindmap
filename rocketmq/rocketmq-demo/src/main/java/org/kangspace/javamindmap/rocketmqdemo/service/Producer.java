@@ -1,6 +1,5 @@
 package org.kangspace.javamindmap.rocketmqdemo.service;
 
-import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendCallback;

@@ -4,8 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.kangspace.javamindmap.dubbodemo.client.xml.XmlDemoServiceCallService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
-
 /**
  * Dubbo Client消费者Application(基于XML)
  * @author kango2gler@gmail.com

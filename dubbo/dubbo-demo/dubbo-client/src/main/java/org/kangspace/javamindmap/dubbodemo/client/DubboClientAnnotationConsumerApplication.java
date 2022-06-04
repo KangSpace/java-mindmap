@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubboConfig;
 import org.kangspace.javamindmap.dubbodemo.client.annotation.AnnotationDemoServiceCallService;
-import org.kangspace.javamindmap.dubbodemo.client.xml.XmlDemoServiceCallService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

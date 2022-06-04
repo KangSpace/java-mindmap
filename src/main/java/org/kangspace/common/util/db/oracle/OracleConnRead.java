@@ -1,8 +1,7 @@
 package org.kangspace.common.util.db.oracle;
 
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -10,8 +9,8 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Slf4j
 public class OracleConnRead extends OracleConn {
-    private static final Logger logger = LogManager.getLogger(OracleConnRead.class);
 
     public OracleConnRead() {
     }
@@ -55,7 +54,7 @@ public class OracleConnRead extends OracleConn {
             this.conn.setReadOnly(true);
             this.stmt = this.conn.createStatement(1004, 1007);
         } catch (Exception var4) {
-            logger.error(var4);
+            log.error(var4.getMessage(),var4);
         }
 
     }
@@ -72,7 +71,7 @@ public class OracleConnRead extends OracleConn {
                 this.conn.setReadOnly(true);
                 this.stmt = this.conn.createStatement(1004, 1007);
             } catch (Exception var5) {
-                logger.error(var5);
+                log.error(var5.getMessage(),var5);
             }
         }
 
@@ -87,7 +86,7 @@ public class OracleConnRead extends OracleConn {
             this.conn.setReadOnly(true);
             this.stmt = this.conn.createStatement(1004, 1007);
         } catch (Exception var5) {
-            logger.error(var5);
+            log.error(var5.getMessage(),var5);
         }
 
     }
@@ -102,7 +101,7 @@ public class OracleConnRead extends OracleConn {
     }
 
     public ResultSet getResultSet(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         String sqlUpper = sql.toUpperCase();
         if(sqlUpper.indexOf("INSERT") < 0 && sqlUpper.indexOf("UPDATE") < 0 && sqlUpper.indexOf("DELETE") < 0) {
             return this.stmt.executeQuery(sql);
@@ -112,7 +111,7 @@ public class OracleConnRead extends OracleConn {
     }
 
     public boolean execute(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         String sqlUpper = sql.toUpperCase();
         if(sqlUpper.indexOf("INSERT") < 0 && sqlUpper.indexOf("UPDATE") < 0 && sqlUpper.indexOf("DELETE") < 0) {
             return this.stmt.execute(sql);
@@ -122,7 +121,7 @@ public class OracleConnRead extends OracleConn {
     }
 
     public int update(String sql) throws SQLException {
-        logger.info(sql);
+        log.info(sql);
         String sqlUpper = sql.toUpperCase();
         if(sqlUpper.indexOf("INSERT") < 0 && sqlUpper.indexOf("UPDATE") < 0 && sqlUpper.indexOf("DELETE") < 0) {
             return this.stmt.executeUpdate(sql);
@@ -137,7 +136,7 @@ public class OracleConnRead extends OracleConn {
                 this.stmt.close();
             }
         } catch (Exception var3) {
-            logger.error(var3);
+            log.error(var3.getMessage(), var3);
         }
 
         try {
@@ -145,7 +144,7 @@ public class OracleConnRead extends OracleConn {
                 this.conn.close();
             }
         } catch (Exception var2) {
-            logger.error(var2);
+            log.error(var2.getMessage(),var2);
         }
 
     }
