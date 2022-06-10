@@ -1,0 +1,64 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080,TODO server.port
+  port: 18080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值10
+    min-spare-threads: 30
+
+# 日志配置
+logging:
+  level:
+    org.kangspace: debug
+    org.springframework: warn
+
+
+# Spring配置
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  profiles:
+    active: dev
+    include: druid,api,system
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+# MyBatis配置
+mybatis:
+    # 搜索指定包别名
+    typeAliasesPackage: org.kangspace.**.domain
+    typeEnumsPackage: com.tduck.cloud.*.entity.enums
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件 Mapper
+    mapperLocations: classpath*:mapper/**/*.xml
+    # 加载全局的配置文件
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+mybatis-plus:
+  type-aliases-package: org.kangspace.**.domain
+  mapper-locations: classpath*:mapper/**/*.xml
+  configLocation: classpath:mybatis/mybatis-config.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  global-config:
+    # 数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: AUTO
+    banner: false
+
+# PageHelper分页插件
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

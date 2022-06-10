@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 
 /**
  * RestTempController
- * @author kangxf
+ * @author kango2gler@gmail.com
  */
 @Slf4j
 @RestController
