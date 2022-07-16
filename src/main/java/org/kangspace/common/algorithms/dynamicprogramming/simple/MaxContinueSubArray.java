@@ -2,6 +2,9 @@ package org.kangspace.common.algorithms.dynamicprogramming.simple;
 
 import org.kangspace.common.algorithms.dynamicprogramming.DPUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <pre>
  * [难度: 简单]
@@ -31,7 +34,7 @@ import org.kangspace.common.algorithms.dynamicprogramming.DPUtil;
  */
 public class MaxContinueSubArray {
 
-    public void maxSubArry(int[] nums){
+    public void maxSubArray(int[] nums) {
         DPUtil.printArray(nums);
         int len = nums.length;
         int[] dp = new int[len];
@@ -39,14 +42,45 @@ public class MaxContinueSubArray {
         dp[0] = nums[0];
         int max = nums[0];
         for (int i = 1; i < len; i++) {
-            dp[i] = Math.max(dp[i - 1]+nums[i], nums[i]) ;
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
             max = Math.max(dp[i], max);
         }
-        System.out.println("子序列最大值为: "+ max);
+        System.out.println("子序列最大值为: " + max);
     }
 
+    /**
+     * 最长不重复子字符串长度
+     *
+     * @param s str
+     */
+    public static int maxLongSubString(String s) {
+        System.out.println("src: " + s);
+        int maxLen = 0;
+        List<Character> subStrList = new ArrayList<>(s.length());
+        for (int i = 0; i < s.length(); i++) {
+            int idx;
+            Character c;
+            if ((idx = subStrList.indexOf((c = s.charAt(i)))) == -1) {
+                subStrList.add(c);
+            } else {
+                subStrList.subList(idx + 1, subStrList.size());
+            }
+            int tempLen = subStrList.size();
+            if (maxLen < tempLen) {
+                maxLen = tempLen;
+            }
+        }
+        System.out.println("最长子字符串为: " + subStrList);
+        System.out.println("最长子字符串长度为: " + maxLen);
+        return maxLen;
+    }
+
+
     public static void main(String[] args) {
-        int[] nums = new int[]{-2,1,-3,4,-1,2,1,-5,4};
-        new MaxContinueSubArray().maxSubArry(nums);
+//        int[] nums = new int[]{-2,1,-3,4,-1,2,1,-5,4};
+//        new MaxContinueSubArray().maxSubArry(nums);
+
+        String str = "abckedabckea";
+        maxLongSubString(str);
     }
 }

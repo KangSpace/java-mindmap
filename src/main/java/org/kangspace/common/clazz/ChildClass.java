@@ -75,6 +75,10 @@ public class ChildClass extends ParentClass{
         }
     }
 
+    {
+        System.out.println("this is a normal code block in class, it will be add to non-args Construct method;");
+    }
+
     public static void main(String[] args) {
 //        Class c=  new ChildClass(1).new InnerClass().getClass();
 //        System.out.println(c.getDeclaredFields());

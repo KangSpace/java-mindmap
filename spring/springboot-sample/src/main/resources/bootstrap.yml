@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: boot
+
+configLoad:
+  value: bootstrap

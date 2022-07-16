@@ -56,9 +56,9 @@ import org.mapstruct.factory.Mappers;
 public interface UserMapStruct{
     UserMapStruct INSTANCE = Mappers.getMapper(UserMapStruct.class);
 
-    @Mapping(source = "userSex",target = "sex")
+//    @Mapping(source = "userSex",target = "sex")
     Beans.UserBeanDto toUserBeanDto(Beans.UserBean userBean);
-    @Mapping(source = "sex",target = "userSex")
+//    @Mapping(source = "sex",target = "userSex")
     Beans.UserBean fromUserBeanDto(Beans.UserBeanDto userBeanDto);
     Beans.UserBean fromUserBeanDto2(Beans.UserBeanDto2 userBeanDto);
     Beans.UserBeanDto2 toUserBeanDto2(Beans.UserBean userBean);

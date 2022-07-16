@@ -1,0 +1,51 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 18080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值10
+    min-spare-threads: 30
+
+# 日志配置
+logging:
+  level:
+    org.kangspace: debug
+    org.springframework: warn
+
+
+# Spring配置
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: Asia/Shanghai
+  profiles:
+    active: dev
+
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+redisson:
+  # 服务列表类型: single: 单节点, cluster: 集群, replicated: 云托管, sentinel: 哨兵, masterSlave: 主从
+  serverType: SINGLE
+  # 服务器列表
+  serverList: redis://127.0.0.1:6379
+
+# eureka
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:7777/eureka/
+
+
+configLoad:
+#  value: application

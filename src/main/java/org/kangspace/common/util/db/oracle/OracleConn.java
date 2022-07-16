@@ -2,16 +2,17 @@ package org.kangspace.common.util.db.oracle;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.*;
 
-@Slf4j
 public class OracleConn {
     public static final String ORACLE_DRIVER="oracle.jdbc.driver.OracleDriver";
-
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     protected Connection conn = null;
     protected Statement stmt = null;
     protected String dblink = "dblink20.properties";

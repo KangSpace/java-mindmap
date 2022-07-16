@@ -167,22 +167,32 @@ public class JavaBasicTenQuesTest {
         map.put("6","2");
 
     }
+
     static void q11() {
         System.out.println(Float.POSITIVE_INFINITY == Float.POSITIVE_INFINITY);
         System.out.println(Float.NEGATIVE_INFINITY == Float.NEGATIVE_INFINITY);
     }
+
+    static void q12(){
+        String a = new String("a");
+        System.out.println(a.hashCode());
+        System.out.println(a.intern().hashCode());
+        System.out.println(a.intern() == a);
+        System.out.println(a.intern() == "a");
+    }
     static void main(){
-        q1();
-        q2();
-        q3();
-        q4();
-        q5();
-        q6();
-        q7();
-        q8();
-        q9();
-        q10();
-        q11();
+//        q1();
+//        q2();
+//        q3();
+//        q4();
+//        q5();
+//        q6();
+//        q7();
+//        q8();
+//        q9();
+//        q10();
+//        q11();
+        q12();
 
     }
     public static void main(String[] args) {

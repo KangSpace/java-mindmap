@@ -2,6 +2,8 @@ package org.kangspace.common.util.db.oracle;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -9,9 +11,8 @@ import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@Slf4j
 public class OracleConnRead extends OracleConn {
-
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     public OracleConnRead() {
     }
 

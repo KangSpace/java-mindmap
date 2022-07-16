@@ -2,21 +2,23 @@ package org.kangspace.common.util.db.oracle;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
-import java.util.logging.Logger;
+import java.util.logging.LogManager;
 
 /**
  * 2019/5/28 18:28
  *
  * @author kango2gler@gmail.com
  */
-@Slf4j
+//@Slf4j
 public class DBUtil {
     private String url;
     private String username;
     private String password;
-
+    private Logger log = LoggerFactory.getLogger(this.getClass());
     public String getUrl() {
         return url;
     }

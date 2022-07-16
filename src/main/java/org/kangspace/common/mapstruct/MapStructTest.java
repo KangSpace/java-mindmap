@@ -10,7 +10,7 @@ package org.kangspace.common.mapstruct;
 public class MapStructTest {
     static void main(){
         try {
-            Beans.UserBean userBean = new Beans.UserBean(1L,"张三",1);
+            /*Beans.UserBean userBean = new Beans.UserBean(1L,"张三",1);
             Beans.UserBeanDto userBeanDto = UserMapStruct.INSTANCE.toUserBeanDto(userBean);
             System.out.println("userBean :"+userBean);
             System.out.println("userBean to userBeanDto :"+userBeanDto);
@@ -22,7 +22,7 @@ public class MapStructTest {
             System.out.println("userBean fromUserBeanDto:"+userBean);
             userBean = UserMapStruct.INSTANCE.fromUserBeanDto2(userBeanDto2);
             System.out.println("userBean fromUserBeanDto2:"+userBean);
-
+*/
         } catch (Exception e) {
             e.printStackTrace();
         }
