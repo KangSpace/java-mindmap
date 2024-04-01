@@ -1,6 +1,6 @@
 package org.kangspace.javamindmap.dubbodemo.client.annotation;
 
-import org.apache.dubbo.config.annotation.Reference;
+import org.apache.dubbo.config.annotationta.Reference;
 import org.kangspace.javamindmap.dubbodemo.service.annotation.AnnotationDemoService;
 import org.springframework.stereotype.Service;
 

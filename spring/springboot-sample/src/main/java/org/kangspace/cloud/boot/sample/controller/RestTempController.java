@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @RestController
 public class RestTempController {
-    @Autowired
+    @Autowired(required = false)
     private RestTemplate restTemplate;
 
     @GetMapping("/rest")

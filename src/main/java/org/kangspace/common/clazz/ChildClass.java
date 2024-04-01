@@ -51,16 +51,16 @@ public class ChildClass extends ParentClass{
         }
         LocalClass lc = new LocalClass();
         LocalClass lc2 = new LocalClass();
-//        System.out.println(lc);
-//        System.out.println(lc2);
-//        Class c = new ChildClass(){
-//          public void run(){
-//              // i = 1;
-//              System.out.println(i);
-//              System.out.println(fint);
-//          }
-//        }.getClass();
-//        System.out.println(c);
+        System.out.println(lc);
+        System.out.println(lc2);
+        Class c = new ChildClass(){
+          public void run(){
+              // i = 1;
+              System.out.println(i);
+              System.out.println(fint);
+          }
+        }.getClass();
+        System.out.println(c);
 
         System.out.println("ChildClass ArgsConstruct ChildClass(int i ): run"+" i: "+i +" Thread:"+Thread.currentThread().getName());
     }

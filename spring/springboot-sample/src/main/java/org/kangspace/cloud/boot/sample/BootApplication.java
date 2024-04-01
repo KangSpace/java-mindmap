@@ -1,9 +1,11 @@
 package org.kangspace.cloud.boot.sample;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import java.util.TimeZone;
 
@@ -14,6 +16,7 @@ import java.util.TimeZone;
 //@EnableDiscoveryClient
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @ComponentScan("org.kangspace")
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class BootApplication {
     public static void main(String[] args) {
         setTimezone();

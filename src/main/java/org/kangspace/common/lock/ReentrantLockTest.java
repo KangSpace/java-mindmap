@@ -1,5 +1,7 @@
 package org.kangspace.common.lock;
 
+import javax.swing.tree.TreeNode;
+import java.util.Stack;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -18,6 +20,7 @@ public class ReentrantLockTest {
     static ReentrantLock fairReentrantLock = new ReentrantLock(true);
 
     static void lock(){
+        Stack queue = new Stack();
         noFairReentrantLock.newCondition();
         //获取锁
         noFairReentrantLock.lock();
